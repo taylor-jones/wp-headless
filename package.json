@@ -1,0 +1,14 @@
+{
+  "name": "sia-headless-wp",
+  "version": "1.0.0",
+  "repository": "git@github.com:postlight/headless-wp-starter.git",
+  "author": "Synergy In Action",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "preinstall": "chmod +x install.sh && chmod +x mysql_config.sh && ./install.sh",
+    "postinstall": "robo wordpress:setup",
+    "start": "wp server",
+    "lint": "phpcs -v wordpress/wp-content/themes/synergy-headless/. RoboFile.php"
+  }
+}

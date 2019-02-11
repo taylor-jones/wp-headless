@@ -1,0 +1,19 @@
+command:
+  wordpress:
+      setup:
+        options:
+          wp-user: admin
+          wp-pw: pass
+          wp-theme-dir: synergy-headless
+          wp-theme-name: Synergy In Action
+          wp-email: dev@synergyinaction.org
+          wp-db-name: sia_wp
+          wp-description: Synergy In Action Headless WordPress
+          # wp-plugins is optional
+          # If not set, Robo will activate all the plugins that are installed.
+          # wp-plugins:
+      import:
+        options:
+            migratedb-license:
+            # Use http vs https to avoid SSL error https://deliciousbrains.com/wp-migrate-db-pro/doc/ssl-errors/
+            migratedb-from:
