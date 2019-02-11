@@ -37,7 +37,7 @@ function init_custom_rest_images() {
 /**
  * Gets the custom featured image data for a given post request
  */
-function get_custom_rest_image($object, $field_name, $request) {  
+function get_custom_rest_image($object) {
   // make sure there's a featured image.
   if (empty($object['featured_media'])) return null;
   

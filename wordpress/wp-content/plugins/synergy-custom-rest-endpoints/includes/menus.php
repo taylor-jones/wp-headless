@@ -4,6 +4,9 @@
  * Custom REST endpoints for menus & menu items.
  ************************************************/
 
+add_action('rest_api_init', 'setup_custom_rest_menus');
+
+
 
  /**
   * Sets up the custom menu endpoints
@@ -45,6 +48,9 @@ function get_registered_menus() {
 
 
 
+/**
+ * Gets the subnav items for a specified subnav post query
+ */
 function get_subnav_data(WP_REST_Request $request) {
   $response = new stdClass();
   $params = $request->get_params();
@@ -76,28 +82,27 @@ function get_subnav_data(WP_REST_Request $request) {
 
 
   /* If the post_parent of the id is 0, then this is a base-level
-    * item, so we want to return its children (and optionally itself).
-    * 
-    * Otherwise, if the post_parent of the id != 0, then this is not
-    * a base-level item, so we want to display its peers (and optionally itself)
-    * 
-    * Note: from a practical standpoint, page submenus (that arent' overview pages)
-    * should always include the current page, but there may be other cases 
-    * (like events, posts, etc.) where maybe it makes more sense to not display 
-    * a link to the current item along with its peers in the submenu).
-    */
+   * item, so we want to return its children (and optionally itself).
+   * 
+   * Otherwise, if the post_parent of the id != 0, then this is not
+   * a base-level item, so we want to display its peers (and optionally itself)
+   * 
+   * Note: from a practical standpoint, page submenus (that arent' overview pages)
+   * should always include the current page, but there may be other cases 
+   * (like events, posts, etc.) where maybe it makes more sense to not display 
+   * a link to the current item along with its peers in the submenu). */
 
-  /* Get post information for the current post (we need it whether or not the 
-    * current post will be included in the response). */
+  // Get post information for the current post (we need it whether or not
+  // the current post will be included in the response).
   $current_post = get_post($current_id);
   $current_post_parent_id = $current_post->post_parent;
 
   if ($current_post_parent_id == 0) {
-    /*  The current post is a top-level post.
-      1) There is no parent post, so we can exclude that from the response,
-          regardless of the value of the 'include_parent' parameter.
-      2) Unless 'include_current' was explicitely argued as true, this 
-        top-level post will not be included by in the response default. */
+   /* The current post is a top-level post.
+    * 1) There is no parent post, so we can exclude that from the response,
+    *    regardless of the value of the 'include_parent' parameter.
+    * 2) Unless 'include_current' was explicitely argued as true, this 
+    *    top-level post will not be included by in the response default. */
     if ($include_current) {
       $current_post->url = get_permalink($current_post->ID);
       array_push($items, $current_post);
@@ -109,28 +114,29 @@ function get_subnav_data(WP_REST_Request $request) {
     $parent_post_parent = $parent_post->post_parent;
 
     /* Consider the parent of the current post:
-        If the parent post is top-level (meaning it has a parent == 0): 
-          - unless $include_parent is explicitly true, we will not include the parent post in the response.
-        If the parent post is not top-level (meaning it has a parent != 0): 
-          - unless $include_parent is explicitely false, we will include the parent post in the response. */
+     * If the parent post is top-level (meaning it has a parent == 0): 
+     *  - unless $include_parent is explicitly true, we will not include the parent post in the response.
+     * If the parent post is not top-level (meaning it has a parent != 0): 
+     *  - unless $include_parent is explicitely false, we will include the parent post in the response. */
     if (($parent_post_parent == 0 && $include_parent == 'true') || ($parent_post_parent != 0 && $include_parent != 'false')) {
       $parent_post->url = get_permalink($parent_post->ID);
+      $parent_post->featured_image = get_featured_image_data($parent_post->ID);
       array_push($items, $parent_post);
     }
 
-    /* Unless include_current is explicitely false, include it in the response. */
+    // Unless include_current is explicitely false, include it in the response.
     if ($include_current == 'false') {
       $exclude_post_id = $current_id;
     }
     
-    /* Update the $current_id value to be the parent of the current post, so we can
-      return the siblings of the current post instead of the children. */ 
+    // Update the $current_id value to be the parent of the current post, 
+    // so we can return the siblings of the current post instead of the children.
     $current_id = $current_post_parent_id;
   }
 
   
-  /* Fetch all the related posts (whether children or siblings, as determined above),
-      and push each of those items onto the reponse array. */
+  // Fetch all the related posts (whether children or siblings, as determined above),
+  // and push each of those items onto the reponse array.
   foreach (get_posts(array(
     'post_type'      => $post_type,
     'posts_per_page' => -1,
@@ -143,6 +149,7 @@ function get_subnav_data(WP_REST_Request $request) {
     $post->url = get_permalink($post->ID);
     $post->menu_item_parent = $current_id;
     $post->parent_name = $current_post->post_title;
+    $post->featured_image = get_featured_image_data($post->ID);
     array_push($items, $post);
   }
 
@@ -156,6 +163,46 @@ function get_subnav_data(WP_REST_Request $request) {
   }
 
   return $response;
+}
+
+
+
+/**
+ * Gets the featured image data (if it exists) for a given post id.
+ * @param $post_id - the id of a post to get the featured image data for.
+ */
+function get_featured_image_data($item_id) {
+  $featured_image = new stdClass();
+  $post = get_post($item_id);
+  
+  // only try to get the related image data if the post exists.
+  if ($post) {
+    $image_id = (int) get_post_thumbnail_id($post->ID);
+    $image = get_post($image_id);
+    if (!$image) return null;
+    
+    $featured_image->id             = $image_id;
+    $featured_image->alt            = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+    $featured_image->caption        = $image->post_excerpt;
+    $featured_image->description    = $image->post_content;
+    $featured_image->post_id        = !empty($image->post_parent) ? (int) $image->post_parent : null;
+    $featured_image->sizes          = wp_get_attachment_metadata($image_id)['sizes'];
+    $featured_image->source_url     = wp_get_attachment_url($image_id);
+  
+    // Update all the images sizes to have a proper source url
+    if (!$featured_image->sizes) {
+      // there aren't any sizes set, so just set it to an empty object.
+      $featured_image->sizes = new stdClass;
+    } else {
+      // add a source url property to each image size
+      foreach($featured_image->sizes as $size => &$size_data) {
+        $src = wp_get_attachment_image_src($image_id, $size);
+        $size_data['source_url'] = $src ? $src[0] : null;
+      }
+    }
+  }
+
+  return $featured_image;
 }
 
 
@@ -416,6 +463,7 @@ function purged_menu_item($item) {
     'type',
     'xfn',
   ];
+
   
   // remove all the listed properties
   foreach($remove_props as $prop) {
@@ -448,7 +496,3 @@ function purged_menu_item($item) {
   return $item;
 }
 
-
-
-// Setup the custom rest menus during REST API initialization
- add_action('rest_api_init', 'setup_custom_rest_menus');
