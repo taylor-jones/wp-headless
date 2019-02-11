@@ -60,7 +60,7 @@
     <exclude name="WordPress.WhiteSpace.OperatorSpacing" />
   </rule>
 
-  <rule ref="WordPress-VIP" />
+  <!-- <rule ref="WordPress-VIP" /> -->
 
   <!--
     ============================================================================
