@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
+import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Menu';
@@ -54,5 +55,11 @@ class Preview extends Component {
     );
   }
 }
+
+
+Preview.propTypes = {
+  headerMenu: PropTypes.instanceOf(Object).isRequired,
+  url: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default PageWrapper(Preview);

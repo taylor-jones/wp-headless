@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Menu';
@@ -13,21 +14,16 @@ const headerImageStyle = {
 
 class Index extends Component {
   static async getInitialProps(context) {
-    const pageRes = await fetch(
-      `${Config.apiUrl}/wp-json/postlight/v1/page?slug=home`,
-    );
+    const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/page?slug=home`);
     const page = await pageRes.json();
-    const postsRes = await fetch(
-      `${Config.apiUrl}/wp-json/wp/v2/posts?_embed`,
-    );
+
+    const postsRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`);
     const posts = await postsRes.json();
-    const pagesRes = await fetch(
-      `${Config.apiUrl}/wp-json/wp/v2/pages?_embed`,
-    );
+
+    const pagesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages?_embed`);
     const pages = await pagesRes.json();
-    return {
-      page, posts, pages,
-    };
+
+    return { page, posts, pages };
   }
 
   render() {
@@ -60,19 +56,22 @@ class Index extends Component {
       );
     });
     return (
-      <Layout>
-        <Menu menu={this.props.headerMenu} />
+      <Layout
+        headerMenu={this.props.headerMenu}
+        drawerMenu={this.props.drawerMenu}
+        footerMenu={this.props.footerMenu}
+        title={this.props.page.title}
+      >
+
         <img
           src="/static/images/wordpress-plus-react-header.png"
           width="815"
           style={headerImageStyle}
+          alt=""
         />
+
         <h1>{this.props.page.title.rendered}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: this.props.page.content.rendered,
-          }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />
         <h2>Posts</h2>
         {posts}
         <h2>Pages</h2>
@@ -81,5 +80,21 @@ class Index extends Component {
     );
   }
 }
+
+
+Index.defaultProps = {
+  posts: null,
+  pages: null,
+  page: null,
+};
+
+Index.propTypes = {
+  headerMenu: PropTypes.instanceOf(Object).isRequired,
+  drawerMenu: PropTypes.instanceOf(Object).isRequired,
+  footerMenu: PropTypes.instanceOf(Object).isRequired,
+  posts: PropTypes.instanceOf(Object),
+  pages: PropTypes.instanceOf(Object),
+  page: PropTypes.instanceOf(Object),
+};
 
 export default PageWrapper(Index);
