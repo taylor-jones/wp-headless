@@ -6,27 +6,38 @@
 
 add_action('rest_api_init', 'setup_custom_rest_menus');
 
+/**
+ * get the site url once, so it can be checked against
+ * (to help identify the home page in menus)
+ * 
+ * This is specifically used in the purged_menu_item
+ * function to adjust the slug of the home page.
+ */
+define('MENUS_SITE_URL', site_url() . '/');
 
 
- /**
-  * Sets up the custom menu endpoints
-  */
- function setup_custom_rest_menus() {
-    register_rest_route('menus/v1', '/menus', array(
-      'methods'  => \WP_REST_Server::READABLE,
-      'callback' => 'get_registered_menus'
-    ));
 
-    register_rest_route('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)', array(
-      'methods'  => \WP_REST_Server::READABLE,
-      'callback' => 'get_menu_data'
-    ));
+/**
+* Sets up the custom menu endpoints
+*/
+function setup_custom_rest_menus() {
+  $MENUS_SITE_URL = site_url();
 
-    register_rest_route('menus/v1', '/subnav/(?P<id>[a-zA-Z0-9_-]+)', array(
-      'methods'  => \WP_REST_Server::READABLE,
-      'callback' => 'get_subnav_data'
-    ));
- }
+  register_rest_route('menus/v1', '/menus', array(
+    'methods'  => \WP_REST_Server::READABLE,
+    'callback' => 'get_registered_menus'
+  ));
+
+  register_rest_route('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)', array(
+    'methods'  => \WP_REST_Server::READABLE,
+    'callback' => 'get_menu_data'
+  ));
+
+  register_rest_route('menus/v1', '/subnav/(?P<id>[a-zA-Z0-9_-]+)', array(
+    'methods'  => \WP_REST_Server::READABLE,
+    'callback' => 'get_subnav_data'
+  ));
+}
 
 
 
@@ -474,21 +485,28 @@ function purged_menu_item($item) {
   if (function_exists('get_field')) {
     $item->is_link = get_field('is_link', $item->ID);
     if ($item->is_link == null) $item->is_link = true;
-    
-    if (!$item->is_link) {
-      $item->url = '';
-    }
+    if (!$item->is_link) $item->url = '';
   }
 
   // now add a slug property
   $item->slug = wp_basename($item->url) ?: wp_basename($item->title) ?: wp_basename($item->post_name) ?: '';
 
+  /**
+   * check if this menu item represents the root page.
+   * if so, give it a slug and url that reflect it's title.
+   * NOTE: This is particular useful for the home page, and it shouldn't
+   * really come into effect otherwise, but it's still flexible enough to handle
+   * whichever page is set as the home page.
+   */
+  if ($item->url == MENUS_SITE_URL) {
+    $item->slug = strtolower($item->title);
+    $item->url = $item->url . $item->slug . '/';
+  }
 
   // add a menu level property
-  /* This is important to keep, because removing it could break the 
-   * way that nested menu items determine who their child items are 
-   * (If that happens, there are other ways to make it still work, but
-   * it'll be a little bit slower) */
+  /* IMPORTANT: removing this could break the  way that nested menu items 
+   * determine who their child items are (If that happens, there are other 
+   * ways to make it still work, but it'll be a little bit slower) */
   if (!isset($item->menu_level)) {
     $item->menu_level = null;
   }

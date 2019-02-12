@@ -23,17 +23,15 @@ class Synergy_Custom_Rest {
 	 */
 	private static $instance;
 
-
 	/**
 	 * @var $plugin_dir - The plugin directory, for reuse in the includes.
 	 */
-	private static $plugin_dir;
-
-
+  private static $plugin_dir;
+  
 	/**
-	 * Synergy_Custom_Rest constructor.
+   * Synergy_Custom_Rest constructor.
 	 */
-	private function __construct() {}
+  private function __construct() {}
 
 
 	/**
@@ -47,7 +45,7 @@ class Synergy_Custom_Rest {
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Synergy_Custom_Rest ) ) {
 			self::$instance = new Synergy_Custom_Rest;
-			self::$plugin_dir = trailingslashit( dirname( __FILE__ ) );
+      self::$plugin_dir = trailingslashit( dirname( __FILE__ ) );
 
 			// Load the includes
 			self::$instance->includes();
