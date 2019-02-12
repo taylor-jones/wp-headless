@@ -3,20 +3,13 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Config } from '../config';
 
-// const { getSlug } = require('../lib/commonUtils');
+const { getSlug, mappedSlug } = require('../lib/commonUtils');
 
 const linkStyle = {
   marginRight: 15,
 };
 
 class Menu extends Component {
-  getSlug = url => {
-    const parts = url.split('/');
-    const slug = parts.length > 2 ? parts[parts.length - 2] : url;
-    console.log(`PARTS: ${parts.length}\tURL: ${url}\tSLUG: ${slug}`);
-    return slug;
-  }
-
   render() {
     const menuItems = this.props.menu.items.map((item, index) => {
       if (item.object === 'custom') {
@@ -26,7 +19,7 @@ class Menu extends Component {
           </Link>
         );
       }
-      const slug = this.getSlug(item.url);
+      const slug = mappedSlug(getSlug(item.url, 2));
       const actualPage = item.object === 'category' ? 'category' : 'post';
       return (
         <Link

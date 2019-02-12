@@ -27,7 +27,7 @@ const ssrCache = new LRUCache({
  * version is served up. Otherwise, the content is cached.
  */
 async function renderAndCache(req, res, actualPage, queryParams) {
-  const key = getSlug(req.url);
+  const key = getSlug(req.url, 1);
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {

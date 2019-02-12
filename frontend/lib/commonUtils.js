@@ -23,9 +23,9 @@ const mappedSlug = slug => slugMap[slug] || slug;
  * NOTE: This function does not check for any slug mapping.
  * @param {string} url
  */
-const getSlug = url => {
+const getSlug = (url, offset) => {
   const parts = url.split('/');
-  return parts.length > 1 ? parts[parts.length - 1] : url;
+  return parts.length > offset ? parts[parts.length - offset] : url;
 };
 
 
