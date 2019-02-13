@@ -1,9 +1,9 @@
 import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import PageHead from './PageHead';
-import Header from './Header/Header';
+import Header from './Header';
 import Footer from './Footer';
-import Menu from './Menu/Menu';
+import Menu from './Menu';
 
 
 class Layout extends Component {

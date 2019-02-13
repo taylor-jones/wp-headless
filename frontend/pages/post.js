@@ -2,8 +2,9 @@ import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
+import withPageWrapper from '../hoc/withPageWrapper';
+import withBreakpoints from '../hoc/withBreakpoints';
 import Layout from '../components/Layout';
-import PageWrapper from '../components/PageWrapper';
 import { Config } from '../config';
 
 class Post extends Component {
@@ -15,7 +16,7 @@ class Post extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const { post } = this.props;
     if (!post.title) return <Error statusCode={404} />;
     // Use post.slug to dynamically render different components where necessary.
@@ -42,4 +43,4 @@ Post.propTypes = {
   post: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default PageWrapper(Post);
+export default withPageWrapper(withBreakpoints(Post));

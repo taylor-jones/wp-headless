@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import PageWrapper from '../components/PageWrapper';
+import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
 
 const headerImageStyle = {
@@ -96,4 +96,4 @@ Index.propTypes = {
   page: PropTypes.instanceOf(Object),
 };
 
-export default PageWrapper(Index);
+export default withPageWrapper(Index);

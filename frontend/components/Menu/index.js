@@ -112,11 +112,7 @@ class Menu extends Component {
         </Link>
 
         {attr.hasChildren && (
-          <ul>
-            {item.items.map(child => {
-              return this.getMenuItem(child);
-            })}
-          </ul>
+          <ul>{item.items.map(child => this.getMenuItem(child))}</ul>
         )}
       </li>
     );
@@ -125,9 +121,11 @@ class Menu extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.menu.items.map(item => this.getMenuItem(item))}
-      </div>
+      <nav>
+        <ul>
+          {this.props.menu.items.map(item => this.getMenuItem(item))}
+        </ul>
+      </nav>
     );
   }
 }

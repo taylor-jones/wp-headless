@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import PageWrapper from '../components/PageWrapper';
+import withPageWrapper from '../hoc/withPageWrapper';
 import Menu from '../components/Menu';
 import { Config } from '../config';
 
@@ -62,4 +62,4 @@ Preview.propTypes = {
   url: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default PageWrapper(Preview);
+export default withPageWrapper(Preview);

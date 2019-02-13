@@ -3,7 +3,7 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import Layout from '../components/Layout';
-import PageWrapper from '../components/PageWrapper';
+import withPageWrapper from '../hoc/withPageWrapper';
 import Menu from '../components/Menu';
 import { Config } from '../config';
 
@@ -57,4 +57,4 @@ class Category extends Component {
   }
 }
 
-export default PageWrapper(Category);
+export default withPageWrapper(Category);
