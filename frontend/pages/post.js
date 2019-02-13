@@ -2,8 +2,8 @@ import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
+import { ShowAt, HideAt } from 'react-with-breakpoints';
 import withPageWrapper from '../hoc/withPageWrapper';
-import withBreakpoints from '../hoc/withBreakpoints';
 import Layout from '../components/Layout';
 import { Config } from '../config';
 
@@ -16,7 +16,7 @@ class Post extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { post } = this.props;
     if (!post.title) return <Error statusCode={404} />;
     // Use post.slug to dynamically render different components where necessary.
@@ -28,6 +28,11 @@ class Post extends Component {
         footerMenu={this.props.footerMenu}
         title={post.title}
       >
+        <ShowAt breakpoint="small">SMALL</ShowAt>
+        <ShowAt breakpoint="medium">MEDIUM</ShowAt>
+        <ShowAt breakpoint="large">LARGE</ShowAt>
+        <ShowAt breakpoint="xlarge">XLARGE</ShowAt>
+
         <h1>{post.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </Layout>
@@ -43,4 +48,4 @@ Post.propTypes = {
   post: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default withPageWrapper(withBreakpoints(Post));
+export default withPageWrapper(Post);
