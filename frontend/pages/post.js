@@ -15,17 +15,20 @@ class Post extends Component {
   }
 
   render() {
-    if (!this.props.post.title) return <Error statusCode={404} />;
+    // console.log(this.props);
+    const { post } = this.props;
+    if (!post.title) return <Error statusCode={404} />;
+    // Use post.slug to dynamically render different components where necessary.
 
     return (
       <Layout
         headerMenu={this.props.headerMenu}
         drawerMenu={this.props.drawerMenu}
         footerMenu={this.props.footerMenu}
-        title={this.props.post.title}
+        title={post.title}
       >
-        <h1>{this.props.post.title.rendered}</h1>
-        <div dangerouslySetInnerHTML={{ __html: this.props.post.content.rendered }} />
+        <h1>{post.title.rendered}</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </Layout>
     );
   }

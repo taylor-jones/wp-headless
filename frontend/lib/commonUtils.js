@@ -9,13 +9,18 @@
 const slugMap = require('./slugMap');
 
 
-
 /**
  * Looks in the slugMap to determine if a slug should be redirected
  * to a different slug. If the argued slug doesn't have a mapped
  * property in the slugMap, then the argued slug is returned as argued.
+ *
+ * @param {string} slug - the slug to check for a mapped path for
+ * @returns {string} - the slug that should be routed for the given slug.
  */
-const mappedSlug = slug => slugMap[slug] || slug;
+const mappedSlug = slug => {
+  const hasMappedSlug = Object.prototype.hasOwnProperty.call(slugMap, slug);
+  return hasMappedSlug ? slugMap[slug] : slug;
+};
 
 
 /**
@@ -23,9 +28,10 @@ const mappedSlug = slug => slugMap[slug] || slug;
  * NOTE: This function does not check for any slug mapping.
  * @param {string} url
  */
-const getSlug = (url, offset) => {
+const getSlug = (url, offset = 2) => {
   const parts = url.split('/');
-  return parts.length > offset ? parts[parts.length - offset] : url;
+  const slug = parts.length > offset ? parts[parts.length - offset] : url;
+  return slug;
 };
 
 

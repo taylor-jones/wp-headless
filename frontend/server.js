@@ -27,13 +27,19 @@ const ssrCache = new LRUCache({
  * version is served up. Otherwise, the content is cached.
  */
 async function renderAndCache(req, res, actualPage, queryParams) {
-  const key = getSlug(req.url, 1);
+  let key;
+
+  if (req.url === '/') {
+    key = 'home';
+  } else {
+    key = getSlug(req.url, 1);
+  }
+
+  const isSlug = paramIsSlug(key);
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {
-    if (paramIsSlug(key)) {
-      console.log(`CACHE HIT: ${key}`);
-    }
+    if (isSlug) console.log(`CACHE HIT: ${key}`);
 
     res.setHeader('x-cache', 'HIT');
     res.send(ssrCache.get(key));
@@ -45,7 +51,7 @@ async function renderAndCache(req, res, actualPage, queryParams) {
       // If the page returns a good status code, then cache the page.
       if (res.statusCode === 200) {
         ssrCache.set(key, html);
-        console.log(`CACHE MISS: ${key}`);
+        if (isSlug) console.log(`CACHE MISS: ${key}`);
         res.setHeader('x-cache', 'MISS');
       }
 
@@ -79,6 +85,14 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    server.get('(/|/home)', (req, res) => {
+      const queryParams = { slug: '/', apiRoute: 'page' };
+      const actualPage = '/index';
+      // NOTE: in previous version, where page.js was different than post.js, I used:
+      // const actualPage = getActualPageFile(queryParams.slug, `${queryParams.apiRoute}`);
+      renderAndCache(req, res, actualPage, queryParams);
+    });
+
     server.get('(/page/|/):slug', (req, res) => {
       const queryParams = { slug: mappedSlug(req.params.slug), apiRoute: 'page' };
       const actualPage = getActualPageFile(queryParams.slug, 'post');
@@ -89,18 +103,14 @@ app
 
     server.get('/category/:slug', (req, res) => {
       const actualPage = '/category';
-      const queryParams = {
-        slug: req.params.slug,
-      };
-      app.render(req, res, actualPage, queryParams);
+      const queryParams = { slug: req.params.slug };
+      app.renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/_preview/:id/:wpnonce', (req, res) => {
       const actualPage = '/preview';
-      const queryParams = {
-        id: req.params.id, wpnonce: req.params.wpnonce,
-      };
-      app.render(req, res, actualPage, queryParams);
+      const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
+      app.renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('*', (req, res) => {

@@ -4,5 +4,6 @@
  */
 module.exports = {
   about: 'mission-and-vision',
+  home: '',
 };
 

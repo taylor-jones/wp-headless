@@ -1,4 +1,8 @@
 <?php
+
+require_once('common.php');
+
+
 /**
  * Register custom REST API routes.
  */
@@ -11,17 +15,13 @@ add_action(
                 return( is_string( $param ) );
             },
         ];
+
         $post_slug_arg = array_merge(
-            $slug_arg,
-            [
-                'description' => 'String representing a valid WordPress post slug',
-            ]
+            $slug_arg, ['description' => 'String representing a valid WordPress post slug']
         );
+
         $page_slug_arg = array_merge(
-            $slug_arg,
-            [
-                'description' => 'String representing a valid WordPress page slug',
-            ]
+            $slug_arg, ['description' => 'String representing a valid WordPress page slug']
         );
 
         // Register routes
@@ -30,10 +30,7 @@ add_action(
             'callback' => 'rest_get_post',
             'args' => [
                 'slug' => array_merge(
-                    $post_slug_arg,
-                    [
-                        'required' => true,
-                    ]
+                    $post_slug_arg, ['required' => true]
                 ),
             ],
         ] );
@@ -43,10 +40,7 @@ add_action(
             'callback' => 'rest_get_page',
             'args' => [
                 'slug' => array_merge(
-                    $page_slug_arg,
-                    [
-                        'required' => true,
-                    ]
+                    $page_slug_arg, ['required' => true]
                 ),
             ],
         ] );
@@ -70,6 +64,7 @@ add_action(
     }
 );
 
+
 /**
  * Respond to a REST API request to get post data.
  *
@@ -80,6 +75,7 @@ function rest_get_post( WP_REST_Request $request ) {
     return rest_get_content( $request, 'post', __FUNCTION__ );
 }
 
+
 /**
  * Respond to a REST API request to get page data.
  *
@@ -89,6 +85,7 @@ function rest_get_post( WP_REST_Request $request ) {
 function rest_get_page( WP_REST_Request $request ) {
     return rest_get_content( $request, 'page', __FUNCTION__ );
 }
+
 
 /**
  * Respond to a REST API request to get post or page data.
@@ -102,17 +99,9 @@ function rest_get_page( WP_REST_Request $request ) {
  * @return WP_REST_Response
  */
 function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
-    $content_in_array = in_array(
-        $type,
-        [
-            'post',
-            'page',
-        ],
-        true
-    );
-    if ( ! $content_in_array ) {
-        $type = 'post';
-    }
+    $types = ['post', 'page'];
+    $type = from_array($type, $types, 'post', true);
+
     $slug = $request->get_param( 'slug' );
     $post = get_content_by_slug( $slug, $type );
     if ( ! $post ) {
@@ -138,6 +127,7 @@ function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
     return new WP_REST_Response( $response );
 }
 
+
 /**
  * Returns a post or page given a slug. Returns false if no post matches.
  *
@@ -146,17 +136,9 @@ function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
  * @return Post
  */
 function get_content_by_slug( $slug, $type = 'post' ) {
-    $content_in_array = in_array(
-        $type,
-        [
-            'post',
-            'page',
-        ],
-        true
-    );
-    if ( ! $content_in_array ) {
-        $type = 'post';
-    }
+    $types = ['post', 'page'];
+    $type = from_array($type, $types, 'post', true);
+    
     $args = [
         'name'        => $slug,
         'post_type'   => $type,
@@ -187,6 +169,7 @@ function get_content_by_slug( $slug, $type = 'post' ) {
     }
     return false;
 }
+
 
 /**
  * Respond to a REST API request to get a post's latest revision.
