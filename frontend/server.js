@@ -27,14 +27,7 @@ const ssrCache = new LRUCache({
  * version is served up. Otherwise, the content is cached.
  */
 async function renderAndCache(req, res, actualPage, queryParams) {
-  let key;
-
-  if (req.url === '/') {
-    key = 'home';
-  } else {
-    key = getSlug(req.url, 1);
-  }
-
+  const key = getSlug(req.url, 1) || 'home';
   const isSlug = paramIsSlug(key);
 
   // If we have a page in the cache, let's serve it
@@ -85,14 +78,14 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    // treat '/' and '/home' as root pages.
     server.get('(/|/home)', (req, res) => {
-      const queryParams = { slug: '/', apiRoute: 'page' };
+      const queryParams = { slug: 'home', apiRoute: 'page' };
       const actualPage = '/index';
-      // NOTE: in previous version, where page.js was different than post.js, I used:
-      // const actualPage = getActualPageFile(queryParams.slug, `${queryParams.apiRoute}`);
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    // handle all other non-root pages.
     server.get('(/page/|/):slug', (req, res) => {
       const queryParams = { slug: mappedSlug(req.params.slug), apiRoute: 'page' };
       const actualPage = getActualPageFile(queryParams.slug, 'post');
