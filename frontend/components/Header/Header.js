@@ -20,12 +20,10 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    console.log('Header: component did mount');
     window.addEventListener('scroll', this.onScroll, false);
   }
 
   componentWillUnmount() {
-    console.log('Header: will unmount');
     window.removeEventListener('scroll', this.onScroll, false);
   }
 
