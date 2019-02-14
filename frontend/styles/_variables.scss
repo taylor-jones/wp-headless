@@ -1,0 +1,194 @@
+@import 'breakpoints';
+
+
+/***************************************************
+ * breakpoints
+ ***************************************************/
+ $grid-breakpoints: (
+  sm: 0px,
+  md: 744px,
+  lg: 1128px,
+  xl: 1440px
+);
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+
+
+
+/***************************************************
+ * colors
+ ***************************************************/
+// 
+// Definitions
+// 
+
+// neutrals
+$charcoal:       #484848;
+$mine-shaft:     #212121;
+$actual-white:   #ffffff;
+
+// greys/blue-greys
+$porcelain:      #f7f8f9;
+$mischka:        #D8DAE6;
+$cadet-blue:     #B0B1C3;
+$santas-grey:    #9597B1;
+$waterloo:       #797B95;
+$fiord:          #44446E;
+$matinique:      #312E52;
+$charade:        #2E2D3F;
+
+// greens
+$vista:          #85D497;
+$pastel-green:   #6DD693;
+$fern:           #57B173;
+
+// blues
+$malibu:         #6BE4FF;
+$bermuda:        #6D80A8;
+$pattens-blue:   #D9E5FF;
+
+// 
+// Declarations
+// 
+
+$black:          $mine-shaft;
+$white:          $actual-white;
+$green:          $vista;
+$blue:           $bermuda;
+$grey-light:     $porcelain;
+$grey:           $santas-grey;
+$grey-dark:      $charcoal;
+
+$navy:           #2D3E50;
+$red:            #BC1B3C;
+
+
+
+// 
+// Assignments
+// 
+
+
+//  $theme-color: #5a78b8;
+$theme-color:       $charade;
+$theme-color-light: $mischka;
+$theme-color-dark: $waterloo;
+
+
+
+
+/***************************************************
+ * fonts
+ ***************************************************/
+
+$font-color:              $grey-dark;
+$font-stack:              'Gotham', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$font-stack-rounded:      'Gotham Rounded', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$theme-font:              $font-stack-rounded;
+
+
+
+/***************************************************
+ * typography
+ ***************************************************/
+$font-size-base: 14px;
+
+
+
+/***************************************************
+ * images
+ ***************************************************/
+$dot-texture:  url('/static/images/dot-texture.png');
+$logo:         url('/static/images/logo.svg');
+$logo-white:   url('/static/images/logo-white.svg');
+
+
+
+
+/***************************************************
+ * elements
+ ***************************************************/
+
+// 
+// border
+// 
+$border-color:                    #ededed;
+
+
+// 
+// box-shadow
+// 
+$box-shadow:                        0 2px 0 rgba(0, 0, 0, 0.1);
+$box-shadow__hover:                 0 3px 5px rgba(0, 0, 0, 0.12);
+$box-shadow--high__hover:           0 6px 8px rgba(0, 0, 0, 0.12);
+
+$box-shadow-button:                 0 2px 3px rgba(50, 50, 93, .08), 0 0 1px rgba(0, 0, 0, .04);
+$box-shadow-button--hover:          0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
+
+// 
+// links
+// 
+$link-color:                        $bermuda;
+
+
+// 
+// headings
+// 
+$heading-colored:                   $fiord;
+$heading-uncolored:                 $charcoal;
+
+
+
+/***************************************************
+ * components
+ ***************************************************/
+
+ //
+ // backdrop
+ //
+$backdrop-bg:                       rgba($white, 0.7);
+
+
+//
+// top bar
+//
+$top-bar-height:                    35px;
+
+
+//
+// header
+//
+$header-bg:                         rgba(255, 255, 255, 0.9);
+$header-bg__scrolled:               $white;
+$header-bg__inverse:                transparent;
+
+$header-font:                       $font-stack-rounded;
+$header-height:                     100px;
+$header-height__scrolled:           70px;
+$header-logo-size:                  1.2rem;
+
+$header-menu-color:                 $font-color;
+$header-menu-color__hover:          $theme-color;
+$header-menu-color__inverse:        $white;
+
+$header-menu-bg:                    inherit;
+$header-menu-bg__hover:             inherit;
+$header-menu-font-size:             1.1rem;
+
+$header-submenu-color:              $header-menu-color__hover;
+$header-submenu-bg:                 $white;
+$header-submenu-bg__hover:          $header-menu-color__hover;
+
+$header-icon-size:                  1.5rem;
+$header-icon-color:                 $header-menu-color;
+
+
+//
+// side drawer
+//
+$side-drawer-color:                 $charcoal;
+$side-drawer-width:                 70%;
+$side-drawer-max-width:             400px;
+$side-drawer-min-width:             250px;
+$side-drawer-font-size:             1rem;
+$side-drawer-footer-height:         35px;

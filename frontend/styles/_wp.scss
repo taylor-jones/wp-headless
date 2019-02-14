@@ -1,0 +1,24 @@
+@import './helpers';
+
+/**
+ * Styling WordPress-added classes
+ */
+
+ .wp-block-separator {
+   @extend .Separator;
+ }
+
+
+ .wp-block-columns {
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+ .wp-block-column {
+    flex: 0 0 100%;
+
+    @include break(md) {
+      flex: 1;
+    }
+ }
+

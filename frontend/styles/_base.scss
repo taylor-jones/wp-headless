@@ -1,0 +1,269 @@
+// Base (non-component) styles
+@import '../node_modules/normalize.css/normalize.css';
+@import './variables';
+
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  // display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-rendering: geometricPrecision;
+  -webkit-tap-highlight-color: transparent; // remove grey tap color
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: $font-size-base;
+  direction: ltr;
+  unicode-bidi: isolate;
+  -webkit-locale: "en";
+}
+
+body {
+  background-color: #fff;
+  font-family: $theme-font;
+  color: $font-color;
+  line-height: 1.43;
+  min-height: 100vh;
+  position: relative;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+// 
+// LINKS
+// 
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  // color: $link-color;
+  text-decoration: none;
+}
+
+
+
+
+// 
+// TYPOGRAPHY
+// 
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+
+p.lead {
+  font-size: 18px;
+  line-height: 1.333;
+  word-wrap: break-word;
+  padding: 4px 0;
+  // text-align: center;
+
+  @include break(md) {
+    font-size: 18px;
+    line-height: 1.444;
+  }
+
+  @include break(lg) {
+    font-size: 20px;
+  }
+}
+
+
+
+
+.colored-heading {
+  color: $heading-colored;
+}
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  color: $heading-uncolored;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  // @include break(md) {
+  //   font-weight: 400;
+  // }
+}
+
+.display-1 {
+  font-size: 26px;
+  letter-spacing: normal;
+  line-height: 30px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 32px;
+    line-height: 36px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  @include break(xl) {
+    font-size: 46px;
+    line-height: 52px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+
+.display-2 {
+  font-size: 24px;
+  letter-spacing: normal;
+  line-height: 28px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 30px;
+    line-height: 34px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  @include break(xl) {
+    font-size: 40px;
+    line-height: 46px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+
+.display-3 {
+  font-size: 22px;
+  letter-spacing: normal;
+  line-height: 26px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 26px;
+    line-height: 32px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  @include break(xl) {
+    font-size: 32px;
+    line-height: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+
+.display-4 {
+  font-size: 18px;
+  letter-spacing: normal;
+  line-height: 24px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 22px;
+    line-height: 28px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  @include break(xl) {
+    font-size: 28px;
+    line-height: 36px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+
+.display-5 {
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 22px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  @include break(xl) {
+    font-size: 22px;
+    line-height: 28px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+
+
+h1 {
+  @extend .display-1;
+  // text-align: center;
+}
+
+h2 {
+  @extend .display-2;
+  // text-align: center;
+}
+
+h3 {
+  @extend .display-3;
+  @extend .colored-heading;
+}
+
+h4 {
+  @extend .display-4;
+  @extend .colored-heading;
+}
+
+h5 {
+  @extend .display-5;
+  // text-align: center;
+}
+
+h6 {
+  @extend .display-6;
+  // text-align: center;
+}

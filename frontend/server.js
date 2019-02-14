@@ -18,7 +18,7 @@ const handle = app.getRequestHandler();
 // caching options
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: dev ? 1000 * 15 : 1000 * 60 * 60, // dev: 15 seconds, production: 1 hour
+  maxAge: dev ? 1000 * 5 : 1000 * 60 * 60, // dev: 5 seconds, production: 1 hour
 });
 
 
