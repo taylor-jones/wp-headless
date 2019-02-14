@@ -1,0 +1,139 @@
+@import "../../styles/variables";
+
+
+.Drawer {
+  font-family: $font-stack;
+  background: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 350px;
+  max-width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  will-change: transform;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.Opened {
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+  pointer-events: auto;
+}
+
+.Closed {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+
+.Search {
+  display: flex;
+  margin-bottom: 0.75rem;
+  position: relative;
+  width: 100%;
+}
+
+
+.SearchInput {
+  appearance: none;
+  background: #eee;
+  border-radius: 0.25rem;
+  border: none;
+  flex: 12;
+  font-size: $side-drawer-font-size;
+  padding: 0.5rem;
+  max-width: 100%;
+}
+
+
+.SearchSubmit {
+  border-radius: 0.25rem;
+  color: dodgerblue;
+  background: none;
+  border: none;
+  font-size: $side-drawer-font-size;
+  flex: 1;
+  height: inherit;
+  transition: margin 350ms ease-in;
+  will-change: margin;
+  right: 0;
+  margin-right: -100%;
+  pointer-events: none;
+}
+
+
+.SearchInput:focus ~.SearchSubmit,
+.SearchSubmit:focus {
+  margin-right: 0;
+  margin-left: 0.25rem;
+  transition: margin 350ms ease-out;
+  pointer-events: auto;
+  will-change: margin;
+}
+
+
+.Drawer a {
+  align-items: center;
+  color: $side-drawer-color;
+  display: flex;
+  font-size: $side-drawer-font-size;
+  width: 100%;
+
+  &:active {
+    color: $theme-color-dark;
+  }
+}
+
+
+.DrawerMenu {
+  & > li {
+    padding: 0.75rem 0;
+
+    &:not(:first-of-type) {
+      border-top: 1px solid #eee;
+    }
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    padding: 0.75rem 0;
+    position: relative;
+  }
+}
+
+
+.Submenu {
+  a {
+    padding-left: 1rem;
+  }
+}
+
+
+.DrawerFooter {
+  align-items: center;
+  display: flex;
+  height: $side-drawer-footer-height;
+  justify-content: flex-start;
+  margin: 2rem 0 1rem 0;
+
+  a {
+    font-size: 1.5rem;
+    width: auto;
+  }
+}

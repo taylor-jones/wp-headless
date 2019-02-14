@@ -2,18 +2,54 @@ import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import PageHead from './PageHead';
 import Header from './Header/Header';
+import Drawer from './Drawer/Drawer';
 import Footer from './Footer/Footer';
-import Menu from './Menu/Menu';
 
 
 class Layout extends Component {
+  state = {
+    showSideDrawer: false,
+  };
+
+  /**
+   * Sets the state of the showSideDrawer attribute to
+   * false whenever the side drawer should be closed.
+   */
+  sideDrawerClosedHandler = () => {
+    this.setState({ showSideDrawer: false });
+  }
+
+  /**
+   * Toggles the state of the side drawer
+   */
+  sideDrawerToggleHandler = () => {
+    this.setState((prevState) => {
+      return { showSideDrawer: !prevState.showSideDrawer };
+    });
+  }
+
+
   render() {
+    const { headerMenu, drawerMenu, footerMenu, title } = this.props;
+
     return (
       <Fragment>
-        <PageHead title={this.props.title.rendered} />
-        <Menu menu={this.props.headerMenu} />
-        <Header />
+        <PageHead title={title.rendered} />
+
+        <Header
+          menu={headerMenu}
+          drawerToggleClicked={this.sideDrawerToggleHandler}
+          isInverse={title === 'Synergy In Action'}
+        />
+
+        <Drawer
+          menu={drawerMenu}
+          isOpen={this.state.showSideDrawer}
+          close={this.sideDrawerClosedHandler}
+        />
+
         {this.props.children}
+
         <Footer />
       </Fragment>
     );
@@ -22,16 +58,14 @@ class Layout extends Component {
 
 
 Layout.defaultProps = {
-  headerMenu: null,
-  drawerMenu: null,
   footerMenu: null,
 };
 
 Layout.propTypes = {
   title: PropTypes.objectOf(PropTypes.string).isRequired,
-  headerMenu: PropTypes.instanceOf(Object),
+  headerMenu: PropTypes.instanceOf(Object).isRequired,
+  drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object),
-  drawerMenu: PropTypes.instanceOf(Object),
 };
 
 

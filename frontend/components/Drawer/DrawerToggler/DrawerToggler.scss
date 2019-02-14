@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.DrawerToggle {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+
+  @include break(md) {
+    display: none;
+  }
+}
+
+.DrawerToggleButton {
+  border: none;
+  cursor: pointer;
+  color: $header-icon-color;
+  font-size: $header-icon-size;
+  padding: 0.5rem;
+}

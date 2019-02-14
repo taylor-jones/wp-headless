@@ -1,7 +1,5 @@
-.Menu {
-  background-color: lavender;
-}
+@import '../../styles/variables';
 
-.MenuItem {
-  margin-right: 1rem;
+.Active a {
+  color: $theme-color-dark !important;
 }
