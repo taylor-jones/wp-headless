@@ -50,22 +50,19 @@ class Layout extends Component {
 
         {this.props.children}
 
-        <Footer />
+        <Footer menu={footerMenu} />
       </Fragment>
     );
   }
 }
 
 
-Layout.defaultProps = {
-  footerMenu: null,
-};
 
 Layout.propTypes = {
   title: PropTypes.objectOf(PropTypes.string).isRequired,
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
-  footerMenu: PropTypes.instanceOf(Object),
+  footerMenu: PropTypes.instanceOf(Object).isRequired,
 };
 
 

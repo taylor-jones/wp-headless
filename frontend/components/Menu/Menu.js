@@ -124,15 +124,17 @@ class Menu extends PureComponent {
     const attr = this.getMenuItemAttributes(item);
     const itemClass = this.getMenuItemClassName(attr);
 
-    // TODO: handle when item isn't a link (like in the footer)
-
     return (
       <li key={attr.key} className={itemClass}>
-        <Link href={attr.href} as={attr.as}>
-          <a onClick={this.props.clicked} role="presentation">
-            {item.title}
-          </a>
-        </Link>
+        {item.is_link && (
+          <Link href={attr.href} as={attr.as}>
+            <a onClick={this.props.clicked} role="presentation">
+              {item.title}
+            </a>
+          </Link>
+        )}
+
+        {!item.is_link && item.title}
 
         {attr.hasChildren && (
           <ul className={submenuClass}>
