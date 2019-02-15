@@ -126,6 +126,7 @@ class Menu extends PureComponent {
 
     return (
       <li key={attr.key} className={itemClass}>
+        {/* If the item is a link, give it an achor */}
         {item.is_link && (
           <Link href={attr.href} as={attr.as}>
             <a onClick={this.props.clicked} role="presentation">
@@ -134,8 +135,14 @@ class Menu extends PureComponent {
           </Link>
         )}
 
-        {!item.is_link && item.title}
+        {/* If the item isn't a link, make it a heading. */}
+        {!item.is_link && (
+          <div className={headingClass}>
+            {item.title}
+          </div>
+        )}
 
+        {/* If the item is a parent, nest its child items */}
         {attr.hasChildren && (
           <ul className={submenuClass}>
             {item.items.map(child => this.getMenuItem(child))}
@@ -160,10 +167,10 @@ class Menu extends PureComponent {
 
 
 Menu.defaultProps = {
-  menuClass: '',
-  submenuClass: '',
-  submenuParentClass: '',
-  headingClass: '',
+  menuClass: null,
+  submenuClass: null,
+  submenuParentClass: null,
+  headingClass: null,
   clicked: null,
   activeSlug: null,
 };
