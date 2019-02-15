@@ -24,6 +24,7 @@ class Index extends Component {
         headerMenu={this.props.headerMenu}
         drawerMenu={this.props.drawerMenu}
         footerMenu={this.props.footerMenu}
+        baseMenu={this.props.baseMenu}
         title={this.props.page.title}
       >
 
@@ -51,6 +52,7 @@ Index.propTypes = {
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object).isRequired,
+  baseMenu: PropTypes.instanceOf(Object).isRequired,
   page: PropTypes.instanceOf(Object),
 };
 

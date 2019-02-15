@@ -14,15 +14,18 @@ const WithPageWrapper = WrappedComponent => (
       const headerMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`);
       const drawerMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/mobile-menu`);
       const footerMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/footer-menu`);
+      const baseMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/base-menu`);
 
       const headerMenu = await headerMenuRes.json();
       const drawerMenu = await drawerMenuRes.json();
       const footerMenu = await footerMenuRes.json();
+      const baseMenu = await baseMenuRes.json();
 
       return {
         headerMenu,
         drawerMenu,
         footerMenu,
+        baseMenu,
         ...(WrappedComponent.getInitialProps ? await WrappedComponent.getInitialProps(req) : null),
       };
     }

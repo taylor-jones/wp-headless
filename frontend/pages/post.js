@@ -26,6 +26,7 @@ class Post extends PureComponent {
         headerMenu={this.props.headerMenu}
         drawerMenu={this.props.drawerMenu}
         footerMenu={this.props.footerMenu}
+        baseMenu={this.props.baseMenu}
         title={post.title}
       >
         <ShowAt breakpoint="small">SMALL</ShowAt>
@@ -45,6 +46,7 @@ Post.propTypes = {
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object).isRequired,
+  baseMenu: PropTypes.instanceOf(Object).isRequired,
   post: PropTypes.instanceOf(Object).isRequired,
 };
 

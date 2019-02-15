@@ -30,7 +30,7 @@ class Layout extends PureComponent {
 
 
   render() {
-    const { headerMenu, drawerMenu, footerMenu, title } = this.props;
+    const { headerMenu, drawerMenu, footerMenu, baseMenu, title } = this.props;
 
     return (
       <Fragment>
@@ -50,7 +50,7 @@ class Layout extends PureComponent {
 
         {this.props.children}
 
-        <Footer menu={footerMenu} />
+        <Footer menu={footerMenu} base={baseMenu} />
       </Fragment>
     );
   }
@@ -63,6 +63,7 @@ Layout.propTypes = {
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object).isRequired,
+  baseMenu: PropTypes.instanceOf(Object).isRequired,
 };
 
 

@@ -1,20 +1,25 @@
 @import "../../styles/variables";
 
-.Footer {
-  margin-top: 200px;
-}
-
-.FooterMenu {
-  align-items: center;
-  display: flex;
+.FooterWrapper {
   margin: 0 auto;
   max-width: 450px;
-  padding: 4rem 0;
-  border-bottom: 1px solid rgba(#000, 0.1);
 
   @include break(md) {
     max-width: 980px;
   }
+}
+
+
+.Footer {
+  margin-top: 200px;
+}
+
+
+.FooterMenu {
+  align-items: center;
+  display: flex;
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(#000, 0.1);
 }
 
 
@@ -54,4 +59,40 @@
 
 .FooterHeading {
   font-weight: 600;
+}
+
+
+.FooterBase {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+  font-family: $font-stack-sans-serif;
+}
+
+.FooterBaseMenu {
+  display: flex;
+  justify-content: center;
+
+  li:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+
+  a {
+    color: $font-color;
+  }
+}
+
+.FooterCopy {
+  color: lighten($font-color, 20%);
+  font-size: 0.95rem;
+}
+
+
+.FooterCert {
+  img {
+    height: 6rem;
+    width: 6rem;
+  }
 }
