@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { ShowAt } from 'react-with-breakpoints';
 import { MdMenu } from 'react-icons/md';
 import css from './DrawerToggler.scss';
 

@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
 import Link from 'next/link';
-import { HideAt } from 'react-with-breakpoints';
 import { FaFacebookSquare } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Menu from '../Menu/Menu';
@@ -14,7 +13,7 @@ class Drawer extends PureComponent {
     const drawerClasses = isOpen ? `${css.Drawer} ${css.Opened}` : `${css.Drawer} ${css.Closed}`;
 
     return (
-      <HideAt breakpoint="mediumAndAbove">
+      <div className={css.DrawerWrapper}>
         <Backdrop show={isOpen} clicked={close} />
 
         <div className={drawerClasses}>
@@ -40,7 +39,7 @@ class Drawer extends PureComponent {
             </Link>
           </footer>
         </div>
-      </HideAt>
+      </div>
     );
   }
 }
