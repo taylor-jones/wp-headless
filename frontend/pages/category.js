@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
+import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
-import Menu from '../components/Menu';
 import { Config } from '../config';
 
 class Category extends Component {
@@ -49,12 +49,18 @@ class Category extends Component {
     });
     return (
       <Layout>
-        <Menu menu={this.props.headerMenu} />
         <h1>{this.props.categories[0].name} Posts</h1>
         {posts}
       </Layout>
     );
   }
 }
+
+
+Category.propTypes = {
+  posts: PropTypes.instanceOf(Object).isRequired,
+  categories: PropTypes.instanceOf(Array).isRequired,
+};
+
 
 export default withPageWrapper(Category);

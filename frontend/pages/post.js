@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import withPageWrapper from '../hoc/withPageWrapper';
 import Layout from '../components/Layout';
 import { Config } from '../config';
 
-class Post extends Component {
+class Post extends PureComponent {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
     const res = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);

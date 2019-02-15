@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import Link from 'next/link';
 import { FaFacebookSquare } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -13,7 +13,7 @@ class Drawer extends PureComponent {
     const drawerClasses = isOpen ? `${css.Drawer} ${css.Opened}` : `${css.Drawer} ${css.Closed}`;
 
     return (
-      <div className={css.DrawerWrapper}>
+      <Fragment>
         <Backdrop show={isOpen} clicked={close} />
 
         <div className={drawerClasses}>
@@ -39,7 +39,7 @@ class Drawer extends PureComponent {
             </Link>
           </footer>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

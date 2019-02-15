@@ -115,6 +115,9 @@ class Menu extends PureComponent {
   /**
    * Helper function that may be used for various title scenarios
    * in order to modify the title output before rendering.
+   *
+   * @param {object} item - the menu item object
+   * @returns {string}
    */
   getMenuItemTitle = item => {
     if (item.title === 'facebook') {
@@ -134,6 +137,28 @@ class Menu extends PureComponent {
 
 
   /**
+   * Recursively builds a JSX node containing any child elements
+   * of the argued item.
+   *
+   * @param {object} item - the menu item object
+   * @param {object} attr - the menu item attribute object
+   * @param {string} submenuClass - the classname to apply to nested child lists.
+   * @returns {JSX}
+   */
+  getMenuItemChildren = (item, attr, submenuClass) => {
+    if (attr.hasChildren) {
+      return (
+        <ul className={submenuClass}>
+          {item.items.map(child => this.getMenuItem(child))}
+        </ul>
+      );
+    }
+
+    return null;
+  }
+
+
+  /**
    * Recursively retrieves a menu item and all if it's
    * child menu items (along with each item's attributes)
    *
@@ -141,6 +166,7 @@ class Menu extends PureComponent {
    * @returns {jsx} - the jsx markup for the menu item
    */
   getMenuItem = item => {
+    // console.log(item);
     const { submenuClass, headingClass } = this.props;
     const attr = this.getMenuItemAttributes(item);
     const itemClass = this.getMenuItemClassName(attr);
@@ -149,24 +175,23 @@ class Menu extends PureComponent {
       <li key={attr.key} className={itemClass}>
         {/* If the item is a link, give it an achor */}
         {item.is_link && (
-          <Link href={attr.href} as={attr.as}>
-            <a onClick={this.props.clicked} role="presentation">
-              {this.getMenuItemTitle(item)}
-            </a>
-          </Link>
+          <Fragment>
+            <Link prefetch href={attr.href} as={attr.as}>
+              <a onClick={this.props.clicked} role="presentation">
+                {this.getMenuItemTitle(item)}
+              </a>
+            </Link>
+
+            {this.getMenuItemChildren(item, attr, submenuClass)}
+          </Fragment>
         )}
+
 
         {/* If the item isn't a link, make it a heading. */}
         {!item.is_link && (
-          <div className={headingClass}>
-            {item.title}
-          </div>
-        )}
-
-        {/* If the item is a parent, nest its child items */}
-        {attr.hasChildren && (
-          <ul className={submenuClass}>
-            {item.items.map(child => this.getMenuItem(child))}
+          <ul>
+            <li className={headingClass}>{item.title}</li>
+            {this.getMenuItemChildren(item, attr, submenuClass)}
           </ul>
         )}
       </li>

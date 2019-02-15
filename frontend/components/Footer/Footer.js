@@ -4,9 +4,14 @@ import css from './Footer.scss';
 
 
 const Footer = props => (
-  <div className={css.Footer}>
-    <Menu menu={props.menu} />
-  </div>
+  <footer className={css.Footer}>
+    <Menu
+      menu={props.menu}
+      menuClass={css.FooterMenu}
+      headingClass={css.FooterHeading}
+      submenuParentClass={css.FooterSection}
+    />
+  </footer>
 );
 
 

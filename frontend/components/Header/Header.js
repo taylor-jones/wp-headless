@@ -79,11 +79,6 @@ class Header extends Component {
   }
 
 
-  onResize = () => {
-    console.log(window.innerWidth);
-  }
-
-
   searchKeyDownHandler = (event) => {
     const k = event.which;
     if (k === 13) {

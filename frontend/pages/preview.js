@@ -4,7 +4,6 @@ import Error from 'next/error';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
-import Menu from '../components/Menu';
 import { Config } from '../config';
 
 class Preview extends Component {
@@ -42,7 +41,6 @@ class Preview extends Component {
 
     return (
       <Layout>
-        <Menu menu={this.props.headerMenu} />
         <h1>{this.state.post ? this.state.post.title.rendered : ''}</h1>
         <div
           dangerouslySetInnerHTML={{
@@ -58,7 +56,6 @@ class Preview extends Component {
 
 
 Preview.propTypes = {
-  headerMenu: PropTypes.instanceOf(Object).isRequired,
   url: PropTypes.instanceOf(Object).isRequired,
 };
 

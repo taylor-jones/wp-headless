@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import PageHead from './PageHead';
 import Header from './Header/Header';
@@ -6,7 +6,7 @@ import Drawer from './Drawer/Drawer';
 import Footer from './Footer/Footer';
 
 
-class Layout extends Component {
+class Layout extends PureComponent {
   state = {
     showSideDrawer: false,
   };

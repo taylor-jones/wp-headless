@@ -1,0 +1,57 @@
+@import "../../styles/variables";
+
+.Footer {
+  margin-top: 200px;
+}
+
+.FooterMenu {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  max-width: 450px;
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(#000, 0.1);
+
+  @include break(md) {
+    max-width: 980px;
+  }
+}
+
+
+.FooterSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+
+  @include break-only(sm) {
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      display: none;
+    }
+  }
+
+  li {
+    display: block;
+    margin-bottom: 0.75em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      line-height: 1.2;
+      color: inherit;
+      padding: 0.25em 0;
+
+      &:hover {
+        color: darken($font-color, 25%);
+      }
+    }
+  }
+}
+
+
+.FooterHeading {
+  font-weight: 600;
+}
