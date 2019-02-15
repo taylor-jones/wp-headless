@@ -1,5 +1,13 @@
 @import "../../styles/variables";
 
+.Footer {
+  // margin-top: 200px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+
 .FooterWrapper {
   margin: 0 auto;
   max-width: 450px;
@@ -7,11 +15,6 @@
   @include break(md) {
     max-width: 980px;
   }
-}
-
-
-.Footer {
-  margin-top: 200px;
 }
 
 
@@ -67,7 +70,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   font-family: $font-stack-sans-serif;
 }
 
