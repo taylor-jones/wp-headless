@@ -15,13 +15,19 @@ add_action('rest_api_init', 'setup_custom_rest_menus');
  */
 define('MENUS_SITE_URL', site_url() . '/');
 
+/**
+ * Check once if ACF exists
+ */
+define('HAS_ACF', class_exists('ACF') && function_exists('get_field'));
+
+
 
 
 /**
 * Sets up the custom menu endpoints
 */
 function setup_custom_rest_menus() {
-  $MENUS_SITE_URL = site_url();
+  // $MENUS_SITE_URL = site_url();
 
   register_rest_route('menus/v1', '/menus', array(
     'methods'  => \WP_REST_Server::READABLE,
@@ -482,9 +488,9 @@ function purged_menu_item($item) {
   }
 
   // Add the is_link property, if it exists (which it should if defined in ACF)
-  if (function_exists('get_field')) {
+  // if (class_exists('ACF')) {
+  if (HAS_ACF) {
     $item->is_link = get_field('is_link', $item->ID);
-    if ($item->is_link == null) $item->is_link = true;
     if (!$item->is_link) $item->url = '';
   }
 
