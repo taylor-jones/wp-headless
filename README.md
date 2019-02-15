@@ -1,3 +1,7 @@
+*This project is based on the helpful [Postlight Headless WP Starter](https://github.com/postlight/headless-wp-starter/tree/master/frontend)
+
+<br>
+
 # Synergy In Action - Headless WP Site
 
 Synergy In Action's Headless WordPress site contains:
