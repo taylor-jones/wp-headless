@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { FaFacebookSquare } from 'react-icons/fa';
 import Menu from '../Menu/Menu';
 import css from './Footer.scss';
 

@@ -1,6 +1,7 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { FaFacebookSquare } from 'react-icons/fa';
 import { Config } from '../../config';
 import { getSlug, mappedSlug } from '../../lib/commonUtils';
 import css from './Menu.scss';
@@ -111,6 +112,26 @@ class Menu extends PureComponent {
   }
 
 
+  /**
+   * Helper function that may be used for various title scenarios
+   * in order to modify the title output before rendering.
+   */
+  getMenuItemTitle = item => {
+    if (item.title === 'facebook') {
+      return (
+        <Fragment>
+          <FaFacebookSquare /> {item.title}
+        </Fragment>
+      );
+    }
+
+    return (
+      <Fragment>
+        {item.title}
+      </Fragment>
+    );
+  }
+
 
   /**
    * Recursively retrieves a menu item and all if it's
@@ -130,7 +151,7 @@ class Menu extends PureComponent {
         {item.is_link && (
           <Link href={attr.href} as={attr.as}>
             <a onClick={this.props.clicked} role="presentation">
-              {item.title}
+              {this.getMenuItemTitle(item)}
             </a>
           </Link>
         )}
