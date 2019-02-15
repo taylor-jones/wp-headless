@@ -3,6 +3,7 @@ npm-debug.log
 yarn-error.log
 wordpress/wp-content/languages/
 data
+RoboFile.secret.php
 
 wp-snapshots/
 wp-includes/

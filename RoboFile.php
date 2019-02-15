@@ -20,12 +20,12 @@ class RoboFile extends \Robo\Tasks {
 	public function wordpressSetup(
 		$opts = [
 			'wp-user'        => 'admin',
-			'wp-pw'          => 'pass',
+			'wp-pw'          => 'password',
 			'wp-theme-dir'   => 'synergy-headless',
-			'wp-theme-name'  => 'SSynergy In Action',
-			'wp-email'       => 'dev@hsynergyinaction.org',
-			'wp-db-name'     => 'sia_wp',
-			'wp-description' => 'Synergy In Action Headless WordPress',
+			'wp-theme-name'  => 'Headless WP Theme',
+			'wp-email'       => 'example@example.org',
+			'wp-db-name'     => 'wp_headless',
+      'wp-description' => 'Just another (headless) WordPress site',
 			'wp-plugins'     => [],
 			'docker'         => false,
 		]
