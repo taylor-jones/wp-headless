@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import debouce from 'lodash.debounce';
+import throttle from 'lodash.throttle';
 import { MdSearch, MdClose } from 'react-icons/md';
 import Menu from '../Menu/Menu';
 import DrawerToggler from '../Drawer/DrawerToggler/DrawerToggler';
@@ -17,10 +19,13 @@ class Header extends Component {
   state = {
     showSearch: false,
     isScrolled: false,
+    isResizing: false,
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll, false);
+    window.addEventListener('scroll', throttle(this.onScroll, 50), false);
+    window.addEventListener('resize', debouce(this.addResizeLock, 150, { leading: true, trailing: false }), false);
+    window.addEventListener('resize', debouce(this.removeResizeLock, 150, { leading: false, trailing: true }), false);
   }
 
   componentWillUnmount() {
@@ -51,6 +56,31 @@ class Header extends Component {
 
     this.setState({ isScrolled });
     this.prevScroll = currScroll;
+  }
+
+
+  /**
+   * Sets the state of 'isResizing' to true, which will add
+   * a class of 'resizing' from the header, thereby restricting
+   * transitions on the header.
+   */
+  addResizeLock = () => {
+    this.setState({ isResizing: true });
+  }
+
+
+  /**
+   * Sets the state of 'isResizing' to false, which will remove
+   * a class of 'resizing' from the header, thereby allowing
+   * transitions on the header.
+   */
+  removeResizeLock = () => {
+    this.setState({ isResizing: false });
+  }
+
+
+  onResize = () => {
+    console.log(window.innerWidth);
   }
 
 
@@ -101,6 +131,10 @@ class Header extends Component {
 
     if (this.state.isScrolled) {
       headerClass = `${headerClass} ${css.scrolled}`;
+    }
+
+    if (this.state.isResizing) {
+      headerClass = `${headerClass} ${css.resizing}`;
     }
 
     if (this.props.isInverse) {
