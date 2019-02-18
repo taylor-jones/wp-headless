@@ -4,6 +4,11 @@
  * Custom REST endpoints for featured images.
  ********************************************/
 
+ /**
+ * Check once if ACF exists
+ */
+define('HAS_ACF', class_exists('ACF') && function_exists('get_field'));
+
 
 add_action('init', 'init_custom_rest_images', 12);
 
@@ -66,5 +71,44 @@ function get_custom_rest_image($object) {
     }
   }
 
+  // $featured_image['sizes']['foo'] = 'bar';
+  $featured_image = check_for_small_featured_image_override($object, $featured_image);
+
   return apply_filters('custom_rest_images', $featured_image, $image_id);
+}
+
+
+
+/**
+ * Checks for a portrait featured image override.
+ */
+function check_for_small_featured_image_override($object, $featured_image) {
+  // only do this if ACF is present
+  if (HAS_ACF) {
+    // declare the size that should be overriden in the original featured image data
+    $override_size = 'hero-sm-portrait';
+
+    // get the image id of the chosen portrait featured image
+    $image_id = get_field('portrait_featured_image', $object->ID);
+    if (!$image_id) return $featured_image;
+
+    // if there aren't any sizes present for this image, return early
+    $portrait_image['sizes'] = wp_get_attachment_metadata($image_id)['sizes'];
+    if (empty($portrait_image['sizes'])) return $featured_image;
+
+    // loop through each size. when the specified override size is found,
+    // get the image data for the overriding image and replace it in the 
+    // original featured image data.
+    foreach($portrait_image['sizes'] as $size => &$size_data) {
+      if ($size == $override_size) {
+        $src = wp_get_attachment_image_src($image_id, $size);
+        $size_data['source_url'] = $src ? $src[0] : null;
+      }
+    }
+
+    $featured_image['sizes'][$override_size] = $portrait_image['sizes'][$override_size];
+  }
+
+  // return the featured image data, whether or not it's been modified.
+  return $featured_image;
 }

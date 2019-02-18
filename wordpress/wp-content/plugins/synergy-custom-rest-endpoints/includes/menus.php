@@ -488,7 +488,6 @@ function purged_menu_item($item) {
   }
 
   // Add the is_link property, if it exists (which it should if defined in ACF)
-  // if (class_exists('ACF')) {
   if (HAS_ACF) {
     $item->is_link = get_field('is_link', $item->ID);
     if (!$item->is_link) $item->url = '';
