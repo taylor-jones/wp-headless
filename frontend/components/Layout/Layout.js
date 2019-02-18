@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import PageHead from '../../PageHead';
-import Header from '../../Header/Header';
-import Drawer from '../../Drawer/Drawer';
-import Footer from '../../Footer/Footer';
+import PageHead from '../PageHead';
+import Header from '../Header/Header';
+import Drawer from '../Drawer/Drawer';
+import Footer from '../Footer/Footer';
 import css from './Layout.scss';
 
 

@@ -11,7 +11,7 @@ import css from './Header.scss';
 class Header extends Component {
   SCROLL_THRESHOLD = {
     down: 100,
-    up: 10,
+    up: 40,
   };
 
   prevScroll = 0;   // tracks the previous scroll offset
