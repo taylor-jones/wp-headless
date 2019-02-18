@@ -28,12 +28,12 @@ class Index extends Component {
         title={this.props.page.title}
       >
 
-        <img
+        {/* <img
           src="/static/images/wordpress-plus-react-header.png"
           width="815"
           style={headerImageStyle}
           alt=""
-        />
+        /> */}
 
         <h1>{this.props.page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />

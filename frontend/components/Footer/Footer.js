@@ -31,7 +31,7 @@ const Footer = props => (
         />
 
         <div className={css.FooterCopy}>
-          <div>&copy; Synergy In Action, Inc. is a 501 (c)(3) | EIN: 26-2342342</div>
+          <div>&copy; Synergy In Action, Inc. <span>is a 501 (c)(3) | EIN: 26-3336547</span></div>
         </div>
       </div>
     </div>

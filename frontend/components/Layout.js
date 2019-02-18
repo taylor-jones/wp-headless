@@ -48,7 +48,9 @@ class Layout extends PureComponent {
           close={this.sideDrawerClosedHandler}
         />
 
-        {this.props.children}
+        <main className="content">
+          {this.props.children}
+        </main>
 
         <Footer menu={footerMenu} base={baseMenu} />
       </Fragment>
