@@ -38,16 +38,16 @@ class Layout extends PureComponent {
       <div className={css.Wrapper}>
         <PageHead title={title.rendered} />
 
-        <Drawer
-          menu={drawerMenu}
-          isOpen={this.state.showSideDrawer}
-          close={this.sideDrawerClosedHandler}
-        />
-
         <Header
           menu={headerMenu}
           drawerToggleClicked={this.sideDrawerToggleHandler}
           isInverse={title.rendered === 'Synergy In Action'}
+        />
+
+        <Drawer
+          menu={drawerMenu}
+          isOpen={this.state.showSideDrawer}
+          close={this.sideDrawerClosedHandler}
         />
 
         <main className={css.Layout}>

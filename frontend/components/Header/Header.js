@@ -30,6 +30,8 @@ class Header extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false);
+    window.removeEventListener('resize', this.addResizeLock, false);
+    window.removeEventListener('resize', this.removeResizeLock, false);
   }
 
 
