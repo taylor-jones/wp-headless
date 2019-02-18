@@ -25,6 +25,7 @@
         "react-dom": "^16.8.1",
         "react-grid-system": "^4.4.2",
         "react-icons": "^3.4.0",
+        "react-responsive-picture": "^3.1.0",
         "react-with-breakpoints": "^3.1.1"
     },
     "devDependencies": {

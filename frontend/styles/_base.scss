@@ -10,9 +10,6 @@
 }
 
 html, body {
-  // display: block;
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -35,9 +32,6 @@ body {
   font-family: $theme-font;
   color: $font-color;
   line-height: 1.43;
-  min-height: 100vh;
-  position: relative;
-  // min-height: 1800px; // for dev only
 }
 
 ul, li {
@@ -47,14 +41,9 @@ ul, li {
 }
 
 #__next {
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
-.content {
-  flex: 1 0 auto;
-}
 
 
 // 

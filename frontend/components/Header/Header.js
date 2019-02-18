@@ -125,15 +125,15 @@ class Header extends Component {
     }
 
     if (this.state.isScrolled) {
-      headerClass = `${headerClass} ${css.scrolled}`;
+      headerClass = `${headerClass} ${css.Scrolled}`;
     }
 
     if (this.state.isResizing) {
-      headerClass = `${headerClass} ${css.resizing}`;
+      headerClass = `${headerClass} ${css.Resizing}`;
     }
 
     if (this.props.isInverse) {
-      headerClass = `${headerClass} ${css.inverse}`;
+      headerClass = `${headerClass} ${css.Inverse}`;
     }
 
 

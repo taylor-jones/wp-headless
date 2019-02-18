@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
+import Layout from '../components/UI/Layout/Layout';
+import HeroImage from '../components/UI/HeroImage/HeroImage';
 import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
 
-const headerImageStyle = {
-  marginTop: 50,
-  marginBottom: 50,
-};
 
 class Index extends Component {
   static async getInitialProps(context) {
@@ -27,13 +24,7 @@ class Index extends Component {
         baseMenu={this.props.baseMenu}
         title={this.props.page.title}
       >
-
-        {/* <img
-          src="/static/images/wordpress-plus-react-header.png"
-          width="815"
-          style={headerImageStyle}
-          alt=""
-        /> */}
+        <HeroImage />
 
         <h1>{this.props.page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />

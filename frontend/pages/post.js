@@ -2,16 +2,18 @@ import { PureComponent } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
-import { ShowAt, HideAt } from 'react-with-breakpoints';
 import withPageWrapper from '../hoc/withPageWrapper';
-import Layout from '../components/Layout';
+import HeroImage from '../components/UI/HeroImage/HeroImage';
+import Layout from '../components/UI/Layout/Layout';
 import { Config } from '../config';
 
 class Post extends PureComponent {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
-    const res = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);
-    const post = await res.json();
+    const postRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);
+    const post = await postRes.json();
+
+
     return { post };
   }
 
@@ -29,10 +31,11 @@ class Post extends PureComponent {
         baseMenu={this.props.baseMenu}
         title={post.title}
       >
-        <ShowAt breakpoint="small">SMALL</ShowAt>
-        <ShowAt breakpoint="medium">MEDIUM</ShowAt>
-        <ShowAt breakpoint="large">LARGE</ShowAt>
-        <ShowAt breakpoint="xlarge">XLARGE</ShowAt>
+
+        <HeroImage
+          featuredImage={post.featured_image}
+          title={post.title.rendered}
+        />
 
         <h1>{post.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />

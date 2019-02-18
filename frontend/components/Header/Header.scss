@@ -4,17 +4,17 @@
   align-items: center;
   background: $header-bg;
   display: flex;
-  font-family: $header-font;
+  flex: 0 0 auto;
   justify-content: space-between;
   height: $header-height__scrolled;
   padding: 0 1rem;
   position: relative;
-  width: 100%;
   top: 0;
+  transform: translate3d(0, 0, 0);
+  transition: none;
+  width: 100%;
   will-change: height, background-color;
   z-index: 5;
-  transition: none;
-  transform: translate3d(0, 0, 0);
   
   @include break(md) {
     height: $header-height;
@@ -210,10 +210,10 @@
 // 
 // Inverse Header
 // 
-.inverse {
+.Inverse {
   background: $header-bg__inverse;
   
-  &:not(.scrolled) {
+  &:not(.Scrolled) {
     .HeaderMenu > li > a {
       color: $header-menu-color__inverse;
     }
@@ -229,7 +229,7 @@
 //
 // Scrolled Header
 //
-.Header.scrolled {
+.Header.Scrolled {
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.18);
 
   @include break(md) {
@@ -242,7 +242,7 @@
 //
 // Resizing Header
 //
-.Header.resizing {
+.Header.Resizing {
   transition: none;
 }
 
