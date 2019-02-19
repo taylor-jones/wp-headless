@@ -4,7 +4,7 @@ import Error from 'next/error';
 import PropTypes from 'prop-types';
 import withPageWrapper from '../hoc/withPageWrapper';
 import HeroImage from '../components/UI/HeroImage/HeroImage';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/UI/Layout/Layout';
 import { Config } from '../config';
 
 class Post extends PureComponent {
@@ -35,6 +35,7 @@ class Post extends PureComponent {
         <HeroImage
           featuredImage={post.featured_image}
           title={post.title.rendered}
+          dotted
         />
 
         <h1>{post.title.rendered}</h1>

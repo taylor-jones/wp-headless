@@ -17,9 +17,12 @@ const nonLocalStyles = ['styles/**', 'node_modules/**'].map(d => path.join(__dir
  * that should be transformed to a localized convention
  */
 const shouldBeLocalized = pathToCheck => {
-  const curr = pathToCheck.substr(0, pathToCheck.lastIndexOf('/') + 1);
-  return !nonLocalStyles.some((v) => v.includes(curr));
+  return !nonLocalStyles.some((v) => {
+    const curr = pathToCheck.substr(0, pathToCheck.lastIndexOf('/') + 1);
+    return v.includes(curr);
+  });
 };
+
 
 
 /**

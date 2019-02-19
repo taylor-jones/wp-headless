@@ -8,10 +8,11 @@ class HeroImage extends PureComponent {
   render() {
     const { featuredImage, dotted, absolute, title, subtitle } = this.props;
     let wrapperClass = css.HeroWrapper;
+    let imgWrapperClass = css.HeroImageWrapper;
 
     /* Update the wrapper class name based on whether or not the image
      * should have a dotted overlay and/or be absolute. */
-    if (dotted) wrapperClass += ' img-dotted';
+    if (dotted) imgWrapperClass += ' img-dotted';
     if (absolute) wrapperClass = `${wrapperClass} ${css.AbsoluteTop}`;
 
     /* If a featured image was provided, it will be rendered,
@@ -19,7 +20,7 @@ class HeroImage extends PureComponent {
     return (
       <div className={wrapperClass}>
         {featuredImage && (
-          <div className={css.HeroImageWrapper}>
+          <div className={imgWrapperClass}>
             <Picture
               className={css.HeroImage}
               role="presentation"

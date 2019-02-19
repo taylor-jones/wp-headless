@@ -4,6 +4,7 @@
 .HeroWrapper {
   overflow: hidden;
   width: 100%;
+  position: relative;
 
   @include break(md) {
     margin-top: 100px;
@@ -14,14 +15,76 @@
 .HeroImageWrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
   left: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  min-height: 400px;
+  height: 440px;
   position: relative;
   right: 50%;
   width: 100vw;
+
+  @include break(md) {
+    height: 400px;
+  }
+
+  @include break(xl) {
+    height: 480px;
+  }
+}
+
+.HeroImageWrapper::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0.5;
+
+  background: linear-gradient(
+    to top,
+    hsla(0, 0%, 0%, 0.67) 0%,
+    hsla(0, 0%, 0%, 0.661) 7.8%,
+    hsla(0, 0%, 0%, 0.637) 15.1%,
+    hsla(0, 0%, 0%, 0.6) 22.1%,
+    hsla(0, 0%, 0%, 0.552) 28.8%,
+    hsla(0, 0%, 0%, 0.496) 35.3%,
+    hsla(0, 0%, 0%, 0.434) 41.5%,
+    hsla(0, 0%, 0%, 0.368) 47.7%,
+    hsla(0, 0%, 0%, 0.302) 53.8%,
+    hsla(0, 0%, 0%, 0.236) 59.9%,
+    hsla(0, 0%, 0%, 0.174) 66.1%,
+    hsla(0, 0%, 0%, 0.118) 72.4%,
+    hsla(0, 0%, 0%, 0.07) 78.8%,
+    hsla(0, 0%, 0%, 0.033) 85.6%,
+    hsla(0, 0%, 0%, 0.009) 92.6%,
+    hsla(0, 0%, 0%, 0) 100%
+  );
+
+  @include break(md) {
+    opacity: 1;
+    background: linear-gradient(
+      to right,
+      hsl(0, 0%, 100%) 0%,
+      hsla(0, 0%, 100%, 0.987) 11.6%,
+      hsla(0, 0%, 100%, 0.951) 21.2%,
+      hsla(0, 0%, 100%, 0.896) 29.2%,
+      hsla(0, 0%, 100%, 0.825) 35.9%,
+      hsla(0, 0%, 100%, 0.741) 41.5%,
+      hsla(0, 0%, 100%, 0.648) 46.3%,
+      hsla(0, 0%, 100%, 0.55) 50.6%,
+      hsla(0, 0%, 100%, 0.45) 54.6%,
+      hsla(0, 0%, 100%, 0.352) 58.8%,
+      hsla(0, 0%, 100%, 0.259) 63.2%,
+      hsla(0, 0%, 100%, 0.175) 68.2%,
+      hsla(0, 0%, 100%, 0.104) 74.1%,
+      hsla(0, 0%, 100%, 0.049) 81.2%,
+      hsla(0, 0%, 100%, 0.013) 89.8%,
+      hsla(0, 0%, 100%, 0) 100%
+    );
+  }
 }
 
 
@@ -31,7 +94,48 @@
   height: 100%;
   position: absolute;
   object-fit: cover;
-  // object-position: center center;
-  // vertical-align: middle;
+  object-position: center center;
+  vertical-align: middle;
 }
 
+
+.HeroTextWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 1rem 5vw;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @include break(md) {
+    align-items: flex-start;
+    text-align: left;
+    margin: 1rem 10vw;
+  }
+}
+
+
+.HeroTitle {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2rem;
+
+  @include break(md) {
+    font-size: 2.5rem;
+    color: $font-color;
+  }
+
+  @include break(lg) {
+    font-size: 3rem;
+  }
+
+  @include break(xl) {
+    font-size: 4rem;
+  }
+}

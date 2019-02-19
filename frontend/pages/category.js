@@ -3,7 +3,7 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
+import Layout from '../components/UI/Layout/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
 
