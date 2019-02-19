@@ -8,10 +8,10 @@ add_theme_support('post-thumbnails');
 /**
  * Add custom image sizes
  */
-add_image_size('hero-sm-portrait', 800, 1066, false);
-add_image_size('hero-sm', 744, 992, false);
-add_image_size('hero-md', 1600, 800, false);
-add_image_size('hero-lg', 2262, 686, false);
+add_image_size('hero-sm-portrait', 800, 1066, true);
+add_image_size('hero-sm', 744, 992, true);
+add_image_size('hero-md', 1600, 800, true);
+add_image_size('hero-lg', 2262, 686, true);
 
 /**
  * Register custom image sizes for use in the Add Media modal
