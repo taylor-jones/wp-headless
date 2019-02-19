@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import PageHead from '../../PageHead';
 import Header from '../../Header/Header';
@@ -7,7 +7,7 @@ import Footer from '../../Footer/Footer';
 import css from './Layout.scss';
 
 
-class Layout extends PureComponent {
+class Layout extends Component {
   state = {
     showSideDrawer: false,
   };

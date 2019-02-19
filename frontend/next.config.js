@@ -8,6 +8,9 @@ const loaderUtils = require('./node_modules/loader-utils');
 /**
  * Defines directories containing stylesheets that should NOT be "localized"
  * with hashed class names whwnever their styles are included in a component.
+ * In other words, styles defined within the directories listed here will be
+ * global styles, available to apply anywhere in jsx by using their string
+ * className like, <div className="foo" />.
  */
 const nonLocalStyles = ['styles/**', 'node_modules/**'].map(d => path.join(__dirname, d));
 
@@ -22,7 +25,6 @@ const shouldBeLocalized = pathToCheck => {
     return v.includes(curr);
   });
 };
-
 
 
 /**

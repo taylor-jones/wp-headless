@@ -12,6 +12,13 @@
 }
 
 
+.AbsoluteTop {
+  @include break(md) {
+    margin-top: 0;
+  }
+}
+
+
 .HeroImageWrapper {
   display: flex;
   flex-direction: column;

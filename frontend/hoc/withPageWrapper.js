@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-// import { BreakpointsProvider } from 'react-with-breakpoints';
+import { BreakpointsProvider } from 'react-with-breakpoints';
 import { Config } from '../config';
 
 
@@ -35,9 +35,9 @@ const WithPageWrapper = WrappedComponent => (
 
     render() {
       return (
-        // <BreakpointsProvider>
-        <WrappedComponent {...this.props} />
-        // </BreakpointsProvider>
+        <BreakpointsProvider>
+          <WrappedComponent {...this.props} />
+        </BreakpointsProvider>
       );
     }
   }

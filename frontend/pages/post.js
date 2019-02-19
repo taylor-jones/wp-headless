@@ -12,8 +12,6 @@ class Post extends PureComponent {
     const { slug, apiRoute } = context.query;
     const postRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);
     const post = await postRes.json();
-
-
     return { post };
   }
 

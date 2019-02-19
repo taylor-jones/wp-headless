@@ -9,7 +9,6 @@ class PageHead extends PureComponent {
    */
   getPageTitle = () => {
     let { title } = this.props;
-    if (title === 'Home') title = 'Synergy In Action';
     if (title !== 'Synergy In Action') title += ' | SIA';
     return title;
   }
@@ -17,10 +16,8 @@ class PageHead extends PureComponent {
   render() {
     return (
       <Head>
-        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
         <title>{this.getPageTitle()}</title>
+        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       </Head>
     );
   }
