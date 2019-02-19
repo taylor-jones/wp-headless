@@ -3,8 +3,8 @@ import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Layout from '../components/UI/Layout/Layout';
-import HeroImage from '../components/UI/HeroImage/HeroImage';
 import withPageWrapper from '../hoc/withPageWrapper';
+import HeroImage from '../components/UI/HeroImage/HeroImage';
 import { Config } from '../config';
 
 
@@ -24,7 +24,12 @@ class Index extends Component {
         baseMenu={this.props.baseMenu}
         title={this.props.page.title}
       >
-        <HeroImage />
+        <HeroImage
+          featuredImage={this.props.page.featured_image}
+          title={this.props.page.title.rendered}
+          dotted
+          absolute
+        />
 
         <h1>{this.props.page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />
