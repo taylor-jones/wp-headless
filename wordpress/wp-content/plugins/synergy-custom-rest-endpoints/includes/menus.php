@@ -494,7 +494,11 @@ function purged_menu_item($item) {
   }
 
   // now add a slug property
-  $item->slug = wp_basename($item->url) ?: wp_basename($item->title) ?: wp_basename($item->post_name) ?: '';
+  if ($item->object == 'custom') {
+    $item->slug = $item->url;
+  } else {
+    $item->slug = wp_basename($item->url) ?: wp_basename($item->title) ?: wp_basename($item->post_name) ?: '';
+  }
 
   /**
    * check if this menu item represents the root page.
