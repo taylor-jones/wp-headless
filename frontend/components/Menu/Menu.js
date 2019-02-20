@@ -170,13 +170,14 @@ class Menu extends PureComponent {
     const { submenuClass, headingClass } = this.props;
     const attr = this.getMenuItemAttributes(item);
     const itemClass = this.getMenuItemClassName(attr);
+    // console.log(item, attr);
 
     return (
       <li key={attr.key} className={itemClass}>
         {/* If the item is a link, give it an achor */}
         {item.is_link && (
           <Fragment>
-            <Link prefetch href={attr.href} as={attr.as}>
+            <Link href={attr.href} as={attr.as}>
               <a onClick={this.props.clicked} role="presentation">
                 {this.getMenuItemTitle(item)}
               </a>

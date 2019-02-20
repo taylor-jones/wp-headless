@@ -5,7 +5,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
 import HtmlComment from '../components/HtmlComment';
-import getStyleContext from '../lib/getStyleContext';
+import getPageContext from '../lib/getPageContext';
 
 const generateClassName = createGenerateClassName();
 const jss = create({
@@ -34,8 +34,9 @@ class MyDocument extends Document {
     // 1. page.getInitialProps
     // 3. page.render
 
-    const styleContext = getStyleContext();
-    const { sheetsRegistry } = styleContext;
+    const pageContext = getPageContext();
+    const { sheetsRegistry } = pageContext;
+    const css = sheetsRegistry ? sheetsRegistry.toString() : null;
 
     const page = ctx.renderPage(Component => props => (
       <JssProvider jss={jss} generateClassName={generateClassName} registry={sheetsRegistry}>
@@ -45,25 +46,28 @@ class MyDocument extends Document {
 
     return {
       ...page,
-      styleContext,
+      pageContext,
       styles: (
         <style
           id="jss-server-side"
-          dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
+          dangerouslySetInnerHTML={{ __html: css }}
         />
       ),
     };
   }
 
   render() {
-    const { styleContext } = this.props;
+    const { pageContext } = this.props;
 
     return (
       <html lang="en" dir="ltr">
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-          <meta name="theme-color" content={styleContext.theme.palette.primary[500]} />
+          <meta
+            name="theme-color"
+            content={pageContext ? pageContext.theme.palette.primary[500] : null}
+          />
 
           {/* Inject the JSS styles here, before the rest of the styles */}
           <HtmlComment text="jss-insertion-point" />
@@ -101,14 +105,14 @@ export default MyDocument;
 //     // 1. page.getInitialProps
 //     // 3. page.render
 
-//     const styleContext = getStyleContext();
+//     const pageContext = getPageContext();
 //     const initialProps = await Document.getInitialProps(ctx);
-//     return { ...initialProps, styleContext };
+//     return { ...initialProps, pageContext };
 //   }
 
 //   render() {
-//     const { styleContext } = this.props;
-//     const { sheetsRegistry } = styleContext;
+//     const { pageContext } = this.props;
+//     const { sheetsRegistry } = pageContext;
 
 //     return (
 //       <JssProvider jss={jss} generateClassName={generateClassName} registry={sheetsRegistry}>
@@ -116,7 +120,7 @@ export default MyDocument;
 //           <Head>
 //             <meta charSet="utf-8" />
 //             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-//             <meta name="theme-color" content={styleContext.theme.palette.primary[500]} />
+//             <meta name="theme-color" content={pageContext.theme.palette.primary[500]} />
 //             {/* Inject the JSS styles here, before the rest of the styles */}
 //             <HtmlComment text="jss-insertion-point" />
 //           </Head>

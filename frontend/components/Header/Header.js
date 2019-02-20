@@ -24,14 +24,14 @@ class Header extends Component {
 
   componentDidMount() {
     this.prevScroll = 0;
-    console.log('Header will mount');
+    // console.log('Header will mount');
     window.addEventListener('scroll', throttle(this.onScroll, 50), false);
     window.addEventListener('resize', debouce(this.addResizeLock, 150, { leading: true, trailing: false }), false);
     window.addEventListener('resize', debouce(this.removeResizeLock, 150, { leading: false, trailing: true }), false);
   }
 
   componentWillUnmount() {
-    console.log('Header will unmount');
+    // console.log('Header will unmount');
     window.removeEventListener('scroll', this.onScroll, false);
     window.removeEventListener('resize', this.addResizeLock, false);
     window.removeEventListener('resize', this.removeResizeLock, false);
