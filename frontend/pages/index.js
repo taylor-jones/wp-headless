@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { Container, Row, Col } from 'react-grid-system';
 import { ShowAt } from 'react-with-breakpoints';
 import Link from 'next/link';
 import { FaChevronRight } from 'react-icons/fa';
@@ -69,10 +70,33 @@ class Index extends Component {
           absolute
         />
 
-        <Container className={css.Container}>
-          <Button>Unstyled Button</Button>
-          <Button className={css.Button}>My Button</Button>
-        </Container>
+        <Grid container spacing={24}>
+          <Grid item sm={12}>
+            <Paper className={css.paper}>sm=12</Paper>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <Paper className={css.paper}>sm=12 md=6</Paper>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <Paper className={css.paper}>sm=12 md=6</Paper>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Paper className={css.paper}>sm=6 md=3</Paper>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Paper className={css.paper}>sm=6 md=3</Paper>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Paper className={css.paper}>sm=6 md=3</Paper>
+          </Grid>
+          <Grid item sm={6} md={3}>
+            <Paper className={css.paper}>sm=6 md=3</Paper>
+          </Grid>
+        </Grid>
+
+
+        <Button variant="contained" color="primary">Unstyled Button</Button>
+        <Button className={css.Button}>CSS Import Styled Button</Button>
 
         <h1>{this.props.page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />

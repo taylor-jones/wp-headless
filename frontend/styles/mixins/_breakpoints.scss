@@ -1,0 +1,175 @@
+/*********************************
+ * Breakpoint Functions
+ *********************************/
+
+ /** NOTE: Many of the functions/mixins below reference a $grid-breakpoints variable.
+  * This is a sass variable that should represent the names of your breakpoints along
+  * with their min-widths. For example:
+  *   $grid-breakpoints: (
+  *     sm: 0px,
+  *     md: 744px,
+  *     lg: 1128px,
+  *     xl: 1440px
+  *   );
+  */
+
+
+/**
+ * Gets the name of the next-largest breakpoint in relation to the given breakpoint.
+ *
+ * @param $name - the name of the current breakpoint
+ * @param $breakpoints - the set of defined breakpoints to look within.
+ * @param $breakpoint-names - the names of the breakpoints in the set
+ * @returns the value associated with the next breakpoint above the argued breakpoint - OR null if none exists.
+ */
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+/**
+ * Gets the name of the previous (smaller) breakpoint in relation to the given breakpoint.
+ *
+ * @param $name - the name of the current breakpoint
+ * @param $breakpoints - the set of defined breakpoints to look within.
+ * @param $breakpoint-names - the names of the breakpoints in the set
+ * @returns the value associated with the next breakpoint before the argued breakpoint - OR null if none exists.
+ */
+@function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n > 1, nth($breakpoint-names, $n - 1), null);
+}
+
+/**
+ * Gets the minimum width at which a specified breakpoint is active (or null for the smallest breakpoint)
+ *
+ * @param $name - the name of the current breakpoint
+ * @param $breakpoints - the set of defined breakpoints to look within.
+ */
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+/**
+ * Gets the maximum width at which a specified breakpoint is active (or null for the largest breakpoint)
+ * The maximum value is calculated as {the minimum of the following breakpoint - .02}.
+ *
+ * @param $name - the name of the current breakpoint
+ * @param $breakpoints - the set of defined breakpoints to look within.
+ */
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
+}
+
+
+// 
+// Mixins
+// 
+
+
+// Assert Ascending (from Bootstrap 4)
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin break($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
+/**
+ * Applies the breakpoint to breakpoints that are narrower than the specified breakpoint.
+ * Non-inclusivee. e.g - if some breakpoint {md} starts at 1000px, break-below(md) will 
+ *  only effect screens narrower than 1000px.
+*/
+@mixin break-below($name, $breakpoints: $grid-breakpoints) {
+  $prev: breakpoint-prev($name, $breakpoints);
+  @if $prev {
+    $max: breakpoint-max($prev, $breakpoints);
+    @if $max {
+      @media (max-width: $max) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
+/**
+ * Applies the breakpoint to breakpoints that are wider than the specified breakpoint.
+ * Non-inclusivee. It will only effect screens wider than the breakpoint.
+*/
+@mixin break-above($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @if $next {
+    $min: breakpoint-min($next, $breakpoints);
+    @if $min {
+      @media (min-width: $min) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin break-only($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name);
+
+  @include break($name, $breakpoints) {
+    @if $next {
+      @include break-below($next, $breakpoints) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+}
+
+
+// Media that spans multiple breakpoint widths (inclusive).
+// Makes the @content apply between the min and max breakpoints
+@mixin break-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  @include break($lower, $breakpoints) {
+    @include break-below($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+

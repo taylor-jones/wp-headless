@@ -64,10 +64,10 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-          <meta
+          {/* <meta
             name="theme-color"
             content={pageContext ? pageContext.theme.palette.primary[500] : null}
-          />
+          /> */}
 
           {/* Inject the JSS styles here, before the rest of the styles */}
           <HtmlComment text="jss-insertion-point" />

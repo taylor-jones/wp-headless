@@ -1,13 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 
-import { create, SheetsRegistry } from 'jss';
-import preset from 'jss-preset-default';
+import { SheetsRegistry } from 'jss';
 import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName';
 import theme from './siaTheme';
 
-// Configure JSS
-// const jss = create(preset());
-// jss.options.createGenerateClassName = createGenerateClassName;
 
 function createPageContext() {
   return {

@@ -2,10 +2,14 @@
 
 
 .Container {
-  background-color: lavender;
+  
 }
 
 
 .Button {
   background-color: yellow;
+
+  &:hover {
+    background-color: pink;
+  }
 } 
