@@ -5132,7 +5132,7 @@ prop-types@^15.5.8, prop-types@^15.6.0:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.1:
+prop-types@^15.6.2, prop-types@^15.7.1:
   version "15.7.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.1.tgz#2fa61e0a699d428b40320127733ee2931f05d9d1"
   integrity sha512-f8Lku2z9kERjOCcnDOPm68EBJAO2K00Q5mSgPAUE/gJuBgsYLbVy6owSrtcHj90zt8PvW+z0qaIIgsIhHOa1Qw==
@@ -5346,15 +5346,7 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-with-breakpoints@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-with-breakpoints/-/react-with-breakpoints-3.1.1.tgz#71c4964f034a4102556db3b47f35d5fbc10a09cc"
-  integrity sha512-JKi8hBMAE0wGuwgM2+NH59LT3y4Dw6KMsd7O1aGOXYlV1TeRec6QeTZeGlbmSV/BI/58HpjSstvL+G6Xec74IQ==
-  dependencies:
-    prop-types "^15.6.1"
-    react "^16.3.2"
-
-react@^16.3.2, react@^16.8.1:
+react@^16.8.1:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
   integrity sha512-wLw5CFGPdo7p/AgteFz7GblI2JPOos0+biSoxf1FPsGxWQZdN/pj6oToJs1crn61DL3Ln7mN86uZ4j74p31ELQ==

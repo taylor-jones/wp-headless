@@ -28,8 +28,7 @@
         "react-dom": "^16.8.1",
         "react-icons": "^3.4.0",
         "react-jss": "^8.6.1",
-        "react-responsive-picture": "^3.1.0",
-        "react-with-breakpoints": "^3.1.1"
+        "react-responsive-picture": "^3.1.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.4.7",

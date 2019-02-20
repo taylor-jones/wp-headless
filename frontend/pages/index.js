@@ -3,7 +3,6 @@ import fetch from 'isomorphic-unfetch';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { ShowAt } from 'react-with-breakpoints';
 import Link from 'next/link';
 import { FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -21,12 +20,10 @@ class Index extends Component {
     return { page };
   }
 
-
   state = {
     emailAddress: '',
     subscribeEnabled: false,
   }
-
 
   /**
    * Handles input changes to the email address input control.
@@ -38,7 +35,6 @@ class Index extends Component {
       subscribeEnabled: hasInput,
     });
   }
-
 
   /**
    * Handles a submission of email address for subscription.
@@ -70,6 +66,7 @@ class Index extends Component {
           absolute
         />
 
+        {/* Just proof of concept stuff w/ material ui */}
         <Grid container spacing={24}>
           <Grid item sm={12}>
             <Paper className={css.paper}>sm=12</Paper>
