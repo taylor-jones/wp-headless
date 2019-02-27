@@ -1,10 +1,28 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { setConfiguration } from 'react-grid-system';
 import PageHead from '../../PageHead';
 import Header from '../../Header/Header';
 import Drawer from '../../Drawer/Drawer';
 import Footer from '../../Footer/Footer';
 import css from './Layout.scss';
+
+
+// Grid breakpoint configurations
+setConfiguration({
+  breakpoints: [
+    0,
+    744,
+    1128,
+    1440,
+  ],
+  containerWidths: [
+    696,
+    696,
+    1080,
+    1280,
+  ],
+});
 
 
 class Layout extends Component {

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import { Component, Fragment } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
+import { Container, Row, Col } from 'react-grid-system';
 import { FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import withPageWrapper from '../hoc/withPageWrapper';
@@ -17,12 +18,10 @@ class Index extends Component {
     return { page };
   }
 
-
   state = {
     emailAddress: '',
     subscribeEnabled: false,
   }
-
 
   /**
    * Handles input changes to the email address input control.
@@ -35,7 +34,6 @@ class Index extends Component {
     });
   }
 
-
   /**
    * Handles a submission of email address for subscription.
    */
@@ -46,10 +44,10 @@ class Index extends Component {
   }
 
 
-
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const { page, headerMenu, drawerMenu, footerMenu, baseMenu } = this.props;
+    const { acf } = page;
 
     return (
       <Layout
@@ -65,6 +63,10 @@ class Index extends Component {
           dotted
           absolute
         />
+
+        <div className={css.IndexWrapper}>
+          Foo
+        </div>
 
         <h1>{this.props.page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: this.props.page.content.rendered }} />
