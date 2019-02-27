@@ -34,15 +34,23 @@ class MyDocument extends Document {
     // 1. page.getInitialProps
     // 3. page.render
 
-    const pageContext = getPageContext();
-    const { sheetsRegistry } = pageContext;
-    const css = sheetsRegistry ? sheetsRegistry.toString() : null;
+    let pageContext;
+    let sheetsRegistry;
 
-    const page = ctx.renderPage(Component => props => (
-      <JssProvider jss={jss} generateClassName={generateClassName} registry={sheetsRegistry}>
-        <Component {...props} />
-      </JssProvider>
-    ));
+    const page = ctx.renderPage(Component => {
+      const WrappedComponent = props => {
+        pageContext = props.pageContext ? props.pageContext : null;
+        sheetsRegistry = pageContext ? pageContext.sheetsRegistry : null;
+
+        return (
+          <JssProvider jss={jss} generateClassName={generateClassName} registry={sheetsRegistry}>
+            <Component {...props} />
+          </JssProvider>
+        );
+      };
+
+      return WrappedComponent;
+    });
 
     return {
       ...page,
@@ -50,7 +58,9 @@ class MyDocument extends Document {
       styles: (
         <style
           id="jss-server-side"
-          dangerouslySetInnerHTML={{ __html: css }}
+          dangerouslySetInnerHTML={{
+            __html: sheetsRegistry ? sheetsRegistry.toString() : null,
+          }}
         />
       ),
     };
@@ -64,10 +74,10 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-          {/* <meta
+          <meta
             name="theme-color"
             content={pageContext ? pageContext.theme.palette.primary[500] : null}
-          /> */}
+          />
 
           {/* Inject the JSS styles here, before the rest of the styles */}
           <HtmlComment text="jss-insertion-point" />

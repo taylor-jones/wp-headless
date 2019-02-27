@@ -1,11 +1,15 @@
 .Wrapper {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   min-height: 1800px;
+  // overflow-x: hidden;
+  position: relative;
 }
 
 .Layout {
   flex: 1 0 auto;
+  width: 100%;
 }

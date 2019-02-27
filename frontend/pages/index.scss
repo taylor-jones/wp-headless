@@ -1,8 +1,23 @@
 @import '../styles/variables';
 
+// Local Variables
+$block-bg: $grey-light;
+$block-bg-alt: $blue;
 
-.Container {
+
+.IndexWrapper {
+  flex-grow: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 32px auto;
+  max-width: 1680px;
   
+  @include break(md) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-top: 96px;
+    margin-bottom: 96px;
+  }
 }
 
 
@@ -13,3 +28,9 @@
     background-color: pink;
   }
 } 
+
+
+.Foo {
+  background-color: lavender;
+  width: 100%;
+}

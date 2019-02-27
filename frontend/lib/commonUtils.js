@@ -43,8 +43,17 @@ const getSlug = (url, offset = 2) => {
 const toCamelCase = str => str.replace(/(-|_|\s)\w/g, (m) => m[1].toUpperCase());
 
 
+/**
+ * Returns a capitalized copy of a string.
+ * @param str - a string to capitalize.
+ */
+const capitalized = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+
+
 module.exports = {
   mappedSlug,
   getSlug,
   toCamelCase,
+  capitalized,
 };

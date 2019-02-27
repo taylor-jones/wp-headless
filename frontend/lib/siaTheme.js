@@ -18,6 +18,7 @@ Object.keys(breakpoints).forEach(key => {
   breakpoints[key] = parseInt(breakpoints[key], 10);
 });
 
+// Nice red: f15d4a
 
 const theme = createMuiTheme({
   breakpoints: {
