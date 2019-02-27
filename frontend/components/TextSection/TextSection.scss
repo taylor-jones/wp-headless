@@ -1,0 +1,102 @@
+@import '../../styles/breakpoints';
+
+.TextSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.Left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.Center {
+  align-items: center;
+  text-align: center;
+}
+
+.Right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.TextSection {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+
+  @include break(lg) {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  @include break(xl) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+
+.TextHeadingWrapper {
+  color: inherit;
+}
+
+
+.Heading {
+  margin-bottom: 16px;
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: normal;
+
+  @include break(md) {
+    margin-bottom: 8px;
+    font-size: 28px;
+    line-height: 32px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  @include break(lg) {
+    margin-bottom: 8px;
+    font-size: 32px;
+    line-height: 36px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  @include break(xl) {
+    font-size: 46px;
+    line-height: 52px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+
+
+.TextContentWrapper {
+  color: inherit;
+}
+
+
+.TextContent,
+.TextContent p {
+  font-size: 14px;
+
+  @include break(md) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @include break(lg) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+}

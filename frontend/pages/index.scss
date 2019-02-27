@@ -1,15 +1,70 @@
 @import '../styles/variables';
 
 
-.Container {
-  
+.ImageContainer {
+}
+
+.ImageWrapper {
+  position: relative;
+  height: 333.33px;
+}
+
+.Image {
+  height: 100%;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.ImageLabelWrapper {
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  @include break(md) {
+    margin-bottom: 0;
+  }
+
+  @include break(lg) {
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+
+  @include break(xl) {
+    margin-left: 64px;
+    margin-right: 64px;
+  }
+}
+
+.ImageLabel {
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  word-wrap: break-word;
+  font-weight: 400;
+  line-height: 1.444em;
+
+  @include break-only(md) {
+    font-size: 16px;
+  }
 }
 
 
-.Button {
-  background-color: yellow;
+.BlockContainer {
+  margin-bottom: 32px;
 
-  &:hover {
-    background-color: pink;
+  @include break(md) {
+    margin-top: 96px;
+    margin-bottom: 96px;
   }
-} 
+
+  @include break(xl) {
+    max-width: 1680px !important;
+  }
+}
+
+.Block {
+  height: 400px;
+  background-color: #fff;
+}
