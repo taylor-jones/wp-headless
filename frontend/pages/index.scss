@@ -1,12 +1,28 @@
 @import '../styles/variables';
 
-
-.ImageContainer {
+.IndexContainer {
+  color: inherit;
 }
+
+
+.IndexWrapperInner {
+  margin: 96px 8px;
+
+  @include break(md) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}
+
 
 .ImageWrapper {
   position: relative;
   height: 333.33px;
+
+  @include break(xl) {
+    height: 416px;
+  }
 }
 
 .Image {
@@ -51,20 +67,79 @@
 }
 
 
-.BlockContainer {
-  margin-bottom: 32px;
+
+.BlockWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
 
   @include break(md) {
-    margin-top: 96px;
-    margin-bottom: 96px;
-  }
-
-  @include break(xl) {
-    max-width: 1680px !important;
+    flex-direction: row;
+    margin: auto;
   }
 }
 
-.Block {
-  height: 400px;
-  background-color: #fff;
+
+.BlockImageWrapper {
+  height: 380px;
+  position: relative;
+  flex: 1;
+  order: 2;
+
+  @include break(md) {
+    flex: 5;
+    margin: 8px;
+  }
+}
+
+
+.BlockImageWrapper,
+.BlockTextWrapper {
+  min-height: 1px;
+  
+  @include break(md) {
+    height: 500px;
+  }
+  
+  @include break(xl) {
+    height: 625px;
+  }
+}
+
+
+.BlockTextWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  order: 1;
+  margin: 32px auto;
+  
+  @include break(md) {
+    background-color: #e0e0e0;
+    flex: 7;
+    margin: 8px;
+  }
+}
+
+.BlockTextWrapper.Offset {
+  @include break(md) {
+    order: 3;
+  }
+}
+
+
+.BlockText {
+  width: 70%;
+}
+
+
+.BlockImage {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

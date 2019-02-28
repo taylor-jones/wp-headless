@@ -68,90 +68,138 @@ class Index extends Component {
 
         <div className={css.IndexWrapper}>
           <Container className={css.IndexContainer}>
-            <Row>
-              <Col sm={12}>
-                <TextSection
-                  heading={page.title.rendered}
-                  align="center"
-                  alignContent="center"
-                >
-                  <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-                  {/* <p>{page.content.rendered}</p> */}
-                </TextSection>
-              </Col>
-            </Row>
+            <div className={css.IndexWrapperInner}>
+              <Row>
+                <Col sm={12}>
+                  <TextSection
+                    heading={page.title.rendered}
+                    align="center"
+                    alignContent="center"
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+                    {/* <p>{page.content.rendered}</p> */}
+                  </TextSection>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col sm={12} md={4}>
-                <div className={css.ImageContainer}>
-                  <div className={css.ImageWrapper}>
-                    <div
-                      className={css.Image}
-                      style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                    />
-                  </div>
-                  <div className={css.ImageLabelWrapper}>
-                    <div className={css.ImageLabel}>
-                    Lorem ipsum, dolor sit amet consectetur.
+              <Row>
+                <Col sm={12} md={4}>
+                  <div className={css.ImageContainer}>
+                    <div className={css.ImageWrapper}>
+                      <div
+                        className={css.Image}
+                        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                      />
+                    </div>
+                    <div className={css.ImageLabelWrapper}>
+                      <div className={css.ImageLabel}>
+                      Lorem ipsum, dolor sit amet consectetur.
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Col>
+                </Col>
 
-              <Col sm={12} md={4}>
-                <div className={css.ImageContainer}>
-                  <div className={css.ImageWrapper}>
-                    <div
-                      className={css.Image}
-                      style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                    />
-                  </div>
-                  <div className={css.ImageLabelWrapper}>
-                    <div className={css.ImageLabel}>
-                    Lorem ipsum, dolor sit amet consectetur.
+                <Col sm={12} md={4}>
+                  <div className={css.ImageContainer}>
+                    <div className={css.ImageWrapper}>
+                      <div
+                        className={css.Image}
+                        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                      />
+                    </div>
+                    <div className={css.ImageLabelWrapper}>
+                      <div className={css.ImageLabel}>
+                      Lorem ipsum, dolor sit amet consectetur.
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Col>
+                </Col>
 
-              <Col sm={12} md={4}>
-                <div className={css.ImageContainer}>
-                  <div className={css.ImageWrapper}>
-                    <div
-                      className={css.Image}
-                      style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                    />
-                  </div>
-                  <div className={css.ImageLabelWrapper}>
-                    <div className={css.ImageLabel}>
-                    Lorem ipsum, dolor sit amet consectetur.
+                <Col sm={12} md={4}>
+                  <div className={css.ImageContainer}>
+                    <div className={css.ImageWrapper}>
+                      <div
+                        className={css.Image}
+                        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                      />
+                    </div>
+                    <div className={css.ImageLabelWrapper}>
+                      <div className={css.ImageLabel}>
+                      Lorem ipsum, dolor sit amet consectetur.
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </div>
           </Container>
 
 
-          <Container fluid className={css.BlockContainer}>
-            <Row className={css.Block}>
-              <Col md={7} push={{ md: 5 }} className={css.BlockTextContainer}>
-                <div className={css.BlockTextWrapper}>
-                  <div className={css.BlockText}>
-                    Block Text
-                  </div>
+          <Container className={css.BlockContainer}>
+            <div className={css.BlockWrapper}>
+              <div className={css.BlockImageWrapper}>
+                <div
+                  className={css.BlockImage}
+                  style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                />
+              </div>
+
+              <div className={css.BlockTextWrapper}>
+                <div className={css.BlockText}>
+                  <TextSection
+                    heading="Section Heading"
+                  >
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
                 </div>
-              </Col>
-              <Col md={5} pull={{ md: 7 }} className={css.BlockImageContainer}>
-                <div className={css.BlockImageWrapper}>
-                  <div
-                    className={css.BlockImage}
-                    style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                  />
+              </div>
+            </div>
+
+
+            <div className={css.BlockWrapper}>
+              <div className={css.BlockImageWrapper}>
+                <div
+                  className={css.BlockImage}
+                  style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                />
+              </div>
+
+              <div className={[css.BlockTextWrapper, css.Offset].join(' ')}>
+                <div className={css.BlockText}>
+                  <TextSection
+                    heading="Section Heading"
+                  >
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
                 </div>
-              </Col>
-            </Row>
+              </div>
+            </div>
+
+
+            <div className={css.BlockWrapper}>
+              <div className={css.BlockImageWrapper}>
+                <div
+                  className={css.BlockImage}
+                  style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                />
+              </div>
+
+              <div className={css.BlockTextWrapper}>
+                <div className={css.BlockText}>
+                  <TextSection
+                    heading="Section Heading"
+                  >
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
+                </div>
+              </div>
+            </div>
+
           </Container>
+
         </div>
       </Layout>
     );

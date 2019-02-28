@@ -69,11 +69,14 @@ const getComponentClass = (context, ident, locName, opts) => {
  */
 const webpackConfig = {
   webpack(config, { dev }) {
+    console.log(config);
     config.module.rules.push(
       {
         test: /\.(css|scss)/,
         loader: 'emit-file-loader',
-        options: { name: 'dist/[path][name].[ext]' },
+        options: {
+          name: 'dist/[path][name].[ext]',
+        },
       },
       {
         test: /\.scss$/,
@@ -84,7 +87,7 @@ const webpackConfig = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: ['styles', 'node_modules']
+              includePaths: ['styles', 'node_modules', 'hoc', 'components', 'pages']
                 .map((d) => path.join(__dirname, d))
                 .map((g) => glob.sync(g))
                 .reduce((a, c) => a.concat(c), []),
@@ -99,11 +102,27 @@ const webpackConfig = {
 };
 
 
+const middlewareConfig = {
+  webpackDevMiddleware(config) {
+    console.log(config);
+    config.watchOptions = {
+      aggregateTimeout: 300,
+      poll: 1000,
+      ignored: [/(^|[\/\\])\../, /node_modules/],
+    };
+
+    return config;
+  },
+};
+
+
 module.exports = withCss(withSass({
   webpackConfig,
+  middlewareConfig,
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
+    sourceMap: true,
     getLocalIdent: (loaderContext, localIdentName, localName, options) => {
       return getComponentClass(loaderContext, localIdentName, localName, options);
     },

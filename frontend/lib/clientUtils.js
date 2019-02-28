@@ -10,7 +10,3 @@ export const getComposedDisplayName = Component => {
   return Component.displayName || Component.name || 'Component';
 };
 
-
-/**
- * Looks at the featured media property of a post
- */
