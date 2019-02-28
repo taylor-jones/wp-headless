@@ -67,8 +67,8 @@ class Index extends Component {
 
 
         <div className={css.IndexWrapper}>
-          <Container className={css.IndexContainer}>
-            <div className={css.IndexWrapperInner}>
+          <Container className={css.TriadContainer}>
+            <div className={css.TriadWrapper}>
               <Row>
                 <Col sm={12}>
                   <TextSection
@@ -84,15 +84,15 @@ class Index extends Component {
 
               <Row>
                 <Col sm={12} md={4}>
-                  <div className={css.ImageContainer}>
-                    <div className={css.ImageWrapper}>
+                  <div className={css.TriadImageContainer}>
+                    <div className={css.TriadImageWrapper}>
                       <div
-                        className={css.Image}
+                        className={css.TriadImage}
                         style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                       />
                     </div>
-                    <div className={css.ImageLabelWrapper}>
-                      <div className={css.ImageLabel}>
+                    <div className={css.TriadImageLabelWrapper}>
+                      <div className={css.TriadImageLabel}>
                       Lorem ipsum, dolor sit amet consectetur.
                       </div>
                     </div>
@@ -100,15 +100,15 @@ class Index extends Component {
                 </Col>
 
                 <Col sm={12} md={4}>
-                  <div className={css.ImageContainer}>
-                    <div className={css.ImageWrapper}>
+                  <div className={css.TriadImageContainer}>
+                    <div className={css.TriadImageWrapper}>
                       <div
-                        className={css.Image}
+                        className={css.TriadImage}
                         style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                       />
                     </div>
-                    <div className={css.ImageLabelWrapper}>
-                      <div className={css.ImageLabel}>
+                    <div className={css.TriadImageLabelWrapper}>
+                      <div className={css.TriadImageLabel}>
                       Lorem ipsum, dolor sit amet consectetur.
                       </div>
                     </div>
@@ -116,15 +116,15 @@ class Index extends Component {
                 </Col>
 
                 <Col sm={12} md={4}>
-                  <div className={css.ImageContainer}>
-                    <div className={css.ImageWrapper}>
+                  <div className={css.TriadImageContainer}>
+                    <div className={css.TriadImageWrapper}>
                       <div
-                        className={css.Image}
+                        className={css.TriadImage}
                         style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                       />
                     </div>
-                    <div className={css.ImageLabelWrapper}>
-                      <div className={css.ImageLabel}>
+                    <div className={css.TriadImageLabelWrapper}>
+                      <div className={css.TriadImageLabel}>
                       Lorem ipsum, dolor sit amet consectetur.
                       </div>
                     </div>
@@ -165,7 +165,7 @@ class Index extends Component {
                 />
               </div>
 
-              <div className={[css.BlockTextWrapper, css.Offset].join(' ')}>
+              <div className={[css.BlockTextWrapper, css.Inverse].join(' ')}>
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
@@ -198,6 +198,47 @@ class Index extends Component {
               </div>
             </div>
 
+          </Container>
+
+          <Container fluid>
+            <div className={css.SubscribeContainer}>
+              <div className={css.SubscribeWrapper}>
+                <div className={css.SubscribeHeading}>Want to stay informed?</div>
+                <div className={css.SubscribeFormWrapper}>
+
+                  <form className={css.SubscribeForm}>
+                    <div className={css.SubscribeInputWrapper}>
+                      <label htmlFor="email">
+                        <input
+                          className={css.SubscribeInput}
+                          type="email"
+                          name="email"
+                          id="email"
+                          value={this.state.emailAddress}
+                          onChange={this.handleEmailChange}
+                        />
+                      </label>
+                    </div>
+
+                    <div className={css.SubscribeInputSubmitWrapper}>
+                      <button
+                        type="submit"
+                        className={css.SubscribeInputSubmit}
+                        disabled={!this.state.subscribeEnabled}
+                        onClick={this.handleEmailSubmission}
+                      >Subscribe</button>
+                    </div>
+                  </form>
+
+                  <div className={css.SubscribeFooterWrapper}>
+                    <div className={css.SubscribeFooter}>
+                      We&apos;ll never spam you or give out your email address to anyone, 
+                      and you can unsubscribe anytime.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Container>
 
         </div>

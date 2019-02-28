@@ -1,11 +1,19 @@
 @import '../styles/variables';
 
-.IndexContainer {
+// Local Variables
+$bg-grey: $grey;
+$bg-colored: $blue;
+
+
+//
+// Triads
+//
+
+.TriadContainer {
   color: inherit;
 }
 
-
-.IndexWrapperInner {
+.TriadWrapper {
   margin: 96px 8px;
 
   @include break(md) {
@@ -15,8 +23,7 @@
   }
 }
 
-
-.ImageWrapper {
+.TriadImageWrapper {
   position: relative;
   height: 333.33px;
 
@@ -25,7 +32,7 @@
   }
 }
 
-.Image {
+.TriadImage {
   height: 100%;
   width: 100%;
   background-position: 50% 50%;
@@ -34,7 +41,7 @@
   position: absolute;
 }
 
-.ImageLabelWrapper {
+.TriadImageLabelWrapper {
   margin-top: 16px;
   margin-bottom: 32px;
 
@@ -53,7 +60,7 @@
   }
 }
 
-.ImageLabel {
+.TriadImageLabel {
   text-align: center;
   font-size: 18px;
   margin: 0;
@@ -68,6 +75,10 @@
 
 
 
+//
+// Blocks
+//
+
 .BlockWrapper {
   display: flex;
   flex-direction: column;
@@ -78,7 +89,6 @@
     margin: auto;
   }
 }
-
 
 .BlockImageWrapper {
   height: 380px;
@@ -91,7 +101,6 @@
     margin: 8px;
   }
 }
-
 
 .BlockImageWrapper,
 .BlockTextWrapper {
@@ -106,7 +115,6 @@
   }
 }
 
-
 .BlockTextWrapper {
   display: flex;
   flex-direction: column;
@@ -117,23 +125,23 @@
   margin: 32px auto;
   
   @include break(md) {
-    background-color: #e0e0e0;
+    background-color: $bg-grey;
     flex: 7;
     margin: 8px;
   }
 }
 
-.BlockTextWrapper.Offset {
+.BlockTextWrapper.Inverse {
   @include break(md) {
+    color: #fff;
     order: 3;
+    background-color: $bg-colored;
   }
 }
-
 
 .BlockText {
   width: 70%;
 }
-
 
 .BlockImage {
   height: 100%;
@@ -142,4 +150,135 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+
+//
+// Subscribe
+//
+
+.SubscribeContainer,
+.SubscribeWrapper,
+.SubscribeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.SubscribeContainer {
+  background-color: $bg-grey;
+  margin: 64px -8px auto -8px;
+}
+
+.SubscribeWrapper {
+  height: 100%;
+  width: auto;
+  margin: auto 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.SubscribeFormWrapper,
+.SubscribeFooterWrapper {
+  max-width: 450px;
+}
+
+.SubscribeFooterWrapper {
+  border-top: 1px solid darken($bg-grey, 15%);
+  padding-top: 32px;
+  margin-top: 32px;
+}
+
+.SubscribeHeading {
+  margin-bottom: 8px;
+  font-size: 24px;
+  line-height: 38px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 32px;
+    line-height: 36px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+
+.SubscribeForm {
+  position: relative;
+
+  label {
+    margin-bottom: 8px;
+    padding: 0px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    line-height: 1.2em;
+    font-size: 16px;
+    word-wrap: break-word;
+    text-align: center;
+
+    @include break(md) {
+      font-size: 16px;
+      line-height: 1.444em;
+    }
+  }
+}
+
+.SubscribeInputWrapper {
+  background-color: #fff;
+  border: 1px solid $grey-light;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 27px;
+  margin: 8px auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+
+.SubscribeInput {
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  text-align: left;
+  z-index: 0;
+}
+
+
+.SubscribeInputSubmitWrapper {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 120px;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.SubscribeInputSubmit {
+  border-radius: 3px;
+  padding: 6px 15px;
+  font-size: 14px;
+  background-color: $bg-colored;
+  color: #fff;
+  line-height: 22px;
+  font-weight: 500;
+  border: transparent;
+  transition: background-color 300ms ease;
+}
+
+.SubscribeInputSubmit:disabled {
+  background-color: rgba($bg-colored, 0.5);
+  cursor: default;
 }
