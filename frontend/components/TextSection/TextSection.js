@@ -1,7 +1,9 @@
 import { PureComponent } from 'react';
+import Link from 'next/link';
+import { FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import css from './TextSection.scss';
-import { capitalized } from '../../lib/commonUtils';
+import { capitalized, getSlug } from '../../lib/commonUtils';
 
 class TextSection extends PureComponent {
   /**
@@ -54,15 +56,23 @@ class TextSection extends PureComponent {
           </div>
 
           <div className={alignment.content}>
-            {children && (
-              <div className={css.TextContent}>{children}</div>
-            )}
+            {children && <div className={css.TextContent}>{children}</div>}
 
             {bulletPoints && (
               <div className={css.BulletPointsWrapper}>
                 {bulletPoints.map(point => (
                   <div className={css.BulletPointText}>{point.text}</div>
                 ))}
+              </div>
+            )}
+
+            {link && (
+              <div className={css.TextLinkWrapper}>
+                <div className={css.TextLink}>
+                  <Link href={getSlug(link.url)}>
+                    <a>{link.text} <FaChevronRight /></a>
+                  </Link>
+                </div>
               </div>
             )}
           </div>

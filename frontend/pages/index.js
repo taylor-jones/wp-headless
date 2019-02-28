@@ -1,8 +1,7 @@
-import { Component, Fragment } from 'react';
+import { PureComponent } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
-import { FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import withPageWrapper from '../hoc/withPageWrapper';
 import Layout from '../components/UI/Layout/Layout';
@@ -12,7 +11,7 @@ import { Config } from '../config';
 import css from './index.scss';
 
 
-class Index extends Component {
+class Index extends PureComponent {
   static async getInitialProps(context) {
     const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/page?slug=home`);
     const page = await pageRes.json();
@@ -148,6 +147,7 @@ class Index extends Component {
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
+                    link={{ url: '/', text: 'Foo Bar Baz' }}
                   >
                     Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
                     Minus minima aspernatur, error nihil doloribus aperiam.
@@ -232,7 +232,7 @@ class Index extends Component {
 
                   <div className={css.SubscribeFooterWrapper}>
                     <div className={css.SubscribeFooter}>
-                      We&apos;ll never spam you or give out your email address to anyone, 
+                      We&apos;ll never spam you or give out your email address to anyone,
                       and you can unsubscribe anytime.
                     </div>
                   </div>

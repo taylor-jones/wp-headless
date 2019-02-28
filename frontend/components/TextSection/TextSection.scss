@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import '../../styles/variables';
 
 .TextSectionWrapper {
   display: flex;
@@ -84,7 +84,6 @@
   color: inherit;
 }
 
-
 .TextContent,
 .TextContent p {
   font-size: 14px;
@@ -98,5 +97,28 @@
     font-size: 18px;
     line-height: 26px;
   }
+}
 
+.TextContent {
+  margin-bottom: 1.25rem;
+}
+
+.TextLinkWrapper {
+  a {
+    color: $blue;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.375em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  svg {
+    font-size: 12px;
+    margin-left: 8px;
+  }
 }

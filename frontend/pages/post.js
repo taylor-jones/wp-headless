@@ -6,6 +6,7 @@ import withPageWrapper from '../hoc/withPageWrapper';
 import Layout from '../components/UI/Layout/Layout';
 import HeroImage from '../components/UI/HeroImage/HeroImage';
 import { Config } from '../config';
+import PageLoader from '../components/PageLoader';
 
 class Post extends PureComponent {
   static async getInitialProps(context) {
@@ -38,6 +39,8 @@ class Post extends PureComponent {
 
         <h1>{post.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+
+        <PageLoader post={post} />
       </Layout>
     );
   }
