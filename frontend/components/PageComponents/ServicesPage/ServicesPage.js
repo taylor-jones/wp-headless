@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
-import TextSection from '../TextSection/TextSection';
+import TextSection from '../../TextSection/TextSection';
 import css from './ServicesPage.scss';
 
 class ServicesPage extends PureComponent {
@@ -27,7 +27,7 @@ class ServicesPage extends PureComponent {
 
             <Row>
               <Col sm={12} md={4}>
-                <Link href="/">
+                <Link href="/residential">
                   <a rel="noopener noreferrer">
                     <div className={css.TriadImageContainer}>
                       <div className={css.TriadImageWrapper}>
@@ -37,9 +37,7 @@ class ServicesPage extends PureComponent {
                         />
                       </div>
                       <div className={css.TriadImageLabelWrapper}>
-                        <div className={css.TriadImageLabel}>
-                        Lorem ipsum, dolor sit amet consectetur.
-                        </div>
+                        <div className={css.TriadImageLabel}>Rsidential</div>
                       </div>
                     </div>
                   </a>
@@ -47,36 +45,41 @@ class ServicesPage extends PureComponent {
               </Col>
 
               <Col sm={12} md={4}>
-                <div className={css.TriadImageContainer}>
-                  <div className={css.TriadImageWrapper}>
-                    <div
-                      className={css.TriadImage}
-                      style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                    />
-                  </div>
-                  <div className={css.TriadImageLabelWrapper}>
-                    <div className={css.TriadImageLabel}>
-                    Lorem ipsum, dolor sit amet consectetur.
+                <Link href="/community" as="/community">
+                  <a rel="noopener noreferrer">
+                    <div className={css.TriadImageContainer}>
+                      <div className={css.TriadImageWrapper}>
+                        <div
+                          className={css.TriadImage}
+                          style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                        />
+                      </div>
+                      <div className={css.TriadImageLabelWrapper}>
+                        <div className={css.TriadImageLabel}>Community</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </a>
+                </Link>
               </Col>
 
               <Col sm={12} md={4}>
-                <div className={css.TriadImageContainer}>
-                  <div className={css.TriadImageWrapper}>
-                    <div
-                      className={css.TriadImage}
-                      style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                    />
-                  </div>
-                  <div className={css.TriadImageLabelWrapper}>
-                    <div className={css.TriadImageLabel}>
-                    Lorem ipsum, dolor sit amet consectetur.
+                <Link href="/tenant-case-management">
+                  <a rel="noopener noreferrer">
+                    <div className={css.TriadImageContainer}>
+                      <div className={css.TriadImageWrapper}>
+                        <div
+                          className={css.TriadImage}
+                          style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                        />
+                      </div>
+                      <div className={css.TriadImageLabelWrapper}>
+                        <div className={css.TriadImageLabel}>Tenant Case Management</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </a>
+                </Link>
               </Col>
+
             </Row>
           </div>
         </Container>

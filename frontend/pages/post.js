@@ -37,9 +37,6 @@ class Post extends PureComponent {
           dotted
         />
 
-        <h1>{post.title.rendered}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-
         <PageLoader post={post} />
       </Layout>
     );

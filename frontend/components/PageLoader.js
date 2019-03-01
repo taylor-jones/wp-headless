@@ -1,6 +1,7 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ServicesPage from './PageComponents/ServicesPage';
+import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
+import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 
 
 const PageLoader = props => {
@@ -16,27 +17,36 @@ const PageLoader = props => {
    */
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
+    residential: <ResidentialPage post={post} />,
   };
 
+  /**
+   * Gets the component associated with a given slug.
+   */
   const getSlugComponent = slug => {
     return componentSlugMap[slug];
   };
 
   // checks if a given slug has a mapped component in the ComponentSlugMap.
-  const slugHasComponent = slug => Object.prototype.hasOwnProperty.call(componentSlugMap, slug);
+  const slugHasComponent = slug => {
+    return Object.prototype.hasOwnProperty.call(componentSlugMap, slug);
+  };
+
+
+  // check if the slug has a component to load
+  const hasComponent = slugHasComponent(post.slug);
 
   return (
     <div>
-      The page given is {post.title.rendered}
+      {/* If the page has a specified PageComponent, then load that component */}
+      {hasComponent && getSlugComponent(post.slug)}
 
-      {slugHasComponent(post.slug) && (
-        <p>This slug has a component.</p>
-      )}
-
-      {/* {slugHasComponent(post.slug) && getSlugComponent(post.slug)} */}
-
-      {!slugHasComponent(post.slug) && (
-        <p>This slug does not have a component.</p>
+      {/* Otherwise, just load the page title and conent by default */}
+      {!hasComponent && (
+        <Fragment>
+          <h1>{post.title.rendered}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+        </Fragment>
       )}
 
     </div>

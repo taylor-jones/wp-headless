@@ -147,11 +147,10 @@ class Index extends PureComponent {
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
+                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam."
                     link={{ url: '/', text: 'Foo Bar Baz' }}
-                  >
-                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam.
-                  </TextSection>
+                  />
                 </div>
               </div>
             </div>
@@ -169,10 +168,9 @@ class Index extends PureComponent {
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
-                  >
-                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam.
-                  </TextSection>
+                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam."
+                  />
                 </div>
               </div>
             </div>
@@ -190,10 +188,9 @@ class Index extends PureComponent {
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
-                  >
-                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam.
-                  </TextSection>
+                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam."
+                  />
                 </div>
               </div>
             </div>

@@ -68,11 +68,16 @@ a {
 // 
 
 p {
+  display: block;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.75em;
   font-weight: 400;
   margin: 0;
   padding: 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 

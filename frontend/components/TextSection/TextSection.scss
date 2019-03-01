@@ -42,7 +42,7 @@
 
 
 .TextHeadingWrapper {
-  color: inherit;
+  margin-bottom: 1.5em;
 }
 
 
@@ -79,19 +79,14 @@
 }
 
 
-
 .TextContentWrapper {
   color: inherit;
 }
 
-.TextContent,
-.TextContent p {
-  font-size: 14px;
-
-  @include break(md) {
-    font-size: 16px;
-    line-height: 24px;
-  }
+.Subheading,
+.Subheading p {
+  font-size: 16px;
+  line-height: 24px;
 
   @include break(lg) {
     font-size: 18px;
@@ -100,7 +95,11 @@
 }
 
 .TextContent {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5em;
+
+  p:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
 }
 
 .TextLinkWrapper {

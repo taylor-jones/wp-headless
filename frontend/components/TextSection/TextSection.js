@@ -22,10 +22,8 @@ class TextSection extends PureComponent {
     alignHeadings = capitalized(alignHeadings);
     alignContent = capitalized(alignContent);
 
-
-    const hasAlignment = str => {
-      return str === 'Right' || str === 'Left' || str === 'Center';
-    };
+    // checks if a particular alignment property has been specified.
+    const hasAlignment = str => str === 'Right' || str === 'Left' || str === 'Center';
 
     if (hasAlignment(align)) {
       alignment.wrapper = [css.TextSectionWrapper, css[align]].join(' ');
@@ -44,7 +42,7 @@ class TextSection extends PureComponent {
 
 
   render() {
-    const { heading, subheading, bulletPoints, link, button, children } = this.props;
+    const { heading, subheading, bulletPoints, link, children } = this.props;
     const alignment = this.getAlignment();
 
     return (
@@ -56,7 +54,9 @@ class TextSection extends PureComponent {
           </div>
 
           <div className={alignment.content}>
-            {children && <div className={css.TextContent}>{children}</div>}
+            {children && (
+              <div className={css.TextContent}>{children}</div>
+            )}
 
             {bulletPoints && (
               <div className={css.BulletPointsWrapper}>
@@ -91,7 +91,6 @@ TextSection.defaultProps = {
   subheading: null,
   bulletPoints: null,
   link: null,
-  button: null,
 };
 
 TextSection.propTypes = {
@@ -102,7 +101,6 @@ TextSection.propTypes = {
   subheading: PropTypes.string,
   bulletPoints: PropTypes.arrayOf(PropTypes.object),
   link: PropTypes.objectOf(PropTypes.string),
-  button: PropTypes.objectOf(PropTypes.string),
 };
 
 export default TextSection;
