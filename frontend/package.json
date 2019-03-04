@@ -32,6 +32,7 @@
         "react-jss": "^8.6.1",
         "react-responsive-picture": "^3.1.0",
         "react-sanfona": "^1.4.0",
+        "react-sticky-box": "^0.8.0",
         "react-tabs": "^3.0.0"
     },
     "devDependencies": {

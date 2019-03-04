@@ -50,6 +50,7 @@ class Header extends Component {
    * consider the header scrolled.
    */
   onScroll = () => {
+    // console.log(window.scrollY);
     const currScroll = window.scrollY;
     let isScrolled = false;
 

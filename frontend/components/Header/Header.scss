@@ -176,6 +176,7 @@
 }
 
 .Submenu {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   background: $header-submenu-bg;
   display: flex;
   flex-direction: column;

@@ -5,11 +5,16 @@ import { Accordion, AccordionItem } from 'react-sanfona';
 import PropTypes from 'prop-types';
 import TextSection from '../../TextSection/TextSection';
 import css from './ResidentialPage.scss';
-// import "react-tabs/style/react-tabs.css";
+import { getServicesByCategory } from '../../../lib/serviceUtils';
+
 
 class ResidentialPage extends PureComponent {
   render() {
+    console.log(this.props);
+
     const { post } = this.props;
+    const services = getServicesByCategory(post.services, post.slug);
+
     resetIdCounter();
 
     return (

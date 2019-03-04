@@ -8,11 +8,62 @@ import HeroImage from '../components/UI/HeroImage/HeroImage';
 import { Config } from '../config';
 import PageLoader from '../components/PageLoader';
 
+
+/**
+ * Maps custom post type requests that may need to be made for
+ * specific slugs. If the current post's slug is in this map,
+ * then an additional fetch will be made to the specified fetchUrl,
+ * and the additional fetched data will be appended to the returned
+ * post object as the postProperty name from the mapping.
+ */
+const customPostTypeRequestMap = {
+  residential: {
+    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
+    postProperty: 'services',
+  },
+  community: {
+    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
+    postProperty: 'services',
+  },
+  'tenant-case-management': {
+    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
+    postProperty: 'services',
+  },
+};
+
+
+/**
+ * Checks if a custom post request mapping exists for a given slug
+ * If so, the object from the customPostTypeRequestMap is returned.
+ * Otherwise, the function returns false.
+ *
+ * @param { slug } - string - the slug to check for the existence
+ *  of a key for in the customPostTypeRequestMap.
+ */
+const getMappedCustomPostTypeRequest = slug => {
+  const hasMappedSlug = Object.prototype.hasOwnProperty.call(customPostTypeRequestMap, slug);
+  return hasMappedSlug ? customPostTypeRequestMap[slug] : false;
+};
+
+
 class Post extends PureComponent {
   static async getInitialProps(context) {
     const { slug, apiRoute } = context.query;
     const postRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);
     const post = await postRes.json();
+
+    /**
+     * Check if there are any custom post type requests that need to
+     * be made, based on the query slug. If so, fetch the custom post
+     * data, and append it to the post object that is being returned.
+     */
+    const customPostRequest = getMappedCustomPostTypeRequest(slug);
+    if (customPostRequest) {
+      const customPostRes = await fetch(customPostRequest.fetchUrl);
+      const customPost = await customPostRes.json();
+      post[customPostRequest.postProperty] = customPost;
+    }
+
     return { post };
   }
 
