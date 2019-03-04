@@ -13,9 +13,10 @@ class ResidentialPage extends PureComponent {
     console.log(this.props);
 
     const { post } = this.props;
-    const services = getServicesByCategory(post.services, post.slug);
+    post.services = getServicesByCategory(post.services, post.slug);
 
     resetIdCounter();
+    let serviceCount = 0;
 
     return (
       <div>
@@ -35,7 +36,36 @@ class ResidentialPage extends PureComponent {
           </Row>
         </Container>
 
+
         <Container className={css.BlockContainer}>
+          {post.services.map(service => {
+            serviceCount++;
+
+            return (
+              <div className={css.BlockWrapper} key={service.id}>
+                <div className={css.BlockImageWrapper}>
+                  <div
+                    className={css.BlockImage}
+                    style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+                  />
+                </div>
+
+                <div className={css.BlockTextWrapper}>
+                  <div className={css.BlockText}>
+                    <div className={css.BlockHeadingWrapper}>
+                      <div className={css.BlockHeading}>{service.title.rendered}</div>
+                    </div>
+
+                    <div dangerouslySetInnerHTML={{ __html: service.excerpt.rendered }} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </Container>
+
+
+        {/* <Container className={css.BlockContainer}>
           <div className={css.BlockWrapper}>
             <div className={css.BlockImageWrapper}>
               <div
@@ -209,7 +239,7 @@ class ResidentialPage extends PureComponent {
               </div>
             </div>
           </div>
-        </Container>
+        </Container> */}
       </div>
     );
   }
