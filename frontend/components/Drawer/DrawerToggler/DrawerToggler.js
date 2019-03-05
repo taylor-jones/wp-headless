@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { MdMenu } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
 import css from './DrawerToggler.scss';
 
 const DrawerToggler = (props) => {
@@ -11,7 +11,7 @@ const DrawerToggler = (props) => {
         className={css.DrawerToggleButton}
         onClick={props.clicked}
       >
-        <MdMenu />
+        <FiMenu />
       </button>
     </div>
   );
