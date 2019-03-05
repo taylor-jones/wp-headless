@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { setConfiguration } from 'react-grid-system';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import PageHead from '../../PageHead';
 import Header from '../../Header/Header';
 import Drawer from '../../Drawer/Drawer';
@@ -29,27 +30,60 @@ setConfiguration({
   gutterWidth: 16,
 });
 
+const drawerHtmlId = 'drawer';
 
 class Layout extends Component {
   state = {
     showSideDrawer: false,
   };
 
+  // the side drawer element
+  drawerElement = null;
+
+
+  /**
+   * Get a reference to the side drawer element, so we can use
+   * it to enable/disable body scrolling when the drawer is toggled.
+   */
+  componentDidMount() {
+    this.drawerElement = document.querySelector(`#${drawerHtmlId}`);
+  }
+
+  /**
+   * Remove and scroll locks that exist
+   */
+  componentWillUnmount() {
+    clearAllBodyScrollLocks();
+  }
+
   /**
    * Sets the state of the showSideDrawer attribute to
    * false whenever the side drawer should be closed.
    */
-  sideDrawerClosedHandler = () => {
+  closeSideDrawer = () => {
     this.setState({ showSideDrawer: false });
+    enableBodyScroll(this.drawerElement);
   }
 
   /**
-   * Toggles the state of the side drawer
+   * Sets the state of showSideDrawer to true, which updates
+   * the visibility of the side drawer and sets a scroll lock on the
+   * body while the side drawer is open.
    */
-  sideDrawerToggleHandler = () => {
-    this.setState((prevState) => {
-      return { showSideDrawer: !prevState.showSideDrawer };
-    });
+  openSideDrawer = () => {
+    this.setState({ showSideDrawer: true });
+    disableBodyScroll(this.drawerElement);
+  }
+
+  /**
+   * Toggles the state of the side drawer and the body scroll lock
+   */
+  toggleSideDrawer = () => {
+    if (this.state.showSideDrawer) {
+      this.closeSideDrawer();
+    } else {
+      this.openSideDrawer();
+    }
   }
 
 
@@ -62,14 +96,15 @@ class Layout extends Component {
 
         <Header
           menu={headerMenu}
-          drawerToggleClicked={this.sideDrawerToggleHandler}
+          drawerToggleClicked={this.toggleSideDrawer}
           isInverse={title.rendered === 'Synergy In Action'}
         />
 
         <Drawer
+          id={drawerHtmlId}
           menu={drawerMenu}
           isOpen={this.state.showSideDrawer}
-          close={this.sideDrawerClosedHandler}
+          close={this.closeSideDrawer}
         />
 
         <main className={css.Layout}>

@@ -1,0 +1,28 @@
+
+/***************************************
+* Component Global Styles
+***************************************/ 
+
+/**
+ * In rare cases, there may be components used throughout the app
+ * that don't necessarily allow direct style overrides within the
+ * components, themseleves -- or else styling the component is
+ * more appropriate using a global stylesheet rather than a localized,
+ * hashed class name.
+ *
+ * For any such case, make sure to list the component that the styles
+ * are associated with (for clarity, and so those styles can be removed
+ * if the component is no longer used).
+ */
+
+
+//  
+// react-modal
+// 
+
+.ReactModal__Body--open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}

@@ -16,8 +16,7 @@ class ResidentialPage extends PureComponent {
   };
 
   /**
-   * object to keep the contents of all the details of the services.
-   * When each service is rendered, it stores it's service details in this
+   * When each service is rendered, it stores itself in this
    * object using the service's key at the map key and the service's
    * details as the map value. The button that is clicked to show the details
    * has been given a serviceid attribute. This serviceid is passed to the
@@ -75,6 +74,22 @@ class ResidentialPage extends PureComponent {
     );
   }
 
+  /**
+   * Retrieves the formatted url for a specified service object
+   * @param {object} service
+   */
+  getServiceImage = service => {
+    // TODO: involve react-responsive-picture to load different images at different sizes.
+    // for now, just load the default placeholder image.
+    return (
+      <div
+        className={css.BlockImage}
+        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+      />
+    );
+  }
+
+
   render() {
     const { post } = this.props;
     // console.log(post);
@@ -82,6 +97,8 @@ class ResidentialPage extends PureComponent {
 
     return (
       <div className={css.PageWrapper}>
+
+        {/* Top Section -- Lead Content */}
         <Container>
           <Row>
             <Col sm={12}>
@@ -98,11 +115,13 @@ class ResidentialPage extends PureComponent {
           </Row>
         </Container>
 
+
+        {/* Services List */}
         <Container className={css.BlockContainer}>
+          {/* Remove wrapping <p> tags from the excerpt */}
           {post.services.map(service => {
-            const strippedExcerpt = sanitizeHtml(service.excerpt.rendered, {
-              allowedTags: [],
-            });
+            console.log(service);
+            const strippedExcerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
             { /* Set the services value for this service */ }
             this.services[service.id] = service;
@@ -110,10 +129,7 @@ class ResidentialPage extends PureComponent {
             return (
               <div className={css.BlockWrapper} key={service.id}>
                 <div className={css.BlockImageWrapper}>
-                  <div
-                    className={css.BlockImage}
-                    style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
-                  />
+                  {this.getServiceImage(service)}
                 </div>
 
                 <div className={css.BlockTextWrapper}>
@@ -136,18 +152,19 @@ class ResidentialPage extends PureComponent {
           })}
         </Container>
 
-        <div className={css.ModalWrapper}>
-          <Modal
-            className={css.Modal}
-            overlayClassName={css.ModalOverlay}
-            isOpen={this.state.showModal}
-            onRequestClose={this.closeModal}
-            // contentLabel={service.title.rendered}
-          >
-            {this.renderModal()}
-          </Modal>
+        {/* Modal */}
+        <div className={css.ModalFrame}>
+          <div className={css.ModalWrapper}>
+            <Modal
+              className={css.Modal}
+              overlayClassName={css.ModalOverlay}
+              isOpen={this.state.showModal}
+              onRequestClose={this.closeModal}
+            >
+              {this.renderModal()}
+            </Modal>
+          </div>
         </div>
-
       </div>
     );
   }
