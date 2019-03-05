@@ -58,7 +58,7 @@ function register_custom_post_types() {
     ),
     'menu_position'         => 30,
     'menu_icon'             => 'dashicons-sos',
-    'public'                => true,
+    'public'                => false,
     'rest_base'             => 'services',
     'rewrite'               => array(
       'slug'                  => _x('services', 'post type slug', SIA_CPT_DOMAIN),
@@ -71,6 +71,7 @@ function register_custom_post_types() {
     'show_in_rest'          => true,
     'show_ui'               => true,
     'supports'              => array( 'title', 'editor', 'excerpt' ),
+    'taxonomies'            => array( 'service-category', 'service-region' ),
   ));
 
 }

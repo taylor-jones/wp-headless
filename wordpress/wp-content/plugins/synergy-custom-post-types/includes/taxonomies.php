@@ -37,7 +37,7 @@ function register_custom_taxonomies() {
         'new_item_name'     => __( 'New Service Category Name' ),
         'menu_name'         => __( 'Service Categories' ),
     ),
-    'public'                => true,
+    'public'                => false,
     'rest_base'             => 'service-category',
     'rewrite'               => array(
         'slug'                  => _x('service-categories', 'taxonomy slug', SIA_CPT_DOMAIN),
@@ -48,7 +48,7 @@ function register_custom_taxonomies() {
     'show_in_menu'          => true,
     'show_in_nav_menus'     => false,
     'show_in_rest'          => true,
-    'show_in_quick_edit'    => true,
+    'show_in_quick_edit'    => false,
     'show_ui'               => true,
     )
   );
@@ -78,7 +78,7 @@ function register_custom_taxonomies() {
         'new_item_name'     => __( 'New Service Region Name' ),
         'menu_name'         => __( 'Service Regions' ),
     ),
-    'public'                => true,
+    'public'                => false,
     'rest_base'             => 'service-region',
     'rewrite'               => array(
         'slug'                  => _x('service-regions', 'taxonomy slug', SIA_CPT_DOMAIN),

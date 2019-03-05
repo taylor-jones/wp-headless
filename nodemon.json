@@ -1,0 +1,17 @@
+{
+  "verbose": true,
+  "ignore": [
+    "node_modules",
+    ".next",
+    "pages/**/**"
+  ],
+  "watch": [
+    "config.js",
+    "index.js",
+    "server.js",
+    "next.config.js",
+    "nodemon.json",
+    "postcss.config.js"
+  ],
+  "ext": "js json"
+}
