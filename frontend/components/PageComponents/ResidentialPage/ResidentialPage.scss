@@ -1,11 +1,11 @@
 @import '../../../styles/variables';
 
+
 .LeadWrapper {
-  margin: 72px auto 8px auto;
+  margin: 72px auto;
   width: 80%;
   max-width: 900px;
 }
-
 
 
 
@@ -16,11 +16,11 @@
 .BlockWrapper {
   display: flex;
   flex-direction: column;
-  margin: 72px 24px;
+  margin: 8px 8px 48px 8px;
 
   @include break(md) {
     flex-direction: row;
-    margin: 96px 24px;
+    margin: auto;
   }
 }
 
@@ -31,7 +31,7 @@
   order: 1;
 
   @include break(md) {
-    flex: 5;
+    flex: 6;
     margin: 8px;
     order: 2;
   }
@@ -53,40 +53,41 @@
 .BlockTextWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex: 1;
   order: 2;
-  margin: 32px auto;
-  width: 100%;
+  margin: 32px 0px;
   
   @include break(md) {
-    flex-direction: row;
-    justify-content: flex-start;
-    flex: 7;
+    flex: 6;
     margin: 8px;
-    order: 1;
-    padding-right: 24px;
   }
 }
 
-.BlockTextWrapper.Inverse {
+.BlockTextWrapperInner {
+  width: 90%;
+  
   @include break(md) {
-    order: 3;
-    padding-right: 0;
-    padding-left: 24px;
+    width: 80%;
+  }
+
+  @include break(lg) {
+    width: 60%;
+  }
+}
+
+.BlockWrapper:nth-of-type(even) .BlockTextWrapper {
+  @include break(md) {
+    order: 1;
   }
 }
 
 .BlockText {
-  width: 100%;
-  flex: 1;
-  max-width: 700px;
-  margin: auto;
-  text-align: left;
-  
+  font-size: 16px;
+
   @include break(lg) {
-    width: 90%;
+    font-size: 18px;
   }
 }
 
@@ -100,7 +101,8 @@
 }
 
 .BlockHeadingWrapper {
-  margin-bottom: 2.5em;
+  // margin-bottom: 2.5em;
+  width: 100%;
 }
 
 .BlockHeading {
@@ -132,107 +134,5 @@
     line-height: 52px;
     padding-top: 8px;
     padding-bottom: 8px;
-  }
-}
-
-
-//
-// Tabs
-//
-
-.TabsWrapper {
-  @include break-only(sm) {
-    display: none;
-  }
-}
-
-.Tabs {
-  // font-family: $font-stack-sans-serif;
-  height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.TabList {
-  display: flex;
-}
-
-.Tab {
-  flex: 1;
-  text-align: center;
-  padding: 1em 2em;
-  font-size: 1.1em;
-  background-color: #eee;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
-
-  @include break(md) {
-    padding: 12px 16px;
-    font-size: 1em;
-  }
-}
-
-.Tab__Selected {
-  background-color: #fff;
-  border-bottom: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
-  border-left: 1px solid rgba(0, 0, 0, 0.25);
-  border-right: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.TabPanel__Selected {
-  height: 100%;
-  padding: 8px 24px 24px 0;
-  overflow-y: scroll;
-
-  @include break(md) {
-    height: 350px;
-  }
-
-  @include break(xl) {
-    height: 450px;
-  }
-
-  p {
-    line-height: 1.5em;
-  }
-}
-
-
-
-//
-// Accordions
-//
-
-.AccordionWrapper {
-  @include break(md) {
-    display: none;
-  }
-}
-
-.Accordion {
-  // background-color: lavender;
-}
-
-.AccordionItem {
-  margin-top: 8px;
-}
-
-.AccordionItemTitle {
-  background-color: $blue;
-  color: #fff;
-  padding: 1rem;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.AccordionItemExpanded {
-  padding-bottom: 1rem;
-}
-
-.AccordionItemBody {
-  & > div {
-    margin-top: 1rem;
   }
 }

@@ -21,8 +21,12 @@
 .FooterMenu {
   align-items: center;
   display: flex;
-  padding: 4rem 0;
+  padding: 60px 0;
   border-bottom: 1px solid $border-color;
+
+  @include break(md) {
+    padding: 72px 0;
+  }
 }
 
 
@@ -50,7 +54,7 @@
     a {
       line-height: 1.2;
       color: inherit;
-      padding: 0.25em 0;
+      padding: 4px 0;
 
       &:hover {
         color: darken($font-color, 25%);
@@ -71,8 +75,12 @@
   flex-direction: column;
   font-size: 0.95rem;
   justify-content: center;
-  padding: 3rem 0;
+  padding: 48px 0;
   font-family: $font-stack-sans-serif;
+
+  // @include break(md) {
+  //   padding: 60px 0;
+  // }
 }
 
 .FooterBaseMenu {

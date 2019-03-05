@@ -30,10 +30,10 @@
         "react-grid-system": "^4.4.2",
         "react-icons": "^3.4.0",
         "react-jss": "^8.6.1",
+        "react-modal": "^3.8.1",
         "react-responsive-picture": "^3.1.0",
-        "react-sanfona": "^1.4.0",
         "react-sticky-box": "^0.8.0",
-        "react-tabs": "^3.0.0"
+        "sanitize-html": "^1.20.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.4.7",
