@@ -1,10 +1,10 @@
-import { PureComponent, Fragment } from 'react';
-import { Container, Row, Col, Hidden } from 'react-grid-system';
+import { PureComponent } from 'react';
+import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import TextSection from '../../TextSection/TextSection';
 import css from './ResidentialPage.scss';
-import { getServicesByCategory } from '../../../lib/serviceUtils';
+import { getServicesByCategory } from '../../../lib/clientUtils';
 
 
 
