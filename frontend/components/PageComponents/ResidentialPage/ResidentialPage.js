@@ -1,13 +1,16 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
+import { FiX } from 'react-icons/fi';
+import { MdPlace } from 'react-icons/md';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import TextSection from '../../TextSection/TextSection';
 import css from './ResidentialPage.scss';
 import { getServicesByCategory } from '../../../lib/clientUtils';
 
-
+const modalHtmlId = 'modal';
 
 class ResidentialPage extends PureComponent {
   state = {
@@ -26,6 +29,8 @@ class ResidentialPage extends PureComponent {
    * clicked service details, and that content is displayed in the modal.
    */
   services = {};
+  modalElement = null;
+
 
   /**
    * Binds the modal to the 'body' element whenever
@@ -35,12 +40,24 @@ class ResidentialPage extends PureComponent {
     Modal.setAppElement('body');
   }
 
+
+  componentDidMount() {
+    this.modalElement = document.querySelector('modal');
+  }
+
+  componentWillUnmount() {
+    clearAllBodyScrollLocks();
+  }
+
+
   /**
    * Sets the showModal state to false, which hides the modal.
    */
-  closeModal = () => {
+  closeServiceModal = () => {
     this.setState({ showModal: false });
+    enableBodyScroll(this.modalElement);
   }
+
 
   /**
    * Updates the modalServiceId state using the serviceid of
@@ -48,31 +65,59 @@ class ResidentialPage extends PureComponent {
    * Then, sets the showModal state to true, which allows the
    * modal to be displayed.
    */
-  handleServiceClick = service => {
+  openServiceModal = service => {
     const serviceId = service.target.getAttribute('serviceid');
-    this.setState({
-      modalServiceId: serviceId || 0,
-      showModal: true,
-    });
+    this.setState({ modalServiceId: serviceId || 0, showModal: true });
+    disableBodyScroll(this.modalElement);
   }
+
 
   /**
    * Retrieves the modal content for the current modalServiceId
    * and then returns the content of the modal to be rendered.
    */
-  renderModal = () => {
+  renderServiceModal = () => {
     const { showModal, modalServiceId } = this.state;
     if (!showModal || !modalServiceId) return null;
 
     const service = this.services[modalServiceId];
     if (!service) return null;
+    console.log(service);
+
+    const serviceRegions = service.acf.service_regions;
 
     return (
-      <div className={css.ModalContent}>
-        <div dangerouslySetInnerHTML={{ __html: service.content.rendered }} />
-      </div>
+      <Fragment>
+        <div className={css.ModalHeading}>{service.title.rendered}
+          <div className={css.ModalClose}>
+            <button onClick={this.closeServiceModal} type="button"><FiX /></button>
+          </div>
+        </div>
+
+        <div className={css.ModalBody}>
+          {/* Show the service regions */}
+          {serviceRegions.length > 0 && (
+            <ul className={css.ModalTags}>
+              {serviceRegions.map(region => {
+                return (
+                  <li key={region.term_id}>
+                    <span><MdPlace /></span>
+                    <span>{region.name}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+          {/* Show the service descriptions */}
+          <div className={css.ModalContent}>
+            <div dangerouslySetInnerHTML={{ __html: service.content.rendered }} />
+          </div>
+        </div>
+      </Fragment>
     );
   }
+
 
   /**
    * Retrieves the formatted url for a specified service object
@@ -120,10 +165,9 @@ class ResidentialPage extends PureComponent {
         <Container className={css.BlockContainer}>
           {/* Remove wrapping <p> tags from the excerpt */}
           {post.services.map(service => {
-            console.log(service);
-            const strippedExcerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
+            const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
-            { /* Set the services value for this service */ }
+            { /* Set the services object value for this service */ }
             this.services[service.id] = service;
 
             return (
@@ -137,15 +181,16 @@ class ResidentialPage extends PureComponent {
                     <div className={css.BlockHeadingWrapper}>
                       <div className={css.BlockHeading}>{service.title.rendered}</div>
                     </div>
-                    <div className={css.BlockText}>
-                      {strippedExcerpt}
-                    </div>
-                    <button
-                      type="button"
-                      serviceid={service.id}
-                      onClick={service ? this.handleServiceClick.bind(this) : null}
-                    >Show Details</button>
+                    <p className={css.BlockText}>{excerpt}</p>
+                    
                   </div>
+                  <button
+                    className={css.BlockButton}
+                    type="button"
+                    serviceid={service.id}
+                    onClick={service ? this.openServiceModal.bind(this) : null}
+                  >Show Details
+                  </button>
                 </div>
               </div>
             );
@@ -153,25 +198,26 @@ class ResidentialPage extends PureComponent {
         </Container>
 
         {/* Modal */}
-        <div className={css.ModalFrame}>
-          <div className={css.ModalWrapper}>
-            <Modal
-              className={css.Modal}
-              overlayClassName={css.ModalOverlay}
-              isOpen={this.state.showModal}
-              onRequestClose={this.closeModal}
-            >
-              {this.renderModal()}
-            </Modal>
-          </div>
+        <div className={css.ModalWrapper} id={modalHtmlId}>
+          <Modal
+            className={css.Modal}
+            overlayClassName={css.ModalOverlay}
+            isOpen={this.state.showModal}
+            onRequestClose={this.closeServiceModal}
+          >
+            {this.renderServiceModal()}
+          </Modal>
         </div>
       </div>
     );
   }
 }
 
+
+
 ResidentialPage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
 
 export default ResidentialPage;

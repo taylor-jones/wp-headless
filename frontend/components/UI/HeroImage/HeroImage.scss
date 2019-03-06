@@ -2,9 +2,10 @@
 
 
 .HeroWrapper {
+  font-family: $font-stack-rounded;
   overflow: hidden;
-  width: 100%;
   position: relative;
+  width: 100%;
 
   @include break(md) {
     margin-top: 100px;

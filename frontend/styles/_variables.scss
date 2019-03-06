@@ -16,10 +16,9 @@ $theme-color-dark: $waterloo;
  ***************************************************/
 
 $font-color:              $grey-dark;
-$font-stack:              'Gotham', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-$font-stack-rounded:      'Gotham Rounded', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-$font-stack-sans-serif:    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-$theme-font:              $font-stack-rounded;
+$font-stack:              'Gotham', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-stack-rounded:      'Gotham Rounded', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica, Neue', Arial, sans-serif;
+$font-stack-sans-serif:    -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
 
 
 
@@ -132,4 +131,5 @@ $side-drawer-footer-height:         35px;
 // 
 // footer
 // 
+$footer-font:                       $font-stack-rounded;
 $footer-bg:                         $white;

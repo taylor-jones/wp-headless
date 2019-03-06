@@ -8,6 +8,10 @@
    @extend .separator;
  }
 
+ .wp-block-separator.is-style-wide {
+   @extend .separator-wide;
+ }
+
 
  .wp-block-columns {
     display: flex;

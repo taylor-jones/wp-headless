@@ -29,7 +29,7 @@ html {
 
 body {
   // background-color: #fff;
-  font-family: $theme-font;
+  font-family: $font-stack;
   color: $font-color;
   line-height: 1.43;
 }
@@ -38,6 +38,7 @@ ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 16px;
 }
 
 #__next {
@@ -80,7 +81,6 @@ p {
   margin-inline-end: 0px;
 }
 
-
 p.lead {
   font-size: 18px;
   line-height: 1.333;
@@ -99,11 +99,10 @@ p.lead {
 }
 
 
-
-
 .colored-heading {
   color: $heading-colored;
 }
+
 
 .display-1,
 .display-2,
@@ -115,6 +114,7 @@ p.lead {
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 8px;
+  font-family: $font-stack-rounded;
 
   // @include break(md) {
   //   font-weight: 400;

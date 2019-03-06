@@ -46,13 +46,19 @@
 }
 
 
+.Heading,
+.Subheading {
+  font-family: $font-stack-rounded;
+}
+
+
 .Heading {
   margin-bottom: 16px;
   font-size: 24px;
+  font-weight: normal;
   line-height: 30px;
   padding-top: 2px;
   padding-bottom: 2px;
-  font-weight: normal;
 
   @include break(md) {
     margin-bottom: 8px;

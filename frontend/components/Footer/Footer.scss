@@ -3,8 +3,9 @@
 .Footer {
   border-top: 1px solid $border-color;
   background-color: $footer-bg;
-  width: 100%;
   flex-shrink: 0;
+  font-family: $footer-font;
+  width: 100%;
 }
 
 

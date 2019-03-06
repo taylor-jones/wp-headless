@@ -34,12 +34,21 @@
 
 
 // Separators
-.separator {
-  width: 64px;
-  border: 1px solid #767676;
-  margin: 44px auto;
+.separator,
+.separator-wide {
   padding: 0;
   display: block;
+  // border: 1px solid #767676;
+  border: 0.5px solid rgb(235, 235, 235);
+  // margin: 44px auto;
+  margin: 24px auto;
 }
 
+.separator {
+  width: 64px;
+}
+
+.separator-wide {
+  width: 100%;
+}
 
