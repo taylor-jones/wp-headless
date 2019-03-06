@@ -6,6 +6,7 @@
   flex-shrink: 0;
   font-family: $footer-font;
   width: 100%;
+  padding: 0 16px;
 }
 
 
@@ -37,7 +38,7 @@
   flex-direction: column;
   flex: 1;
 
-  @include break-only(sm) {
+  @include break-below(md) {
     &:nth-of-type(1),
     &:nth-of-type(2) {
       display: none;
@@ -47,6 +48,7 @@
   li {
     display: block;
     margin-bottom: 0.75em;
+    font-size: 1rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -93,6 +95,7 @@
   }
 
   a {
+    font-size: 1rem;
     color: $font-color;
   }
 }
@@ -101,7 +104,7 @@
   color: lighten($font-color, 20%);
 
   span {
-    @include break-only(sm) {
+    @include break-below(md) {
       display: none;
     }
   }

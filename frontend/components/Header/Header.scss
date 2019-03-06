@@ -79,7 +79,7 @@
   flex: 4;
   justify-content: flex-end;
   
-  @include break-only(sm) {
+  @include break-below(md) {
     display: none;
   }
 }

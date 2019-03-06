@@ -129,7 +129,7 @@ class ResidentialPage extends PureComponent {
     return (
       <div
         className={css.BlockImage}
-        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+        style={{ backgroundImage: 'url("../static/images/placeholder-graphic.svg")' }}
       />
     );
   }

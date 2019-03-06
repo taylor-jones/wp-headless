@@ -82,7 +82,8 @@ $bg-colored: $blue;
 .BlockWrapper {
   display: flex;
   flex-direction: column;
-  margin: 8px;
+  // margin: 8px;
+  margin: 0 8px;
 
   @include break(md) {
     flex-direction: row;
@@ -95,6 +96,7 @@ $bg-colored: $blue;
   position: relative;
   flex: 1;
   order: 2;
+  margin: 8px 0;
 
   @include break(md) {
     flex: 5;
@@ -122,12 +124,16 @@ $bg-colored: $blue;
   align-items: center;
   flex: 1;
   order: 1;
-  margin: 32px auto;
+  margin: 8px 0;
   
   @include break(md) {
     background-color: $bg-grey;
     flex: 7;
     margin: 8px;
+  }
+
+  &.Inverse {
+    background-color: $bg-grey;
   }
 }
 

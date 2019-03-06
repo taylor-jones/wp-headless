@@ -121,10 +121,10 @@ $header-icon-color:                 $header-menu-color;
 // side drawer
 //
 $side-drawer-color:                 $font-color;
-$side-drawer-width:                 70%;
-$side-drawer-max-width:             400px;
-$side-drawer-min-width:             250px;
-$side-drawer-font-size:             1rem;
+$side-drawer-width:                 80vw;
+$side-drawer-max-width:             calc(100vw - 50px);
+$side-drawer-min-width:             265px;
+$side-drawer-font-size:             16px;
 $side-drawer-footer-height:         35px;
 
 

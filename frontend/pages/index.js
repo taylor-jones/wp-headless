@@ -69,7 +69,7 @@ class Index extends PureComponent {
           <Container className={css.TriadContainer}>
             <div className={css.TriadWrapper}>
               <Row>
-                <Col sm={12}>
+                <Col xs={12}>
                   <TextSection
                     heading={page.title.rendered}
                     align="center"
@@ -82,7 +82,7 @@ class Index extends PureComponent {
               </Row>
 
               <Row>
-                <Col sm={12} md={4}>
+                <Col xs={12} md={4}>
                   <div className={css.TriadImageContainer}>
                     <div className={css.TriadImageWrapper}>
                       <div
@@ -98,7 +98,7 @@ class Index extends PureComponent {
                   </div>
                 </Col>
 
-                <Col sm={12} md={4}>
+                <Col xs={12} md={4}>
                   <div className={css.TriadImageContainer}>
                     <div className={css.TriadImageWrapper}>
                       <div
@@ -114,7 +114,7 @@ class Index extends PureComponent {
                   </div>
                 </Col>
 
-                <Col sm={12} md={4}>
+                <Col xs={12} md={4}>
                   <div className={css.TriadImageContainer}>
                     <div className={css.TriadImageWrapper}>
                       <div
@@ -147,10 +147,11 @@ class Index extends PureComponent {
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
-                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam."
                     link={{ url: '/', text: 'Foo Bar Baz' }}
-                  />
+                  >
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
                 </div>
               </div>
             </div>
@@ -166,11 +167,10 @@ class Index extends PureComponent {
 
               <div className={[css.BlockTextWrapper, css.Inverse].join(' ')}>
                 <div className={css.BlockText}>
-                  <TextSection
-                    heading="Section Heading"
-                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam."
-                  />
+                  <TextSection heading="Section Heading">
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
                 </div>
               </div>
             </div>
@@ -186,11 +186,10 @@ class Index extends PureComponent {
 
               <div className={css.BlockTextWrapper}>
                 <div className={css.BlockText}>
-                  <TextSection
-                    heading="Section Heading"
-                    subheading="Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam."
-                  />
+                  <TextSection heading="Section Heading">
+                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.
+                  </TextSection>
                 </div>
               </div>
             </div>

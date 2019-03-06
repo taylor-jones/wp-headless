@@ -4,13 +4,15 @@
 // Breakpoint Definitions
 // 
 
-$breakpoint-sm: 0px;
+$breakpoint-xs: 0px;
+$breakpoint-sm: 480px;
 $breakpoint-md: 744px;
 $breakpoint-lg: 1128px;
 $breakpoint-xl: 1440px;
 
 
 $grid-breakpoints: (
+  xs: $breakpoint-xs,
   sm: $breakpoint-sm,
   md: $breakpoint-md,
   lg: $breakpoint-lg,
@@ -19,9 +21,10 @@ $grid-breakpoints: (
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 
-// :export {
-//   sm: $breakpoint-sm;
-//   md: $breakpoint-md;
-//   lg: $breakpoint-lg;
-//   xl: $breakpoint-xl;
-// }
+:export {
+  xs: $breakpoint-xs;
+  sm: $breakpoint-sm;
+  md: $breakpoint-md;
+  lg: $breakpoint-lg;
+  xl: $breakpoint-xl;
+}

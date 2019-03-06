@@ -161,6 +161,9 @@
   position: relative;
   flex: 1;
   order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @include break(md) {
     flex: 6;
@@ -215,21 +218,37 @@
   }
 }
 
-// .BlockText {
-//   font-size: 16px;
+.BlockText {
+  font-size: 15px;
+  line-height: 20px;
 
-//   @include break(lg) {
-//     font-size: 18px;
-//   }
-// }
+  @include break(sm) {
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  @include break(lg) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
 
 .BlockImage {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
+  flex: 1;
   position: absolute;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @include break(sm) {
+    width: 50%;
+  }
+
+  @include break-only(md) {
+    width: 80%;
+  }
 }
 
 .BlockHeadingWrapper {
@@ -243,7 +262,7 @@
   line-height: 30px;
   padding-top: 2px;
   padding-bottom: 2px;
-  font-weight: normal;
+  font-weight: 400;
 
   @include break(md) {
     margin-bottom: 8px;
@@ -261,12 +280,12 @@
     padding-bottom: 6px;
   }
 
-  // @include break(xl) {
-  //   font-size: 46px;
-  //   line-height: 52px;
-  //   padding-top: 8px;
-  //   padding-bottom: 8px;
-  // }
+  @include break(xl) {
+    font-size: 38px;
+    line-height: 44px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
 }
 
 .BlockButton {
