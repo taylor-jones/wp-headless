@@ -18,6 +18,7 @@ html, body {
   -webkit-tap-highlight-color: transparent; // remove grey tap color
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -43,6 +44,7 @@ ul, li {
 
 #__next {
   height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 

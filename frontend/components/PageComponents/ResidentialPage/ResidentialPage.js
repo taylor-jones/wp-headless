@@ -129,7 +129,7 @@ class ResidentialPage extends PureComponent {
     return (
       <div
         className={css.BlockImage}
-        style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
+        style={{ backgroundImage: 'url("../static/images/placeholder-graphic.svg")' }}
       />
     );
   }
@@ -162,16 +162,16 @@ class ResidentialPage extends PureComponent {
 
 
         {/* Services List */}
-        <Container className={css.BlockContainer}>
-          {/* Remove wrapping <p> tags from the excerpt */}
-          {post.services.map(service => {
-            const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
+        {/* Remove wrapping <p> tags from the excerpt */}
+        {post.services.map(service => {
+          const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
-            { /* Set the services object value for this service */ }
-            this.services[service.id] = service;
+          { /* Set the services object value for this service */ }
+          this.services[service.id] = service;
 
-            return (
-              <div className={css.BlockWrapper} key={service.id}>
+          return (
+            <div className={css.BlockWrapper} key={service.id}>
+              <div className={css.BlockWrapperInner}>
                 <div className={css.BlockImageWrapper}>
                   {this.getServiceImage(service)}
                 </div>
@@ -182,7 +182,7 @@ class ResidentialPage extends PureComponent {
                       <div className={css.BlockHeading}>{service.title.rendered}</div>
                     </div>
                     <p className={css.BlockText}>{excerpt}</p>
-                    
+
                   </div>
                   <button
                     className={css.BlockButton}
@@ -193,9 +193,10 @@ class ResidentialPage extends PureComponent {
                   </button>
                 </div>
               </div>
-            );
-          })}
-        </Container>
+            </div>
+
+          );
+        })}
 
         {/* Modal */}
         <div className={css.ModalWrapper} id={modalHtmlId}>

@@ -12,7 +12,7 @@ import css from './Layout.scss';
 // Grid breakpoint configurations
 setConfiguration({
   breakpoints: [
-    0,
+    480,
     744,
     1128,
     1440,
