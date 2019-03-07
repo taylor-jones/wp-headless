@@ -1,15 +1,38 @@
 @import '../../../styles/breakpoints';
 
+// 
+// Page
+// 
+
+.PageWrapper {
+  margin: 96px auto;
+}
+
+// 
+// Page Lead
+// 
+
+.PageLeadWrapper {
+  margin: auto;
+  margin-bottom: 48px;
+  max-width: 900px;
+  text-align: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+
+
 //
 // Triads
 //
 
 .TriadContainer {
-  color: inherit;
+  margin-top: 48px;
 }
 
 .TriadWrapper {
-  margin: 96px 8px;
+  margin: 8px;
 
   @include break(md) {
     margin-left: auto;
@@ -67,4 +90,5 @@
     font-size: 16px;
   }
 }
+
 

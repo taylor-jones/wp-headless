@@ -10,25 +10,21 @@ import css from './MissionVisionPage.scss';
 class MissionVisionPage extends PureComponent {
   render() {
     const { post } = this.props;
-    // console.log(post);
+    const { acf } = post;
+
+    console.log(post);
 
 
     return (
       <div className={css.PageContainer}>
 
         {/* Top Section -- Lead Content */}
-        <Container>
+        <Container class={css.StatementsWrapper}>
           <Row>
             <Col>
-              <div className={css.LeadWrapper}>
-                <TextSection
-                  heading={post.title.rendered}
-                  strongHeading
-                  align="center"
-                  alignContent="left"
-                >
-                  <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-                </TextSection>
+              <div className={css.StatementSection}>
+                <h1>{post.title.rendered}</h1>
+                <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
               </div>
             </Col>
           </Row>
@@ -53,6 +49,36 @@ class MissionVisionPage extends PureComponent {
             </div>
           </div>
         </div>
+
+        {/* Mission Statement & Vision Statement */}
+        <Container class={css.StatementsWrapper}>
+          <Row className={css.StatementRow}>
+            <Col md={6} className={css.StatementCol}>
+              <div className={css.StatementWrapper}>
+                <h2>Mission Statement</h2>
+                <div dangerouslySetInnerHTML={{ __html: acf.mission_statement }} />
+              </div>
+            </Col>
+            <Col md={6} className={css.StatementCol}>
+              <div className={css.StatementWrapper}>
+                <h2>Vision Statement</h2>
+                <div dangerouslySetInnerHTML={{ __html: acf.vision_statement }} />
+              </div>
+            </Col>
+          </Row>
+
+          <div className="separator" />
+
+          {/* Why We Exist */}
+          <Row className={css.StatementRow}>
+            <Col>
+              <div className={css.StatementSection}>
+                <h2>Why We Exist</h2>
+                <div dangerouslySetInnerHTML={{ __html: acf.why_we_exist }} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
       </div>
     );

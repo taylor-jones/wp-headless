@@ -134,7 +134,8 @@ class Index extends PureComponent {
           </Container>
 
 
-          <Container className={css.BlockContainer}>
+          {/* Blocks */}
+          <div className={css.BlockContainer}>
             <div className={css.BlockWrapper}>
               <div className={css.BlockImageWrapper}>
                 <div
@@ -142,15 +143,14 @@ class Index extends PureComponent {
                   style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                 />
               </div>
-
               <div className={css.BlockTextWrapper}>
                 <div className={css.BlockText}>
                   <TextSection
                     heading="Section Heading"
                     link={{ url: '/', text: 'Foo Bar Baz' }}
                   >
-                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam.
+                    <p>Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                    Minus minima aspernatur, error nihil doloribus aperiam.</p>
                   </TextSection>
                 </div>
               </div>
@@ -164,7 +164,6 @@ class Index extends PureComponent {
                   style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                 />
               </div>
-
               <div className={[css.BlockTextWrapper, css.Inverse].join(' ')}>
                 <div className={css.BlockText}>
                   <TextSection heading="Section Heading">
@@ -183,7 +182,6 @@ class Index extends PureComponent {
                   style={{ backgroundImage: 'url("../static/images/Placeholder.png")' }}
                 />
               </div>
-
               <div className={css.BlockTextWrapper}>
                 <div className={css.BlockText}>
                   <TextSection heading="Section Heading">
@@ -193,49 +191,48 @@ class Index extends PureComponent {
                 </div>
               </div>
             </div>
+          </div>
 
-          </Container>
 
-          <Container fluid>
-            <div className={css.SubscribeContainer}>
-              <div className={css.SubscribeWrapper}>
-                <div className={css.SubscribeHeading}>Want to stay informed?</div>
-                <div className={css.SubscribeFormWrapper}>
+          {/* Subscribe */}
+          <div className={css.SubscribeContainer}>
+            <div className={css.SubscribeWrapper}>
+              <div className={css.SubscribeHeading}>Want to stay informed?</div>
+              <div className={css.SubscribeFormWrapper}>
 
-                  <form className={css.SubscribeForm}>
-                    <div className={css.SubscribeInputWrapper}>
-                      <label htmlFor="email">
-                        <input
-                          className={css.SubscribeInput}
-                          type="email"
-                          name="email"
-                          id="email"
-                          value={this.state.emailAddress}
-                          onChange={this.handleEmailChange}
-                        />
-                      </label>
-                    </div>
+                <form className={css.SubscribeForm}>
+                  <div className={css.SubscribeInputWrapper}>
+                    <label htmlFor="email">
+                      <input
+                        className={css.SubscribeInput}
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={this.state.emailAddress}
+                        onChange={this.handleEmailChange}
+                      />
+                    </label>
+                  </div>
 
-                    <div className={css.SubscribeInputSubmitWrapper}>
-                      <button
-                        type="submit"
-                        className={css.SubscribeInputSubmit}
-                        disabled={!this.state.subscribeEnabled}
-                        onClick={this.handleEmailSubmission}
-                      >Subscribe</button>
-                    </div>
-                  </form>
+                  <div className={css.SubscribeInputSubmitWrapper}>
+                    <button
+                      type="submit"
+                      className={css.SubscribeInputSubmit}
+                      disabled={!this.state.subscribeEnabled}
+                      onClick={this.handleEmailSubmission}
+                    >Subscribe</button>
+                  </div>
+                </form>
 
-                  <div className={css.SubscribeFooterWrapper}>
-                    <div className={css.SubscribeFooter}>
-                      We&apos;ll never spam you or give out your email address to anyone,
-                      and you can unsubscribe anytime.
-                    </div>
+                <div className={css.SubscribeFooterWrapper}>
+                  <div className={css.SubscribeFooter}>
+                    We&apos;ll never spam you or give out your email address to anyone,
+                    and you can unsubscribe anytime.
                   </div>
                 </div>
               </div>
             </div>
-          </Container>
+          </div>
 
         </div>
       </Layout>

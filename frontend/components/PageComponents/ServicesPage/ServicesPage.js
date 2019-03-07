@@ -10,21 +10,26 @@ class ServicesPage extends PureComponent {
     const { post } = this.props;
 
     return (
-      <div>
+      <div className={css.PageWrapper}>
+        <div className={css.PageLeadWrapper}>
+          <h1 className={css.PageHeading}>{post.title.rendered}</h1>
+          <div className={css.PageLead}>
+            <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          </div>
+
+          {/* <TextSection
+            heading={post.title.rendered}
+            align="center"
+            alignContent="center"
+          >
+            <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          </TextSection> */}
+        </div>
+
+        <div className="separator" />
+
         <Container className={css.TriadContainer}>
           <div className={css.TriadWrapper}>
-            <Row>
-              <Col sm={12}>
-                <TextSection
-                  heading={post.title.rendered}
-                  align="center"
-                  alignContent="center"
-                >
-                  <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-                </TextSection>
-              </Col>
-            </Row>
-
             <Row>
               <Col sm={12} md={4}>
                 <Link href="/residential">

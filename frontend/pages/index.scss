@@ -79,6 +79,13 @@ $bg-colored: $blue;
 // Blocks
 //
 
+.BlockContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 .BlockWrapper {
   display: flex;
   flex-direction: column;
@@ -176,6 +183,7 @@ $bg-colored: $blue;
 .SubscribeContainer {
   background-color: $bg-grey;
   margin: 96px -8px auto -8px;
+  padding: 24px 0;
 }
 
 .SubscribeWrapper {

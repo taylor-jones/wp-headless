@@ -1,4 +1,6 @@
+// 
 // breakpoint visualizer
+// 
 .visualizer {
   @include break(xs) { background: rgba(lavender, 0.25) !important }
   @include break(sm) { background: rgba(red, 0.25) !important }
@@ -15,8 +17,9 @@
   @include break(xl) { box-shadow: inset 0 0 0 3px rgba(blue, 0.25) !important }
 }
 
-
+// 
 // Dotted image overlay
+// 
 .img-dotted::before {
   content: ' ';
   display: block;
@@ -34,14 +37,16 @@
   }
 }
 
-
+// 
 // Separators
+// 
 .separator,
-.separator-wide {
+.separator-wide,
+.separator-full {
   padding: 0;
   display: block;
   // border: 1px solid #767676;
-  border: 0.5px solid rgb(235, 235, 235);
+  border: 0.5px solid rgb(220, 220, 220);
   // margin: 44px auto;
   margin: 24px auto;
 }
@@ -51,6 +56,17 @@
 }
 
 .separator-wide {
+  width: 80%;
+}
+
+.separator-full {
   width: 100%;
 }
 
+
+// 
+// Containers
+// 
+.contain {
+  width: 80%;
+}
