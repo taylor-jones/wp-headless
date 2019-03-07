@@ -76,10 +76,10 @@ class Index extends PureComponent {
                     alignContent="center"
                   >
                     <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-                    {/* <p>{page.content.rendered}</p> */}
                   </TextSection>
                 </Col>
               </Row>
+
 
               <Row>
                 <Col xs={12} md={4}>
@@ -167,8 +167,10 @@ class Index extends PureComponent {
               <div className={[css.BlockTextWrapper, css.Inverse].join(' ')}>
                 <div className={css.BlockText}>
                   <TextSection heading="Section Heading">
+                    <p>
                     Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
                     Minus minima aspernatur, error nihil doloribus aperiam.
+                    </p>
                   </TextSection>
                 </div>
               </div>
@@ -185,8 +187,10 @@ class Index extends PureComponent {
               <div className={css.BlockTextWrapper}>
                 <div className={css.BlockText}>
                   <TextSection heading="Section Heading">
-                    Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
-                    Minus minima aspernatur, error nihil doloribus aperiam.
+                    <p>
+                      Lorem ipsum dolor sit amet conse ctetur adipisi cing elit.
+                      Minus minima aspernatur, error nihil doloribus aperiam.
+                    </p>
                   </TextSection>
                 </div>
               </div>
