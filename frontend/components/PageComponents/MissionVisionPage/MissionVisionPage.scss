@@ -25,22 +25,15 @@
 .Gallery {
   margin: 60px auto;
   max-width: 1440px;
-  padding-left: 30px;
-  padding-right: 30px;
 
   @include break(sm) {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
-  @include break(md) {
-    padding-left: 120px;
-    padding-right: 120px;
-  }
-
-  @include break(lg) {
-    padding-left: 200px;
-    padding-right: 200px;
+  @include break(xl) {
+    padding-left: 100px;
+    padding-right: 100px;
   }
 }
 
@@ -50,9 +43,16 @@
   align-items: flex-end;
   margin-bottom: 18px;
 
+  &:nth-of-type(1) {
+    padding-right: 25%;
+    padding-left: 10%;
+  }
+
   &:nth-of-type(2) {
     align-items: flex-start;
     margin-bottom: 0;
+    padding-left: 25%;
+    padding-right: 10%;
   }
 }
 
@@ -60,19 +60,44 @@
 .GalleryImageWrapper {
   position: relative;
   padding: 0;
-  margin-bottom: -4px;
+  margin-bottom: -16px;
+
+  @include break(sm) {
+    margin-bottom: -12px;
+  }
+
+  @include break(md) {
+    margin-bottom: -8px;
+  }
+
+  @include break(lg) {
+    margin-bottom: -4px;
+  }
+
 
   &:not(:last-of-type) {
-    margin-right: 20px;
+    margin-right: 8px;
+    
+    @include break(sm) {
+      margin-right: 12px;
+    }
+
+    @include break(md) {
+      margin-right: 16px;
+    }
+
+    @include break(lg) {
+      margin-right: 20px;
+    }
   }
 }
 
 .GalleryImageWrapperWide {
-  flex: 8;
+  flex: 5;
 }
 
 .GalleryImageWrapperSquare {
-  flex: 3;
+  flex: 2;
 }
 
 .GalleryImage {

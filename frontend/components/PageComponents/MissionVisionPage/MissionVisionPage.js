@@ -38,7 +38,7 @@ class MissionVisionPage extends PureComponent {
         <div className={css.Gallery}>
           <div className={css.GalleryRow}>
             <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperWide].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1200x600.png" />
+              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1000x600.png" />
             </div>
             <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperSquare].join(' ')}>
               <img className={css.GalleryImage} alt="placeholder" src="../static/images/600x600.png" />
@@ -49,7 +49,7 @@ class MissionVisionPage extends PureComponent {
               <img className={css.GalleryImage} alt="placeholder" src="../static/images/600x600.png" />
             </div>
             <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperWide].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1200x600.png" />
+              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1000x600.png" />
             </div>
           </div>
         </div>

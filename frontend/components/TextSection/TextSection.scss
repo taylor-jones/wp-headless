@@ -111,6 +111,10 @@
   }
 }
 
+.TextContent:last-child {
+  margin-bottom: 0;
+}
+
 .TextLinkWrapper {
   a {
     color: $blue;
