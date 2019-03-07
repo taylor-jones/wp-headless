@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Column } from 'react-grid-system';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
+import MissionVisionPage from './PageComponents/MissionVisionPage/MissionVisionPage';
 
 
 const PageLoader = props => {
@@ -18,6 +20,7 @@ const PageLoader = props => {
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
     residential: <ResidentialPage post={post} />,
+    'mission-and-vision': <MissionVisionPage post={post} />,
   };
 
   /**
@@ -43,10 +46,12 @@ const PageLoader = props => {
 
       {/* Otherwise, just load the page title and conent by default */}
       {!hasComponent && (
-        <Fragment>
-          <h1>{post.title.rendered}</h1>
-          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-        </Fragment>
+        <Container>
+          <Row>
+            <h1>{post.title.rendered}</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          </Row>
+        </Container>
       )}
 
     </div>

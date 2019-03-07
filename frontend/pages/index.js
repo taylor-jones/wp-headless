@@ -69,7 +69,7 @@ class Index extends PureComponent {
           <Container className={css.TriadContainer}>
             <div className={css.TriadWrapper}>
               <Row>
-                <Col xs={12}>
+                <Col>
                   <TextSection
                     heading={page.title.rendered}
                     align="center"

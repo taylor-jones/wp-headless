@@ -1,0 +1,86 @@
+@import '../../../styles/breakpoints';
+
+.PageContainer {
+  // margin: 8px;
+
+  // @include break(sm) {
+  //   margin: 16px;
+  // }
+}
+
+
+.LeadWrapper {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 80%;
+
+  @include break(md) {
+    max-width: 900px;
+  }
+}
+
+
+
+
+.Gallery {
+  margin: 60px auto;
+  max-width: 1440px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @include break(sm) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  @include break(md) {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  @include break(lg) {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+
+.GalleryRow {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-bottom: 18px;
+
+  &:nth-of-type(2) {
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+
+.GalleryImageWrapper {
+  position: relative;
+  padding: 0;
+  margin-bottom: -4px;
+
+  &:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}
+
+.GalleryImageWrapperWide {
+  flex: 8;
+}
+
+.GalleryImageWrapperSquare {
+  flex: 3;
+}
+
+.GalleryImage {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  max-width: 100%;
+  border-radius: 4px;
+}
+

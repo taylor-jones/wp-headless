@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
 
-  @include break(lg) {
+  @include break(md) {
     padding: 60px;
   }
 }
@@ -44,7 +44,7 @@
   margin: 0 auto;
   overflow: hidden;
 
-  @include break(lg) {
+  @include break(md) {
     border-radius: 3px;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
     padding: 24px 48px;
@@ -68,7 +68,7 @@
   width: 100%;
   z-index: 15;
 
-  @include break(lg) {
+  @include break(md) {
     position: relative;
     padding: 0;
     font-size: 24px;
@@ -92,6 +92,10 @@
   margin: 32px auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
+
+  @include break(md) {
+    margin-top: 0;
+  }
 }
 
 .ModalContent {
@@ -100,6 +104,11 @@
   margin-right: -8px;
   padding-left: 8px;
   padding-right: 8px;
+
+  @include break(sm) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
   p {
     line-height: 1.25;
@@ -184,7 +193,7 @@
     padding: 60px 48px;
   }
 
-  &:nth-of-type(odd) {
+  &:nth-of-type(even) {
     background-color: $grey-light;
   }
 }

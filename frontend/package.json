@@ -23,6 +23,7 @@
         "lodash.throttle": "^4.1.1",
         "lru-cache": "^5.1.1",
         "next": "8.0.1",
+        "postcss-aspect-ratio": "^1.0.2",
         "postcss-easing-gradients": "^3.0.1",
         "postcss-easy-import": "^3.0.0",
         "prop-types": "^15.7.1",

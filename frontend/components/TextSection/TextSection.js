@@ -42,14 +42,15 @@ class TextSection extends PureComponent {
 
 
   render() {
-    const { heading, subheading, bulletPoints, link, children } = this.props;
+    const { heading, strongHeading, subheading, bulletPoints, link, children } = this.props;
     const alignment = this.getAlignment();
 
     return (
       <div className={alignment.wrapper}>
         <div className={css.TextSection}>
           <div className={alignment.headings}>
-            {heading && <div className={css.Heading}>{heading}</div>}
+            {heading && !strongHeading && <div className={css.Heading}>{heading}</div>}
+            {heading && strongHeading && <div className={[css.Heading, css.Strong].join(' ')}>{heading}</div>}
             {subheading && <div className={css.Subheading}>{subheading}</div>}
           </div>
 
@@ -91,6 +92,7 @@ TextSection.defaultProps = {
   subheading: null,
   bulletPoints: null,
   link: null,
+  strongHeading: false,
 };
 
 TextSection.propTypes = {
@@ -98,6 +100,7 @@ TextSection.propTypes = {
   alignHeadings: PropTypes.string,
   alignContent: PropTypes.string,
   heading: PropTypes.string,
+  strongHeading: PropTypes.bool,
   subheading: PropTypes.string,
   bulletPoints: PropTypes.arrayOf(PropTypes.object),
   link: PropTypes.objectOf(PropTypes.string),
