@@ -82,7 +82,7 @@ class ResidentialPage extends PureComponent {
 
     const service = this.services[modalServiceId];
     if (!service) return null;
-    console.log(service);
+    // console.log(service);
 
     const serviceRegions = service.acf.service_regions;
 
@@ -151,11 +151,7 @@ class ResidentialPage extends PureComponent {
           <Row>
             <Col sm={12}>
               <div className={css.LeadWrapper}>
-                <TextSection
-                  heading={post.title.rendered}
-                  align="center"
-                  alignContent="left"
-                >
+                <TextSection>
                   <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
                 </TextSection>
               </div>

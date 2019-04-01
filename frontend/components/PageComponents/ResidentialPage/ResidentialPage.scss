@@ -202,12 +202,16 @@
 .BlockWrapperInner {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   margin: 24px 8px;
   height: auto;
   max-width: 1080px;
   margin: auto;
   
+  @include break(md) {
+    width: 70%;
+  }
+
   @include break(md) {
     margin: 24px;
   }

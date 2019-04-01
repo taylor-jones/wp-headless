@@ -23,8 +23,12 @@ class MissionVisionPage extends PureComponent {
           <Row>
             <Col>
               <div className={css.StatementSection}>
-                <h1>{post.title.rendered}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+                {/* <h1>{post.title.rendered}</h1> */}
+                {/* <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} /> */}
+
+                <h3>Why We Exist</h3>
+                <div dangerouslySetInnerHTML={{ __html: acf.why_we_exist }} />
+
               </div>
             </Col>
           </Row>
@@ -55,26 +59,14 @@ class MissionVisionPage extends PureComponent {
           <Row className={css.StatementRow}>
             <Col md={6} className={css.StatementCol}>
               <div className={css.StatementWrapper}>
-                <h3>Mission Statement</h3>
+                <h3>Our Mission</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.mission_statement }} />
               </div>
             </Col>
             <Col md={6} className={css.StatementCol}>
               <div className={css.StatementWrapper}>
-                <h3>Vision Statement</h3>
+                <h3>Our Vision</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.vision_statement }} />
-              </div>
-            </Col>
-          </Row>
-
-          <div className="separator" />
-
-          {/* Why We Exist */}
-          <Row className={css.StatementRow}>
-            <Col>
-              <div className={css.StatementSection}>
-                <h3>Why We Exist</h3>
-                <div dangerouslySetInnerHTML={{ __html: acf.why_we_exist }} />
               </div>
             </Col>
           </Row>
@@ -85,7 +77,7 @@ class MissionVisionPage extends PureComponent {
           <Row className={css.StatementRow}>
             <Col>
               <div className={css.StatementSection}>
-                <h3>Our History</h3>
+                <h3>Our Story</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.our_history }} />
               </div>
             </Col>
