@@ -202,12 +202,15 @@
 .BlockWrapperInner {
   display: flex;
   flex-direction: column;
-
-  margin: 24px;
-  width: auto;
+  width: 70%;
+  margin: 24px 8px;
   height: auto;
-  max-width: 1180px;
+  max-width: 1080px;
   margin: auto;
+  
+  @include break(md) {
+    margin: 24px;
+  }
   
   @include break(md) {
     flex-direction: row;
@@ -237,7 +240,7 @@
   }
 
   @include break(md) {
-    flex: 6;
+    flex: 3;
     margin: 8px;
     order: 2;
   }
@@ -246,41 +249,43 @@
 
 .BlockImageWrapper,
 .BlockTextWrapper {
-  min-height: 1px;
+  min-height: 100px;
   
   @include break(md) {
-    height: 400px;
+    height: 300px;
   }
   
   @include break(xl) {
-    height: 525px;
+    height: 400px;
   }
 }
 
 
 .BlockImage {
   height: 100%;
-  width: 70%;
+  width: 100%;
   flex: 1;
   position: absolute;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
 
-  @include break(sm) {
-    width: 50%;
-  }
+  // background-position: 50% 50%;
+  // background-repeat: no-repeat;
+  // background-size: cover;
 
-  @include break-only(md) {
-    width: 80%;
-  }
+  // @include break(sm) {
+  //   width: 50%;
+  // }
+
+  // @include break-only(md) {
+  //   width: 80%;
+  // }
 }
 
 
 .BlockTextWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex: 1;
   order: 2;
@@ -288,18 +293,23 @@
   
   @include break(md) {
     // margin: 32px 8px;
-    flex: 6;
+    flex: 9;
   }
 }
 
 
 .BlockTextWrapperInner {
-  width: 90%;
+  // width: 90%;
+  text-align: center;
   
-  @include break(md) {
+  @include break(sm) {
     width: 80%;
   }
 
+  @include break(md) {
+    text-align: left;
+  }
+  
   @include break(lg) {
     width: 60%;
   }
@@ -332,13 +342,23 @@
   width: 100%;
 }
 
+
 .BlockHeading {
   margin-bottom: 16px;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 28px;
   padding-top: 2px;
   padding-bottom: 2px;
   font-weight: 400;
+  
+  @include break(sm) {
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 400;
+  }
 
   @include break(md) {
     margin-bottom: 8px;
@@ -350,14 +370,14 @@
 
   @include break(lg) {
     margin-bottom: 8px;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 36px;
     padding-top: 6px;
     padding-bottom: 6px;
   }
 
   @include break(xl) {
-    font-size: 38px;
+    font-size: 34px;
     line-height: 44px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -365,13 +385,13 @@
 }
 
 .BlockButton {
-  margin-top: 12px;
+  margin-top: 24px;
   border: 1px solid #000;
   padding: 1rem 2rem;
   background-color: transparent;
   border-radius: 2px;
 
   @include break(md) {
-    margin-top: 0;
+    // margin-top: 0;
   }
 }

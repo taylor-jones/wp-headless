@@ -42,7 +42,7 @@ class ServicesPage extends PureComponent {
                         />
                       </div>
                       <div className={css.TriadImageLabelWrapper}>
-                        <div className={css.TriadImageLabel}>Rsidential</div>
+                        <div className={css.TriadImageLabel}>Residential</div>
                       </div>
                     </div>
                   </a>

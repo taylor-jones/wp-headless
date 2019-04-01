@@ -126,10 +126,13 @@ class ResidentialPage extends PureComponent {
   getServiceImage = service => {
     // TODO: involve react-responsive-picture to load different images at different sizes.
     // for now, just load the default placeholder image.
+    const imgSrc = '../static/images/placeholder-graphic.svg';
+
     return (
-      <div
+      <img
         className={css.BlockImage}
-        style={{ backgroundImage: 'url("../static/images/placeholder-graphic.svg")' }}
+        src={imgSrc}
+        alt="Placeholder"
       />
     );
   }

@@ -55,13 +55,13 @@ class MissionVisionPage extends PureComponent {
           <Row className={css.StatementRow}>
             <Col md={6} className={css.StatementCol}>
               <div className={css.StatementWrapper}>
-                <h2>Mission Statement</h2>
+                <h3>Mission Statement</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.mission_statement }} />
               </div>
             </Col>
             <Col md={6} className={css.StatementCol}>
               <div className={css.StatementWrapper}>
-                <h2>Vision Statement</h2>
+                <h3>Vision Statement</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.vision_statement }} />
               </div>
             </Col>
@@ -73,8 +73,20 @@ class MissionVisionPage extends PureComponent {
           <Row className={css.StatementRow}>
             <Col>
               <div className={css.StatementSection}>
-                <h2>Why We Exist</h2>
+                <h3>Why We Exist</h3>
                 <div dangerouslySetInnerHTML={{ __html: acf.why_we_exist }} />
+              </div>
+            </Col>
+          </Row>
+
+          <div className="separator" />
+
+          {/* Our History */}
+          <Row className={css.StatementRow}>
+            <Col>
+              <div className={css.StatementSection}>
+                <h3>Our History</h3>
+                <div dangerouslySetInnerHTML={{ __html: acf.our_history }} />
               </div>
             </Col>
           </Row>
