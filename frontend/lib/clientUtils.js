@@ -15,7 +15,7 @@ export const getComposedDisplayName = Component => {
  * Filters an array of services to only those that have
  * a service category matching the given category.
  *
- * @param { services } array - array of services
+ * @param {services} array - array of services
  * @param {category} string - the service category to use for filtering the results.
  */
 export const getServicesByCategory = (services, category) => {

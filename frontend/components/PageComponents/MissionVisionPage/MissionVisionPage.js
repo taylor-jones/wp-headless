@@ -1,6 +1,5 @@
 import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
-import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import TextSection from '../../TextSection/TextSection';
@@ -12,7 +11,7 @@ class MissionVisionPage extends PureComponent {
     const { post } = this.props;
     const { acf } = post;
 
-    console.log(post);
+    // console.log(post);
 
 
     return (
@@ -34,28 +33,28 @@ class MissionVisionPage extends PureComponent {
           </Row>
         </Container>
 
-        {/* Photo Gallery */}
-        <div className={css.Gallery}>
-          <div className={css.GalleryRow}>
-            <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperWide].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1000x600.png" />
+        {/* Photo Mosaic */}
+        <div className={css.Mosaic}>
+          <div className={css.MosaicRow}>
+            <div className={[css.MosaicImageWrapper, css.MosaicImageWrapperWide].join(' ')}>
+              <img className={css.MosaicImage} alt="placeholder" src="../static/images/1000x600.png" />
             </div>
-            <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperSquare].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/600x600.png" />
+            <div className={[css.MosaicImageWrapper, css.MosaicImageWrapperSquare].join(' ')}>
+              <img className={css.MosaicImage} alt="placeholder" src="../static/images/600x600.png" />
             </div>
           </div>
-          <div className={css.GalleryRow}>
-            <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperSquare].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/600x600.png" />
+          <div className={css.MosaicRow}>
+            <div className={[css.MosaicImageWrapper, css.MosaicImageWrapperSquare].join(' ')}>
+              <img className={css.MosaicImage} alt="placeholder" src="../static/images/600x600.png" />
             </div>
-            <div className={[css.GalleryImageWrapper, css.GalleryImageWrapperWide].join(' ')}>
-              <img className={css.GalleryImage} alt="placeholder" src="../static/images/1000x600.png" />
+            <div className={[css.MosaicImageWrapper, css.MosaicImageWrapperWide].join(' ')}>
+              <img className={css.MosaicImage} alt="placeholder" src="../static/images/1000x600.png" />
             </div>
           </div>
         </div>
 
         {/* Mission Statement & Vision Statement */}
-        <Container class={css.StatementsWrapper}>
+        <Container className={css.StatementsWrapper}>
           <Row className={css.StatementRow}>
             <Col md={6} className={css.StatementCol}>
               <div className={css.StatementWrapper}>

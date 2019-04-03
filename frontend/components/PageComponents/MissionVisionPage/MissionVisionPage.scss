@@ -1,12 +1,12 @@
 @import '../../../styles/breakpoints';
 
-.PageContainer {
+// .PageContainer {
   // margin: 8px;
 
   // @include break(sm) {
   //   margin: 16px;
   // }
-}
+// }
 
 
 .LeadWrapper {
@@ -22,10 +22,10 @@
 
 
 // 
-// Gallery
+// Mosaic
 // 
 
-.Gallery {
+.Mosaic {
   margin: 96px auto;
   max-width: 1440px;
 
@@ -40,7 +40,7 @@
   }
 }
 
-.GalleryRow {
+.MosaicRow {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -60,7 +60,7 @@
 }
 
 
-.GalleryImageWrapper {
+.MosaicImageWrapper {
   position: relative;
   padding: 0;
   margin-bottom: -16px;
@@ -95,15 +95,15 @@
   }
 }
 
-.GalleryImageWrapperWide {
+.MosaicImageWrapperWide {
   flex: 5;
 }
 
-.GalleryImageWrapperSquare {
+.MosaicImageWrapperSquare {
   flex: 2;
 }
 
-.GalleryImage {
+.MosaicImage {
   left: 0;
   right: 0;
   bottom: 0;

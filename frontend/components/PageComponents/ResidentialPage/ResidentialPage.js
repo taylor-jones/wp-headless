@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import { FiX } from 'react-icons/fi';
@@ -82,9 +83,11 @@ class ResidentialPage extends PureComponent {
 
     const service = this.services[modalServiceId];
     if (!service) return null;
-    // console.log(service);
 
-    const serviceRegions = service.acf.service_regions;
+    const { acf } = service;
+    console.log(acf);
+
+    const { service_regions, service_categories, coverage_types, diagnosis_types } = acf;
 
     return (
       <Fragment>
@@ -96,9 +99,9 @@ class ResidentialPage extends PureComponent {
 
         <div className={css.ModalBody}>
           {/* Show the service regions */}
-          {serviceRegions.length > 0 && (
+          {service_regions.length > 0 && (
             <ul className={css.ModalTags}>
-              {serviceRegions.map(region => {
+              {service_regions.map(region => {
                 return (
                   <li key={region.term_id}>
                     <span><MdPlace /></span>
@@ -109,10 +112,11 @@ class ResidentialPage extends PureComponent {
             </ul>
           )}
 
-          {/* Show the service descriptions */}
-          <div className={css.ModalContent}>
-            <div dangerouslySetInnerHTML={{ __html: service.content.rendered }} />
-          </div>
+          {/* Show the service details */}
+          <div
+            className={css.ModalContent}
+            dangerouslySetInnerHTML={{ __html: service.content.rendered }}
+          />
         </div>
       </Fragment>
     );
@@ -140,8 +144,8 @@ class ResidentialPage extends PureComponent {
 
   render() {
     const { post } = this.props;
-    // console.log(post);
     post.services = getServicesByCategory(post.services, post.slug);
+    // console.log(post);
 
     return (
       <div className={css.PageWrapper}>
