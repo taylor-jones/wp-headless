@@ -54,6 +54,88 @@ function register_custom_taxonomies() {
   );
 
 
+
+  /**
+   * Service Coverage Types
+   * 
+   * The insurange coverage types that a service is available for
+   */
+
+  register_taxonomy('service-coverage-type', array('service'), array(
+    'graphql_single_name'   => 'serviceCoverageType',
+    'graphql_plural_name'   => 'serviceCoverageTypes',
+    'hierarchical'          => false,
+    'labels'                => array(
+        'name'              => _x( 'Coverage Types', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Coverage Type', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Coverage Types' ),
+        'all_items'         => __( 'All Coverage Types' ),
+        'parent_item'       => __( 'Parent Coverage Type' ),
+        'parent_item_colon' => __( 'Parent Coverage Type:' ),
+        'edit_item'         => __( 'Edit Coverage Type' ),
+        'update_item'       => __( 'Update Coverage Type' ),
+        'add_new_item'      => __( 'Add New Coverage Type' ),
+        'new_item_name'     => __( 'New Coverage Type Name' ),
+        'menu_name'         => __( 'Coverage Types' ),
+    ),
+    'public'                => false,
+    'rest_base'             => 'service-coverage-type',
+    'rewrite'               => array(
+        'slug'                  => _x('service-coverage-types', 'taxonomy slug', SIA_CPT_DOMAIN),
+        'with_front'            => false,
+    ),
+    'show_admin_column'     => false,
+    'show_in_graphql'       => true,
+    'show_in_menu'          => true,
+    'show_in_nav_menus'     => false,
+    'show_in_rest'          => true,
+    'show_in_quick_edit'    => false,
+    'show_ui'               => true,
+    )
+  );
+
+
+
+  /**
+   * Service Diagnosis Types
+   * 
+   * The general diagnosis type(s) that a service is available for
+   */
+
+  register_taxonomy('service-diagnosis-type', array('service'), array(
+    'graphql_single_name'   => 'serviceDiagnosisType',
+    'graphql_plural_name'   => 'serviceDiagnosisTypes',
+    'hierarchical'          => false,
+    'labels'                => array(
+        'name'              => _x( 'Diagnosis Types', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Diagnosis Type', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Diagnosis Types' ),
+        'all_items'         => __( 'All Diagnosis Types' ),
+        'parent_item'       => __( 'Parent Diagnosis Type' ),
+        'parent_item_colon' => __( 'Parent Diagnosis Type:' ),
+        'edit_item'         => __( 'Edit Diagnosis Type' ),
+        'update_item'       => __( 'Update Diagnosis Type' ),
+        'add_new_item'      => __( 'Add New Diagnosis Type' ),
+        'new_item_name'     => __( 'New Diagnosis Type Name' ),
+        'menu_name'         => __( 'Diagnosis Types' ),
+    ),
+    'public'                => false,
+    'rest_base'             => 'service-diagnosis-type',
+    'rewrite'               => array(
+        'slug'                  => _x('service-diagnosis-types', 'taxonomy slug', SIA_CPT_DOMAIN),
+        'with_front'            => false,
+    ),
+    'show_admin_column'     => false,
+    'show_in_graphql'       => true,
+    'show_in_menu'          => true,
+    'show_in_nav_menus'     => false,
+    'show_in_rest'          => true,
+    'show_in_quick_edit'    => false,
+    'show_ui'               => true,
+    )
+  );
+
+
   /**
    * Service Region
    * 

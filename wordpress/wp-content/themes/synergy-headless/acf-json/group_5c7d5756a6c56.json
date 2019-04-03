@@ -45,6 +45,10 @@
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "object",
+            "show_column": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
             "multiple": 0,
             "allow_null": 0
         },
@@ -67,6 +71,62 @@
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "object",
+            "show_column": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_5ca3bb7bfff8d",
+            "label": "Coverage Types",
+            "name": "coverage_types",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "service-coverage-type",
+            "field_type": "checkbox",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "show_column": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_5ca3bbc2fff8e",
+            "label": "Diagnosis Types",
+            "name": "diagnosis_types",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "service-diagnosis-type",
+            "field_type": "checkbox",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "show_column": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
             "multiple": 0,
             "allow_null": 0
         },
@@ -133,5 +193,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1551731603
+    "modified": 1554305374
 }
