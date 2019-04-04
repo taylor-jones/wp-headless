@@ -3,6 +3,7 @@ import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import { FiX } from 'react-icons/fi';
 import { MdPlace } from 'react-icons/md';
+import { GoLightBulb, GoCheck, GoCircleSlash, GoPrimitiveDot } from 'react-icons/go';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
@@ -85,9 +86,20 @@ class ResidentialPage extends PureComponent {
     if (!service) return null;
 
     const { acf } = service;
-    console.log(acf);
+    console.log(service);
 
-    const { service_regions, service_categories, coverage_types, diagnosis_types } = acf;
+    const {
+      service_regions,
+      service_categories,
+      coverage_types,
+      diagnosis_types,
+      image,
+      description,
+      url,
+      key_facts,
+      inclusions,
+      exclusions,
+    } = acf;
 
     return (
       <Fragment>
@@ -112,11 +124,72 @@ class ResidentialPage extends PureComponent {
             </ul>
           )}
 
-          {/* Show the service details */}
-          <div
-            className={css.ModalContent}
-            dangerouslySetInnerHTML={{ __html: service.content.rendered }}
-          />
+          {/* Show the service content */}
+          <div className={css.ModalContent}>
+
+            {/* Description */}
+            <div className={css.ModalSection}>
+              <h3>Description</h3>
+              <div dangerouslySetInnerHTML={{ __html: description }} />
+
+              {/* URL */}
+              {url && (
+                <p>For more details, see <a target="_blank" rel="noopener noreferrer" href={url}>the service description from the North Carolina Department of Health and Human Services.</a></p>
+              )}
+            </div>
+
+            {/* Key Facts */}
+            {key_facts && (
+              <div className={css.ModalSection}>
+                <h3>What To Know</h3>
+                <ul>
+                  {key_facts.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <span><GoPrimitiveDot /></span>
+                        <div>{item.fact}</div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {/* Inclusions */}
+            {inclusions && (
+              <div className={css.ModalSection}>
+                <h3>What This Service Includes</h3>
+                <ul>
+                  {inclusions.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <span><GoCheck /></span>
+                        <div>{item.inclusion}</div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {/* Exclusions */}
+            {exclusions && (
+              <div className={css.ModalSection}>
+                <h3>What This Service Does Not Include</h3>
+                <ul>
+                  {exclusions.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <span><GoCircleSlash /></span>
+                        <div>{item.exclusion}</div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+          </div>
         </div>
       </Fragment>
     );
@@ -144,7 +217,7 @@ class ResidentialPage extends PureComponent {
 
   render() {
     const { post } = this.props;
-    post.services = getServicesByCategory(post.services, post.slug);
+    // post.services = getServicesByCategory(post.services, post.slug);
     // console.log(post);
 
     return (

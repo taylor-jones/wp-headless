@@ -131,11 +131,51 @@
             "allow_null": 0
         },
         {
+            "key": "field_5ca61554f45d5",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "instructions": "Description of this service",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5ca615d9f45d6",
+            "label": "Url",
+            "name": "url",
+            "type": "url",
+            "instructions": "Provide a url for a more thorough service description",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0
+        },
+        {
             "key": "field_5c7d61f495e97",
-            "label": "Focus Points",
-            "name": "focus_points",
+            "label": "Key Facts",
+            "name": "key_facts",
             "type": "repeater",
-            "instructions": "What specific things does this service focus on?\r\nAim to keep these as short bullet points.",
+            "instructions": "What To Know",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -151,8 +191,8 @@
             "sub_fields": [
                 {
                     "key": "field_5c7d624895e98",
-                    "label": "Focus Point",
-                    "name": "focus_point",
+                    "label": "Fact",
+                    "name": "fact",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -166,7 +206,98 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ca6151bf45d1",
+            "label": "Inclusions",
+            "name": "inclusions",
+            "type": "repeater",
+            "instructions": "What does this service include?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ca6152bf45d2",
+                    "label": "Inclusion",
+                    "name": "inclusion",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000
+                }
+            ]
+        },
+        {
+            "key": "field_5ca6153bf45d3",
+            "label": "Exclusions",
+            "name": "exclusions",
+            "type": "repeater",
+            "instructions": "What does this service explicitly NOT include",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ca61543f45d4",
+                    "label": "Exclusion",
+                    "name": "exclusion",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000
                 }
             ]
         }
@@ -193,5 +324,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1554305374
+    "modified": 1554388729
 }

@@ -18,7 +18,7 @@ class MissionVisionPage extends PureComponent {
       <div className={css.PageContainer}>
 
         {/* Top Section -- Lead Content */}
-        <Container class={css.StatementsWrapper}>
+        <Container className={css.StatementsWrapper}>
           <Row>
             <Col>
               <div className={css.StatementSection}>

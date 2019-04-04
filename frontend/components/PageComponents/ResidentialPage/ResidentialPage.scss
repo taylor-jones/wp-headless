@@ -116,29 +116,39 @@
   }
 
   h3 {
-    font-size: 1.2rem;
     font-weight: 500;
     margin-top: 2rem;
-  }
 
-  ul {
-    list-style-position: outside;
+    @include break(md) {
+      font-size: 22px;
+    }
+
+    @include break(lg) {
+      font-size: 24px;
+    }
   }
 
   li {
-    margin-bottom: 16px;
-    margin-left: 24px;
+    margin-bottom: 12px;
+    margin-left: 16px;
     position: relative;
 
-    &:before {
+    span {
       position: absolute;
-      content: '\2713';
-      display: inline-block;
-      font-size: inherit;
-      left: -24px;
+      left: -16px;
+    }
+
+    div {
+      margin-left: 12px;
     }
   }
 }
+
+
+.ModalSection {
+  margin-bottom: 48px;
+}
+
 
 .ModalTags {
   align-items: flex-start;
