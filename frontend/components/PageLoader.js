@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Column } from 'react-grid-system';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
-import MissionVisionPage from './PageComponents/MissionVisionPage/MissionVisionPage';
+import OurPurposePage from './PageComponents/OurPurposePage/OurPurposePage';
 
 
 const PageLoader = props => {
@@ -20,7 +20,7 @@ const PageLoader = props => {
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
     residential: <ResidentialPage post={post} />,
-    'mission-and-vision': <MissionVisionPage post={post} />,
+    purpose: <OurPurposePage post={post} />,
   };
 
   /**

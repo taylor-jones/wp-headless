@@ -1,0 +1,114 @@
+/* responsive font-sizes using sass mixins in conjunction with postcss and rucksack.
+    values have the following purpose:
+    (
+      1. selector name
+      2. default font-size fallback
+      3. min-font-size    (optional)
+      4. max-font-size    (optional)
+      5. lower-font-range (optional)
+      6. upper-font-range (optional)
+    )
+*/
+
+@function calculateRem($size, $rootSize: $font-size-base) {
+  @if (unitless($size) or unit($size) == "px") {
+      $remSize: $size/$rootSize;
+      @return #{$remSize}rem;
+  } @else {
+      @return $size;
+  }
+}
+
+
+@mixin rem($pxSize, $property: font-size) {
+  // create px fallback, but only if the property is font-size
+  @if ($property == font-size) {
+      #{$property}: $pxSize;
+  }
+
+  #{$property}: calculateRem($pxSize);
+}
+
+
+/**
+ * Use a predefined dynamic sizing map for a specified element at different breakpoints sizes.
+ * Note: in order to properly use this mixin, there following variables should already be defined:
+ *  - a mapping of responsive sizes for different elements, one of which is the desired element.
+ *  - a mapping of breakpoints, which is used to dynamically size the content.
+ *
+ * The style map uses the following format:
+ *  - selector name
+ *  - fallback/default size
+ *  - smallest size desired for selector
+ *  - largest size desired for selector
+ *  - min breakpoint size at which responsive sizing is active
+ *  - max breakpoint size at which responsive sizing is active
+ *
+ *
+ * @param $element - the mapped element name to use the style of.
+ * @param $styleMap - a mapping of styles that should contain the $element (defaults to a variable named $responsive-font-styles).
+ * @param $breakpointMap - a mapping of breakpoints (defaults to a variable named $grid-breakpoints)
+ */
+@mixin responsive-font($element, $styleMap: $responsive-font-styles, $breakpointMap: $grid-breakpoints) {
+  @each $selector, $fallback, $size-min, $size-max, $range-min, $range-max in $styleMap {
+    @if ($element == $selector) {
+      font-size: $fallback;
+
+      @if ($size-min) or ($size-max) {
+        font-size: responsive;
+
+        @if ($size-min) {
+          @include rem($size-min, min-font-size); 
+        }
+
+        @if ($size-max) { 
+          @include rem($size-max, max-font-size); 
+        }
+
+        @if ($range-min) {
+          @if (map-has-key($breakpointMap, $range-min)) { 
+            lower-font-range: map-get($breakpointMap, $range-min); 
+          } @else { 
+            lower-font-range: $range-min; 
+          }
+        }
+
+        @if ($range-max) {
+          @if (map-has-key($breakpointMap, $range-max)) { 
+            upper-font-range: map-get($breakpointMap, $range-max); 
+          } @else { 
+            upper-font-range: $range-max; 
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* Examples Usage:
+
+***** given the following $responsive-font-styles:
+
+$responsive-font-styles: (
+  (h1, 36px, 28px, 38px, 100px, 500px),
+  (h2, 28px, 24px, 32px, sm, lg),
+  (h3, 24px, 20px, 28px),
+  (p, 14px, 0.85rem, 1rem)
+);
+
+h1 {
+  @include responsive-font(h1);
+}
+
+h2 {
+  @include responsive-font(h2);
+}
+
+h3 {
+  @include responsive-font(h3);
+}
+
+*/
+
+

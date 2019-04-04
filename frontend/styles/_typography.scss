@@ -1,0 +1,178 @@
+@import 'mixins/typography';
+@import './breakpoints';
+@import './variables';
+
+$responsive-font-styles: (
+  (h1, 30px, 26px, 46px),
+  (h2, 26px, 24px, 40px),
+  (h3, 24px, 22px, 32px),
+  (h4, 20px, 18px, 28px),
+  (h5, 18px, 16px, 22px),
+  (h6, 16px, 14px, 20px),
+);
+
+
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color: $heading-uncolored;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-family: $font-stack-rounded;
+  letter-spacing: normal;
+
+  // @include break(md) {
+  //   font-weight: 400;
+  // }
+}
+
+.h1 {
+  // font-size: 26px;
+  line-height: 30px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    // font-size: 32px;
+    line-height: 36px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  @include break(xl) {
+    // font-size: 46px;
+    line-height: 52px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+
+.h2 {
+  // font-size: 24px;
+  line-height: 28px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    // font-size: 30px;
+    line-height: 34px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  @include break(xl) {
+    // font-size: 40px;
+    line-height: 46px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+
+.h3 {
+  // font-size: 22px;
+  line-height: 26px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    // font-size: 26px;
+    line-height: 32px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  @include break(xl) {
+    // font-size: 32px;
+    line-height: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+
+.h4 {
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 22px;
+    line-height: 28px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  @include break(xl) {
+    font-size: 28px;
+    line-height: 36px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+
+.h5 {
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  @include break(md) {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  @include break(xl) {
+    font-size: 22px;
+    line-height: 28px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+
+
+h1 {
+  @extend .h1;
+  @include responsive-font(h1);
+}
+
+h2 {
+  @extend .h2;
+  @include responsive-font(h2);
+}
+
+h3 {
+  @extend .h3;
+  @include responsive-font(h3);
+}
+
+h4 {
+  @extend .h4;
+  @include responsive-font(h4);
+}
+
+h5 {
+  @extend .h5;
+  @include responsive-font(h5);
+}
+
+h6 {
+  @extend .h6;
+  @include responsive-font(h6);
+}

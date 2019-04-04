@@ -5,6 +5,7 @@ import { FiX } from 'react-icons/fi';
 import { MdPlace } from 'react-icons/md';
 import { GoLightBulb, GoCheck, GoCircleSlash, GoPrimitiveDot } from 'react-icons/go';
 import Modal from 'react-modal';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
@@ -134,7 +135,11 @@ class ResidentialPage extends PureComponent {
 
               {/* URL */}
               {url && (
-                <p>For more details, see <a target="_blank" rel="noopener noreferrer" href={url}>the service description from the North Carolina Department of Health and Human Services.</a></p>
+                <p>For more details, see
+                  <Link href={url}>
+                    <a target="_blank" rel="noopener noreferrer"> the service description from the North Carolina Department of Health and Human Services.</a>
+                  </Link>
+                </p>
               )}
             </div>
 

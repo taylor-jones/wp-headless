@@ -3,7 +3,7 @@
  * should be mapped to a different slug.
  */
 module.exports = {
-  about: 'mission-and-vision',
+  'who-we-are': 'purpose',
   home: '',
 };
 

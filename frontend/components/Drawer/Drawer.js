@@ -35,7 +35,7 @@ class Drawer extends PureComponent {
 
           <footer className={css.DrawerFooter}>
             <Link href="https://www.facebook.com/synergyinaction">
-              <a><FaFacebookSquare /></a>
+              <a target="_blank"><FaFacebookSquare /></a>
             </Link>
           </footer>
         </div>

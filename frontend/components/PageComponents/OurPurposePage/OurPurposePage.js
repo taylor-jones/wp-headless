@@ -3,10 +3,10 @@ import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import TextSection from '../../TextSection/TextSection';
-import css from './MissionVisionPage.scss';
+import css from './OurPurposePage.scss';
 
 
-class MissionVisionPage extends PureComponent {
+class OurPurposePage extends PureComponent {
   render() {
     const { post } = this.props;
     const { acf } = post;
@@ -90,9 +90,9 @@ class MissionVisionPage extends PureComponent {
 
 
 
-MissionVisionPage.propTypes = {
+OurPurposePage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 
-export default MissionVisionPage;
+export default OurPurposePage;
