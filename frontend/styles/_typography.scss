@@ -13,6 +13,11 @@ $responsive-font-styles: (
 
 
 
+// 
+// headings
+// 
+
+
 .h1,
 .h2,
 .h3,
@@ -175,4 +180,45 @@ h5 {
 h6 {
   @extend .h6;
   @include responsive-font(h6);
+}
+
+
+
+// 
+// paragrahps
+// 
+
+p {
+  display: block;
+  font-size: 16px;
+  line-height: 1.75em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+p.lead {
+  font-size: 18px;
+  line-height: 1.333;
+  word-wrap: break-word;
+  padding: 4px 0;
+  // text-align: center;
+
+  @include break(md) {
+    font-size: 18px;
+    line-height: 1.444;
+  }
+
+  @include break(lg) {
+    font-size: 20px;
+  }
+}
+
+
+.colored-heading {
+  color: $heading-colored;
 }

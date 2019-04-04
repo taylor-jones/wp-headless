@@ -4,10 +4,12 @@ import { Container, Row, Column } from 'react-grid-system';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 import OurPurposePage from './PageComponents/OurPurposePage/OurPurposePage';
+import MissionVisionPage from './PageComponents/MissionVisionPage/MissionVisionPage';
 
 
 const PageLoader = props => {
   const { post } = props;
+  console.log(post);
 
   /**
    * This is a mapping of various page slugs to the components
@@ -20,7 +22,8 @@ const PageLoader = props => {
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
     residential: <ResidentialPage post={post} />,
-    purpose: <OurPurposePage post={post} />,
+    'our-purpose': <OurPurposePage post={post} />,
+    'mission-and-vision': <MissionVisionPage post={post} />,
   };
 
   /**
@@ -40,11 +43,11 @@ const PageLoader = props => {
   const hasComponent = slugHasComponent(post.slug);
 
   return (
-    <div>
+    <Fragment>
       {/* If the page has a specified PageComponent, then load that component */}
       {hasComponent && getSlugComponent(post.slug)}
 
-      {/* Otherwise, just load the page title and conent by default */}
+      {/* Otherwise, just load the default content */}
       {!hasComponent && (
         <Container>
           <Row>
@@ -54,7 +57,7 @@ const PageLoader = props => {
         </Container>
       )}
 
-    </div>
+    </Fragment>
   );
 };
 

@@ -1,0 +1,77 @@
+@import '../../../styles/breakpoints';
+
+// .PageContainer {
+  // margin: 8px;
+
+  // @include break(sm) {
+  //   margin: 16px;
+  // }
+// }
+
+
+.LeadWrapper {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 80%;
+
+  @include break(md) {
+    max-width: 900px;
+  }
+}
+
+
+
+
+// 
+// Statements
+// 
+.StatementsWrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 96px auto;
+
+  @include break-only(md) {
+    width: 100%;
+  }
+}
+
+.StatementWrapper,
+.StatementSection {
+  // padding-left: 5vw;
+  // padding-right: 5vw;
+  padding: 0 8px;
+
+  @include break(sm) {
+    padding: 0 24px;
+  }
+
+  @include break(lg) {
+    padding: 0 60px;
+  }
+
+  @include break(xl) {
+    padding: 0 90px;
+  }
+}
+
+.StatementWrapper {
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+.StatementSection {
+  max-width: 1200px;
+}
+
+.StatementRow {
+  margin-top: 48px;
+
+  @include break(md) {
+    margin-top: 24px;
+  }
+}
