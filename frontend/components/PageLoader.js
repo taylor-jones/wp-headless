@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Column } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 import OurPurposePage from './PageComponents/OurPurposePage/OurPurposePage';
@@ -9,7 +9,7 @@ import MissionVisionPage from './PageComponents/MissionVisionPage/MissionVisionP
 
 const PageLoader = props => {
   const { post } = props;
-  console.log(post);
+  // console.log(post);
 
   /**
    * This is a mapping of various page slugs to the components
@@ -22,8 +22,8 @@ const PageLoader = props => {
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
     residential: <ResidentialPage post={post} />,
-    'our-purpose': <OurPurposePage post={post} />,
-    'mission-and-vision': <MissionVisionPage post={post} />,
+    purpose: <OurPurposePage post={post} />,
+    mission: <MissionVisionPage post={post} />,
   };
 
   /**
@@ -49,10 +49,12 @@ const PageLoader = props => {
 
       {/* Otherwise, just load the default content */}
       {!hasComponent && (
-        <Container>
+        <Container className="visualizer">
           <Row>
-            <h1>{post.title.rendered}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+            <Col>
+              <h1>{post.title.rendered}</h1>
+              <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+            </Col>
           </Row>
         </Container>
       )}

@@ -1,0 +1,102 @@
+{
+    "key": "group_5ca64afcb5163",
+    "title": "Our Purpose Details",
+    "fields": [
+        {
+            "key": "field_5ca64afcb8cca",
+            "label": "Why We Exist",
+            "name": "why_we_exist",
+            "type": "medium_editor",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "standard_buttons": [
+                "bold",
+                "italic",
+                "underline",
+                "anchor",
+                "quote",
+                "orderedlist",
+                "unorderedlist",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "html",
+                "removeFormat"
+            ],
+            "custom_buttons": "",
+            "other_options": [
+                "spellcheck",
+                "targetBlank"
+            ],
+            "delay": 1
+        },
+        {
+            "key": "field_5ca64afcb8cd6",
+            "label": "Our History",
+            "name": "our_history",
+            "type": "medium_editor",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "standard_buttons": [
+                "bold",
+                "italic",
+                "underline",
+                "anchor",
+                "quote",
+                "orderedlist",
+                "unorderedlist",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "html",
+                "removeFormat"
+            ],
+            "custom_buttons": "",
+            "other_options": [
+                "spellcheck",
+                "targetBlank"
+            ],
+            "delay": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "190"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1554406357
+}

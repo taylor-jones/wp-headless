@@ -88,6 +88,9 @@ class Layout extends Component {
 
     return (
       <div className={css.Wrapper}>
+        {/* DEVELOPMENT ONLY */}
+        <div className="visualizer-stripe" />
+
         <PageHead title={title.rendered} />
 
         <Header

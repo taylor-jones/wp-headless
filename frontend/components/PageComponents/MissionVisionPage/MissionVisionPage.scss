@@ -1,12 +1,19 @@
 @import '../../../styles/breakpoints';
+@import '../../../styles/typography';
 
-// .PageContainer {
-  // margin: 8px;
+.PageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  // @include break(sm) {
-  //   margin: 16px;
-  // }
-// }
+  margin: 8px;
+  padding: 64px 0;
+  max-width: 1080px;
+
+  @include break(sm) {
+    margin: 16px auto;
+  }
+}
 
 
 .LeadWrapper {
@@ -73,5 +80,109 @@
 
   @include break(md) {
     margin-top: 24px;
+  }
+}
+
+
+
+// 
+// WP Editor
+// 
+
+.WpEditor {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 90%;
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  p {
+    @extend .lead;
+  }
+
+  @include break(md) {
+    max-width: 70%;
+  }
+}
+
+
+.Block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 64px;
+  // min-height: 1px;
+
+  @include break(md) {
+    max-width: 80%;
+  }
+
+  @include break(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.BlockImageWrapper,
+.BlockTextWrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+.BlockImageWrapper {
+  padding: 0 4vw;
+  
+  @include break(lg) {
+    padding: 0;
+    flex: 4;
+    order: 2;
+  }
+}
+
+.BlockTextWrapper {
+  padding: 0 4vw;
+  // text-align: center;
+  margin-top: 32px;
+  
+  @include break(lg) {
+    padding: 0 6% 0 0;
+    align-items: center;
+    order: 1;
+    margin-top: 0;
+    text-align: left;
+    flex: 8;
+  }
+}
+
+.BlockImage {
+  // width: 300px;
+  // height: auto;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  // max-height: 300px;
+  
+  @include break(lg) {
+    height: auto;
+    max-height: 225px;
+    max-width: 275px;
+  }
+  
+  @include break(xl) {
+    max-height: 250px;
+    max-width: 300px;
   }
 }

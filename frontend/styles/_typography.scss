@@ -9,6 +9,7 @@ $responsive-font-styles: (
   (h4, 20px, 18px, 28px),
   (h5, 18px, 16px, 22px),
   (h6, 16px, 14px, 20px),
+  (lead, 18px, 18px, 20px),
 );
 
 
@@ -202,19 +203,13 @@ p {
 }
 
 p.lead {
-  font-size: 18px;
+  @include responsive-font(lead);
   line-height: 1.333;
   word-wrap: break-word;
   padding: 4px 0;
-  // text-align: center;
 
   @include break(md) {
-    font-size: 18px;
     line-height: 1.444;
-  }
-
-  @include break(lg) {
-    font-size: 20px;
   }
 }
 
