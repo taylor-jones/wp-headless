@@ -3,13 +3,13 @@
 @import './variables';
 
 $responsive-font-styles: (
-  (h1, 30px, 26px, 46px),
-  (h2, 26px, 24px, 40px),
-  (h3, 24px, 22px, 32px),
-  (h4, 20px, 18px, 28px),
-  (h5, 18px, 16px, 22px),
-  (h6, 16px, 14px, 20px),
-  (lead, 18px, 18px, 20px),
+  (h1, 34px, 26px, 40px),
+  (h2, 24px, 24px, 34px),
+  (h3, 22px, 22px, 28px),
+  (h4, 20px, 18px, 24px),
+  (h5, 16px, 16px, 20px),
+  (h6, 14px, 14px, 18px),
+  (lead, 16px, 16px, 20px),
 );
 
 
@@ -17,7 +17,6 @@ $responsive-font-styles: (
 // 
 // headings
 // 
-
 
 .h1,
 .h2,
@@ -38,21 +37,18 @@ $responsive-font-styles: (
 }
 
 .h1 {
-  // font-size: 26px;
   line-height: 30px;
   margin-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 
   @include break(md) {
-    // font-size: 32px;
     line-height: 36px;
     padding-top: 6px;
     padding-bottom: 6px;
   }
 
   @include break(xl) {
-    // font-size: 46px;
     line-height: 52px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -61,21 +57,18 @@ $responsive-font-styles: (
 
 
 .h2 {
-  // font-size: 24px;
   line-height: 28px;
   margin-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 
   @include break(md) {
-    // font-size: 30px;
     line-height: 34px;
     padding-top: 5px;
     padding-bottom: 5px;
   }
 
   @include break(xl) {
-    // font-size: 40px;
     line-height: 46px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -84,22 +77,19 @@ $responsive-font-styles: (
 
 
 .h3 {
-  // font-size: 22px;
   line-height: 26px;
   margin-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 
   @include break(md) {
-    // font-size: 26px;
     line-height: 32px;
     padding-top: 4px;
     padding-bottom: 4px;
   }
 
   @include break(xl) {
-    // font-size: 32px;
-    line-height: 40px;
+    line-height: 36px;
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -107,21 +97,18 @@ $responsive-font-styles: (
 
 
 .h4 {
-  font-size: 18px;
   line-height: 24px;
   margin-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 
   @include break(md) {
-    font-size: 22px;
     line-height: 28px;
     padding-top: 3px;
     padding-bottom: 3px;
   }
 
   @include break(xl) {
-    font-size: 28px;
     line-height: 36px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -130,21 +117,18 @@ $responsive-font-styles: (
 
 
 .h5 {
-  font-size: 16px;
   line-height: 22px;
   margin-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 
   @include break(md) {
-    font-size: 18px;
     line-height: 24px;
     padding-top: 3px;
     padding-bottom: 3px;
   }
 
   @include break(xl) {
-    font-size: 22px;
     line-height: 28px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -192,7 +176,7 @@ h6 {
 p {
   display: block;
   font-size: 16px;
-  line-height: 1.75em;
+  line-height: 1.65em;
   font-weight: 400;
   margin: 0;
   padding: 0;

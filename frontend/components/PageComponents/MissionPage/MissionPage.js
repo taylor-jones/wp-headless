@@ -2,10 +2,10 @@ import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import { Picture } from 'react-responsive-picture';
-import css from './MissionVisionPage.scss';
+import css from './MissionPage.scss';
 
 
-class MissionVisionPage extends PureComponent {
+class MissionPage extends PureComponent {
   render() {
     const { post } = this.props;
     const { acf } = post;
@@ -16,14 +16,6 @@ class MissionVisionPage extends PureComponent {
       <Fragment>
         <div className={css.PageContainer}>
           <Container>
-
-            {/* Gutenberg Content */}
-            {post.content.rendered && (
-              <div className={css.WpEditor}>
-                <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-              </div>
-            )}
-
 
             {/* Principles */}
             {acf.principles.map((principle, index) => {
@@ -85,9 +77,9 @@ class MissionVisionPage extends PureComponent {
 }
 
 
-MissionVisionPage.propTypes = {
+MissionPage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 
-export default MissionVisionPage;
+export default MissionPage;

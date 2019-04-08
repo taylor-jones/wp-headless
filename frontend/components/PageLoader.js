@@ -1,10 +1,12 @@
+/* eslint-disable camelcase */
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
+import PageLead from './PageLead/PageLead';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
-import OurPurposePage from './PageComponents/OurPurposePage/OurPurposePage';
-import MissionVisionPage from './PageComponents/MissionVisionPage/MissionVisionPage';
+import PurposePage from './PageComponents/PurposePage/PurposePage';
+import MissionPage from './PageComponents/MissionPage/MissionPage';
 
 
 const PageLoader = props => {
@@ -22,8 +24,8 @@ const PageLoader = props => {
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
     residential: <ResidentialPage post={post} />,
-    purpose: <OurPurposePage post={post} />,
-    mission: <MissionVisionPage post={post} />,
+    purpose: <PurposePage post={post} />,
+    mission: <MissionPage post={post} />,
   };
 
   /**
@@ -42,8 +44,28 @@ const PageLoader = props => {
   // check if the slug has a component to load
   const hasComponent = slugHasComponent(post.slug);
 
+  // check if the slug has any page lead content
+  const hasLeadContent = () => {
+    if (!post.acf || !post.acf.page_lead) return false;
+    const { page_lead } = post.acf;
+    if (page_lead.heading || page_lead.sub_heading || page_lead.lead_content) return true;
+    return false;
+  };
+
+
   return (
     <Fragment>
+      {/* If the page has any lead content, then load that above any other content */}
+      {hasLeadContent() && (
+        <PageLead
+          align="center"
+          heading={post.acf.page_lead.heading}
+          subheading={post.acf.page_lead.subheading}
+        >
+          {post.acf.page_lead.lead_content}
+        </PageLead>
+      )}
+
       {/* If the page has a specified PageComponent, then load that component */}
       {hasComponent && getSlugComponent(post.slug)}
 

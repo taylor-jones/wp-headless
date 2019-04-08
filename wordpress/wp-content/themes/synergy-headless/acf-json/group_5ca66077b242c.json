@@ -3,11 +3,11 @@
     "title": "Page Details",
     "fields": [
         {
-            "key": "field_5ca66083e7a4a",
-            "label": "Page Heading",
-            "name": "page_heading",
-            "type": "medium_editor",
-            "instructions": "The page heading will display above all other page content. This should be brief any indicate what the page is about.",
+            "key": "field_5cab671701fd6",
+            "label": "Page Lead",
+            "name": "page_lead",
+            "type": "group",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,53 +15,138 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "standard_buttons": [
-                "bold",
-                "italic",
-                "underline",
-                "anchor",
-                "removeFormat"
-            ],
-            "custom_buttons": "",
-            "other_options": [
-                "disableReturn",
-                "disableDoubleReturn",
-                "disableExtraSpaces",
-                "spellcheck",
-                "targetBlank"
-            ],
-            "delay": 0
-        },
-        {
-            "key": "field_5ca66135e7a4b",
-            "label": "Lead Content",
-            "name": "lead_content",
-            "type": "medium_editor",
-            "instructions": "Lead content will display below the page heading but above the rest of the page content. This text should generally be longer than the page heading, but it should not be longer than a few lines.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "standard_buttons": [
-                "bold",
-                "italic",
-                "underline",
-                "html",
-                "removeFormat"
-            ],
-            "custom_buttons": "",
-            "other_options": [
-                "spellcheck",
-                "targetBlank"
-            ],
-            "delay": 0
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5cab683301fdb",
+                    "label": "Heading",
+                    "name": "heading",
+                    "type": "medium_editor",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "standard_buttons": [
+                        "anchor",
+                        "quote",
+                        "pre",
+                        "justifyLeft",
+                        "justifyCenter",
+                        "justifyRight",
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "h6",
+                        "html",
+                        "removeFormat"
+                    ],
+                    "custom_buttons": "",
+                    "other_options": [
+                        "disableReturn",
+                        "disableDoubleReturn",
+                        "disableExtraSpaces",
+                        "spellcheck",
+                        "targetBlank"
+                    ],
+                    "delay": 0
+                },
+                {
+                    "key": "field_5cab685c01fdc",
+                    "label": "Sub Heading",
+                    "name": "sub_heading",
+                    "type": "medium_editor",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "standard_buttons": [
+                        "bold",
+                        "italic",
+                        "underline",
+                        "anchor",
+                        "quote",
+                        "pre",
+                        "justifyLeft",
+                        "justifyCenter",
+                        "justifyRight",
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "h6",
+                        "html",
+                        "removeFormat"
+                    ],
+                    "custom_buttons": "",
+                    "other_options": [
+                        "disableReturn",
+                        "disableDoubleReturn",
+                        "disableExtraSpaces",
+                        "spellcheck",
+                        "targetBlank"
+                    ],
+                    "delay": 0
+                },
+                {
+                    "key": "field_5cab67c401fd9",
+                    "label": "Lead Content",
+                    "name": "lead_content",
+                    "type": "medium_editor",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "standard_buttons": [
+                        "bold",
+                        "italic",
+                        "underline",
+                        "anchor",
+                        "quote",
+                        "pre",
+                        "orderedlist",
+                        "unorderedlist",
+                        "justifyLeft",
+                        "justifyCenter",
+                        "justifyRight",
+                        "h1",
+                        "h2",
+                        "h3",
+                        "h4",
+                        "h5",
+                        "h6",
+                        "html",
+                        "removeFormat"
+                    ],
+                    "custom_buttons": "",
+                    "other_options": [
+                        "disableExtraSpaces",
+                        "spellcheck",
+                        "targetBlank"
+                    ],
+                    "delay": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -81,5 +166,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554478877
+    "modified": 1554737325
 }

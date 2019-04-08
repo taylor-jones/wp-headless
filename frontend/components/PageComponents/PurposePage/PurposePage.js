@@ -1,10 +1,10 @@
 import { PureComponent } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
-import css from './OurPurposePage.scss';
+import css from './PurposePage.scss';
 
 
-class OurPurposePage extends PureComponent {
+class PurposePage extends PureComponent {
   render() {
     const { post } = this.props;
     const { acf } = post;
@@ -76,9 +76,9 @@ class OurPurposePage extends PureComponent {
 }
 
 
-OurPurposePage.propTypes = {
+PurposePage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 
-export default OurPurposePage;
+export default PurposePage;

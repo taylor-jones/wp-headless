@@ -1,0 +1,104 @@
+@import '../../styles/variables';
+@import '../../styles/typography';
+
+
+.PageLeadWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  margin: 8px;
+  padding-top: 48px;
+  max-width: 1080px;
+
+  @include break(sm) {
+    margin: 16px auto;
+  }
+
+}
+
+.Left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.Center {
+  align-items: center;
+  text-align: center;
+}
+
+.Right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.PageLead {
+  width: 80%;
+  margin: auto;
+
+  @include break(md) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include break(lg) {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  @include break(xl) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+
+.HeadingWrapper {
+  margin-bottom: 24px;
+}
+
+
+.Heading,
+.Subheading {
+  font-family: $font-stack-rounded;
+}
+
+
+.Heading {
+  font-weight: 400;
+}
+
+
+.LeadContentWrapper {
+  color: inherit;
+}
+
+.Subheading,
+.Subheading p {
+  font-size: 16px;
+  line-height: 24px;
+
+  @include break(lg) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.LeadContent {
+  margin-bottom: 1.5em;
+
+  p {
+    @extend .lead;
+  }
+
+  p:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+}
+
+.LeadContent:last-child {
+  margin-bottom: 0;
+}
+
