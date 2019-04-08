@@ -21,25 +21,33 @@ class ImpactPage extends PureComponent {
             <Row>
 
               {stories.map(story => {
-                console.log(story);
+                const href = getSlug(story.link, 3, true);
 
                 return (
                   <Col sm={12} md={6} lg={4} key={story.id}>
                     <div className={css.CardImageContainer}>
-                      <div className={css.CardImageWrapper}>
-                        <Picture
-                          className={css.CardImage}
-                          alt={story.acf.image.alt}
-                          sources={[
-                            { srcSet: story.acf.image.sizes.large, media: '(max-width: 1127px)' },
-                            { srcSet: story.acf.image.sizes.medium },
-                          ]}
-                        />
-                      </div>
+                      <Link href={href}>
+                        <a rel="noopener noreferrer">
+                          <div className={css.CardImageWrapper}>
+                            <Picture
+                              className={css.CardImage}
+                              alt={story.acf.image.alt}
+                              sources={[
+                                { srcSet: story.acf.image.sizes.large, media: '(max-width: 1127px)' },
+                                { srcSet: story.acf.image.sizes.medium },
+                              ]}
+                            />
+                          </div>
+                        </a>
+                      </Link>
 
                       <div className={css.CardBodyWrapper}>
                         <div className={css.CardHeadingWrapper}>
-                          <div className={css.CardHeading}>{story.acf.heading}</div>
+                          <Link href={href}>
+                            <a rel="noopener noreferrer">
+                              <div className={css.CardHeading}>{story.acf.heading}</div>
+                            </a>
+                          </Link>
                         </div>
                         <div className={css.CardExcerptWrapper}>
                           <div className={css.CardExcerpt}>
@@ -47,7 +55,7 @@ class ImpactPage extends PureComponent {
                           </div>
                         </div>
 
-                        <Link href={getSlug(story.link, 3, true)}>
+                        <Link href={href}>
                           <a rel="noopener noreferrer">Read More</a>
                         </Link>
                       </div>

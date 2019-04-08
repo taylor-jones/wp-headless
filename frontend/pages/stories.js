@@ -1,5 +1,4 @@
-import { Component, Fragment } from 'react';
-import Link from 'next/link';
+import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
 import PropTypes from 'prop-types';
@@ -13,34 +12,15 @@ class Story extends Component {
     const storiesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/stories?slug=${slug}`);
     const stories = await storiesRes.json();
 
-    if (stories.length === 0) {
-      return {};
-    }
+    if (stories.length === 0) return {};
 
     const story = stories[0];
     return { story };
   }
 
   render() {
-    console.log(this.props);
     const { story } = this.props;
-
     if (!story.title) { return <Error statusCode={404} />; }
-
-    // const posts = this.props.posts.map((post, index) => {
-    //   return (
-    //     <ul key={index}>
-    //       <li>
-    //         <Link
-    //           as={`/post/${post.slug}`}
-    //           href={`/post?slug=${post.slug}&apiRoute=post`}
-    //         >
-    //           <a>{post.title.rendered}</a>
-    //         </Link>
-    //       </li>
-    //     </ul>
-    //   );
-    // });
 
     return (
       <Layout
@@ -58,7 +38,6 @@ class Story extends Component {
 
 
 Story.propTypes = {
-  // posts: PropTypes.instanceOf(Object).isRequired,
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object).isRequired,

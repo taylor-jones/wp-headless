@@ -102,7 +102,7 @@ app
 
     server.get('/stories/:slug', (req, res) => {
       const queryParams = { slug: req.params.slug };
-      const actualPage = '/story';
+      const actualPage = '/stories';
       renderAndCache(req, res, actualPage, queryParams);
     });
 
