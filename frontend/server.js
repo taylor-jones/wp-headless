@@ -95,15 +95,21 @@ app
     });
 
     server.get('/category/:slug', (req, res) => {
-      const actualPage = '/category';
       const queryParams = { slug: req.params.slug };
-      app.renderAndCache(req, res, actualPage, queryParams);
+      const actualPage = '/category';
+      renderAndCache(req, res, actualPage, queryParams);
+    });
+
+    server.get('/stories/:slug', (req, res) => {
+      const queryParams = { slug: req.params.slug };
+      const actualPage = '/story';
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('/_preview/:id/:wpnonce', (req, res) => {
-      const actualPage = '/preview';
       const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
-      app.renderAndCache(req, res, actualPage, queryParams);
+      const actualPage = '/preview';
+      renderAndCache(req, res, actualPage, queryParams);
     });
 
     server.get('*', (req, res) => {

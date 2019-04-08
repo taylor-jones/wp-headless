@@ -28,10 +28,22 @@ const mappedSlug = slug => {
  * NOTE: This function does not check for any slug mapping.
  * @param {string} url
  */
-const getSlug = (url, offset = 2) => {
+// const getSlug = (url, offset = 2) => {
+//   const parts = url.split('/');
+//   const slug = parts.length > offset ? parts[parts.length - offset] : url;
+//   return slug;
+// };
+
+const getSlug = (url, offset = 2, includePath = false) => {
+  // const parts = url.split('/').filter(part => part !== '');
   const parts = url.split('/');
-  const slug = parts.length > offset ? parts[parts.length - offset] : url;
-  return slug;
+
+  if (parts.length >= offset) {
+    if (includePath) return parts.slice(parts.length - offset).join('/');
+    return parts[parts.length - offset];
+  }
+
+  return url;
 };
 
 

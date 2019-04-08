@@ -1,0 +1,70 @@
+@import '../../../styles/breakpoints';
+
+// .PageContainer {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   // margin: 8px;
+//   margin: 48px auto;
+//   max-width: 1080px;
+// }
+
+
+
+
+//
+// Cards
+//
+
+.CardContainer {
+  color: inherit;
+}
+
+.CardWrapper {
+  margin: 96px 8px;
+
+  @include break(md) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}
+
+.CardImageWrapper {
+  position: relative;
+  height: 333.33px;
+
+  @include break(md) {
+    height: 250px;
+  }
+}
+
+.CardImage {
+  height: 100%;
+  width: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+}
+
+.CardHeadingWrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  @include break(md) {
+    margin-bottom: 0;
+  }
+}
+
+.CardHeading {
+  // text-align: center;
+  font-size: 18px;
+  margin: 0;
+  word-wrap: break-word;
+  font-weight: 500;
+  line-height: 1.444em;
+
+  // @include break(md) {
+  //   font-size: 16px;
+  // }
+}
+

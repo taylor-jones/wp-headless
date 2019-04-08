@@ -17,17 +17,13 @@ import PageLoader from '../components/PageLoader';
  * post object as the postProperty name from the mapping.
  */
 const customPostTypeRequestMap = {
-  residential: {
+  services: {
     fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
     postProperty: 'services',
   },
-  community: {
-    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
-    postProperty: 'services',
-  },
-  'tenant-case-management': {
-    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/services`,
-    postProperty: 'services',
+  impact: {
+    fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/stories`,
+    postProperty: 'stories',
   },
 };
 

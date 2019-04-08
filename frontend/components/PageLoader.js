@@ -7,6 +7,7 @@ import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
+import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
 
 
 const PageLoader = props => {
@@ -26,6 +27,7 @@ const PageLoader = props => {
     residential: <ResidentialPage post={post} />,
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,
+    impact: <ImpactPage post={post} />,
   };
 
   /**
