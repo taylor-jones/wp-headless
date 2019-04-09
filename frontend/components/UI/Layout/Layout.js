@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { setConfiguration } from 'react-grid-system';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
@@ -28,7 +28,7 @@ setConfiguration({
 
 const drawerHtmlId = 'drawer';
 
-class Layout extends Component {
+class Layout extends PureComponent {
   state = {
     showSideDrawer: false,
   };
@@ -44,6 +44,14 @@ class Layout extends Component {
   componentDidMount() {
     this.drawerElement = document.querySelector(`#${drawerHtmlId}`);
   }
+
+  /**
+   * Close the side drawer whenever the Leyout component will
+   * receive props, which indicates a page change.
+   */
+  // componentWillReceiveProps() {
+  //   this.closeSideDrawer();
+  // }
 
   /**
    * Remove and scroll locks that exist
