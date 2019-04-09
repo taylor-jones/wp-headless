@@ -31,6 +31,7 @@ class Story extends Component {
         title={story.title}
       >
         <h2>{story.title.rendered}</h2>
+        <h3>This is story.js</h3>
       </Layout>
     );
   }

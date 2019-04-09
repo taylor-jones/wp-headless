@@ -3,8 +3,10 @@
  */
 
 /**
- * Gets the display name of a component wrapped in a HOC
- * for use in Dev Tools.
+ * Gets the display name of a component
+ * wrapped in a HOC for use in Dev Tools.
+ *
+ * @param {Component} - a ReactJS component
  */
 export const getComposedDisplayName = Component => {
   return Component.displayName || Component.name || 'Component';

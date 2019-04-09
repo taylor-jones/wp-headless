@@ -100,9 +100,9 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
-    server.get('/stories/:slug', (req, res) => {
-      const queryParams = { slug: req.params.slug };
-      const actualPage = '/stories';
+    server.get('/story/:slug', (req, res) => {
+      const queryParams = { slug: req.params.slug, apiRoute: 'story' };
+      const actualPage = '/story';
       renderAndCache(req, res, actualPage, queryParams);
     });
 

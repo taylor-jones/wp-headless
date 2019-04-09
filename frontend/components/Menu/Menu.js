@@ -24,13 +24,17 @@ class Menu extends PureComponent {
 
 
   /**
-   * Returns the actual page type for a given menu item.
+   * Returns the actual page that should be used (from the pages/ directory)
+   * for a given menu item. This means that a custom post type should have
+   * it's own page within the pages/ directory.
    *
    * @param {object} item - a menu item object
    * @returns {string} - the name of the page type
    */
   getActualPage = item => {
-    return item.object === 'category' ? 'category' : 'post';
+    if (item.object === 'page' || item.object === 'post') return 'post';
+    return item.object;
+    // return item.object === 'category' ? 'category' : 'post';
   }
 
 
@@ -170,7 +174,6 @@ class Menu extends PureComponent {
     const { submenuClass, headingClass } = this.props;
     const attr = this.getMenuItemAttributes(item);
     const itemClass = this.getMenuItemClassName(attr);
-    // console.log(item, attr);
 
     return (
       <li key={attr.key} className={itemClass}>
@@ -178,7 +181,7 @@ class Menu extends PureComponent {
         {item.is_link && (
           <Fragment>
             <Link href={attr.href} as={attr.as}>
-              <a onClick={this.props.clicked} role="presentation">
+              <a onClick={this.props.clicked} role="presentation" rel="noopener noreferrer">
                 {this.getMenuItemTitle(item)}
               </a>
             </Link>

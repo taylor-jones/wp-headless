@@ -4,9 +4,11 @@ yarn-error.log
 wordpress/wp-content/languages/
 data
 RoboFile.secret.php
+.idea/**
 
 wp-snapshots/
 wp-includes/
 wp-admin/
 plugins/
 !plugins/synergy*
+

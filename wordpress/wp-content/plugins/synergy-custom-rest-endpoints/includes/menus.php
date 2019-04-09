@@ -477,7 +477,7 @@ function purged_menu_item($item) {
     'post_type',
     'target',
     'to_ping',
-    'type',
+    // 'type',
     'xfn',
   ];
 

@@ -21,12 +21,14 @@ class ImpactPage extends PureComponent {
             <Row>
 
               {stories.map(story => {
-                const href = getSlug(story.link, 3, true);
+                console.log(story);
+                const href = `/${story.type}?slug=${story.slug}&apiRoute=${story.type}`;
+                const as = `/${story.type}/${story.slug}/`;
 
                 return (
                   <Col sm={12} md={6} lg={4} key={story.id}>
                     <div className={css.CardImageContainer}>
-                      <Link href={href}>
+                      <Link href={href} as={as}>
                         <a rel="noopener noreferrer">
                           <div className={css.CardImageWrapper}>
                             <Picture
@@ -43,7 +45,7 @@ class ImpactPage extends PureComponent {
 
                       <div className={css.CardBodyWrapper}>
                         <div className={css.CardHeadingWrapper}>
-                          <Link href={href}>
+                          <Link href={href} as={as}>
                             <a rel="noopener noreferrer">
                               <div className={css.CardHeading}>{story.acf.heading}</div>
                             </a>
@@ -55,7 +57,7 @@ class ImpactPage extends PureComponent {
                           </div>
                         </div>
 
-                        <Link href={href}>
+                        <Link href={href} as={as}>
                           <a rel="noopener noreferrer">Read More</a>
                         </Link>
                       </div>

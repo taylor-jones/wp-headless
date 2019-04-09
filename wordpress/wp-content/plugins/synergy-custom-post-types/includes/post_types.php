@@ -58,7 +58,7 @@ function register_custom_post_types() {
     ),
     'menu_position'         => 30,
     'menu_icon'             => 'dashicons-sos',
-    'public'                => false,
+    'public'                => true,
     'rest_base'             => 'services',
     'rewrite'               => array(
       'slug'                  => _x('services', 'post type slug', SIA_CPT_DOMAIN),
@@ -116,10 +116,11 @@ function register_custom_post_types() {
     ),
     'menu_position'         => 30,
     'menu_icon'             => 'dashicons-book',
-    'public'                => false,
+    'public'                => true,
+    'publicly_queryable'    => true,
     'rest_base'             => 'stories',
     'rewrite'               => array(
-      'slug'                  => _x('stories', 'post type slug', SIA_CPT_DOMAIN),
+      'slug'                  => _x('story', 'post type slug', SIA_CPT_DOMAIN),
       'with_front'            => true,
     ),
     'show_in_admin_bar'     => true,
