@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import { PureComponent, Fragment } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
@@ -181,7 +183,7 @@ class Menu extends PureComponent {
         {item.is_link && (
           <Fragment>
             <Link href={attr.href} as={attr.as}>
-              <a onClick={this.props.clicked} role="presentation" rel="noopener noreferrer">
+              <a onClick={this.props.clicked} role="link">
                 {this.getMenuItemTitle(item)}
               </a>
             </Link>
