@@ -2,6 +2,7 @@ import { PureComponent, Fragment } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import { Picture } from 'react-responsive-picture';
+import { toBreakpoint } from '../../../lib/breakpoints';
 import css from './MissionPage.scss';
 
 
@@ -26,7 +27,8 @@ class MissionPage extends PureComponent {
                       className={css.BlockImage}
                       alt={principle.image.alt}
                       sources={[
-                        { srcSet: principle.image.sizes.medium_large, media: '(max-width: 1127px)' },
+                        { srcSet: principle.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
+                        { srcSet: principle.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
                         { srcSet: principle.image.sizes.medium },
                       ]}
                     />
@@ -34,12 +36,8 @@ class MissionPage extends PureComponent {
 
                   <div className={css.BlockTextWrapper}>
                     <div className={css.BlockText}>
-                      <div className={css.BlockTextHeading}>
-                        <h3>{principle.heading}</h3>
-                      </div>
-                      <div className={css.BlockTextBody}>
-                        <div dangerouslySetInnerHTML={{ __html: principle.description }} />
-                      </div>
+                      <h3 className={css.BlockTextHeading}>{principle.heading}</h3>
+                      <div className={css.BlockTextBody} dangerouslySetInnerHTML={{ __html: principle.description }} />
                     </div>
                   </div>
                 </div>

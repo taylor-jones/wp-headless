@@ -45,8 +45,6 @@ class ImpactPage extends PureComponent {
                               className={css.CardImage}
                               alt={story.acf.image.alt}
                               sources={[
-                                // { srcSet: story.acf.image.sizes.large, media: '(max-width: 1127px)' },
-                                // { srcSet: story.acf.image.sizes.medium },
                                 { srcSet: story.acf.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
                                 { srcSet: story.acf.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
                                 { srcSet: story.acf.image.sizes.medium },

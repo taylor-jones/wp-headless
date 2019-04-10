@@ -35,7 +35,7 @@
     @extend .lead;
   }
 
-  @include break(md) {
+  @include break(lg) {
     max-width: 70%;
   }
 }
@@ -49,15 +49,20 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 64px;
-  // min-height: 1px;
+  min-height: 1px;
 
   @include break(md) {
-    max-width: 80%;
+    max-width: 90%;
   }
 
   @include break(lg) {
+    max-width: 80%;
+  }
+
+  @include break(md) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   &:first-of-type {
@@ -76,7 +81,7 @@
 .BlockImageWrapper {
   padding: 0 4vw;
   
-  @include break(lg) {
+  @include break(md) {
     padding: 0;
     flex: 4;
     order: 2;
@@ -84,11 +89,11 @@
 }
 
 .BlockTextWrapper {
+  justify-content: flex-start;
   padding: 0 4vw;
-  // text-align: center;
-  margin-top: 32px;
+  margin-top: 16px;
   
-  @include break(lg) {
+  @include break(md) {
     padding: 0 6% 0 0;
     align-items: center;
     order: 1;
@@ -99,21 +104,15 @@
 }
 
 .BlockImage {
-  // width: 300px;
-  // height: auto;
   width: 100%;
   height: 300px;
   object-fit: cover;
-  // max-height: 300px;
-  
-  @include break(lg) {
+
+  @include break(md) {
     height: auto;
-    max-height: 225px;
-    max-width: 275px;
   }
-  
-  @include break(xl) {
-    max-height: 250px;
-    max-width: 300px;
-  }
+}
+
+.BlockTextHeading {
+  padding-top: 0;
 }
