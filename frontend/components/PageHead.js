@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { decode } from '../lib/clientUtils';
 import stylesheet from '../styles/style.scss';
 
 class PageHead extends PureComponent {
@@ -9,6 +10,7 @@ class PageHead extends PureComponent {
    */
   getPageTitle = () => {
     let { title } = this.props;
+    title = decode(title);
     if (title !== 'Synergy In Action') title += ' | SIA';
     return title;
   }

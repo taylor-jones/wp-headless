@@ -1,31 +1,30 @@
 @import '../../../styles/breakpoints';
 
-// .PageContainer {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   // margin: 8px;
-//   margin: 48px auto;
-//   max-width: 1080px;
-// }
+.PageContainer {
+  margin: 0 auto;
+  width: 90%;
+
+  @include break(sm) {
+    width: 80%;
+  }
+}
 
 
 //
 // Cards
 //
 
-.CardContainer {
-  color: inherit;
-}
-
-.CardWrapper {
+.CardsContainer {
   margin: 96px 8px;
-
+  
   @include break(md) {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
   }
+}
+
+.CardWrapper {
+  margin-bottom: 64px;
 }
 
 .CardImageWrapper {
@@ -59,5 +58,9 @@
   word-wrap: break-word;
   font-weight: 500;
   line-height: 1.444em;
+
+  @include break-only(sm) {
+    font-size: 20px;
+  }
 }
 

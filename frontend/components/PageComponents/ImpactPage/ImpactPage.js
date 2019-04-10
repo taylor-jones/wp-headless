@@ -15,18 +15,17 @@ class ImpactPage extends PureComponent {
 
     return (
       <div className={css.PageContainer}>
+        <Container className={css.CardsContainer}>
+          <Row>
 
-        <Container className={css.CardContainer}>
-          <div className={css.CardWrapper}>
-            <Row>
+            {stories.map(story => {
+              console.log(story);
+              const href = `/${story.type}?slug=${story.slug}&apiRoute=${story.type}`;
+              const as = `/${story.type}/${story.slug}/`;
 
-              {stories.map(story => {
-                console.log(story);
-                const href = `/${story.type}?slug=${story.slug}&apiRoute=${story.type}`;
-                const as = `/${story.type}/${story.slug}/`;
-
-                return (
-                  <Col sm={12} md={6} lg={4} key={story.id}>
+              return (
+                <Col sm={12} md={6} lg={4} key={story.id}>
+                  <div className={css.CardWrapper}>
                     <div className={css.CardImageContainer}>
                       <Link href={href} as={as}>
                         <a>
@@ -63,14 +62,13 @@ class ImpactPage extends PureComponent {
                       </div>
 
                     </div>
-                  </Col>
-                );
-              })}
+                  </div>
+                </Col>
+              );
+            })}
 
-            </Row>
-          </div>
+          </Row>
         </Container>
-
       </div>
     );
   }

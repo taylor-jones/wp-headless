@@ -61,7 +61,7 @@ function register_custom_post_types() {
     'public'                => true,
     'rest_base'             => 'services',
     'rewrite'               => array(
-      'slug'                  => _x('services', 'post type slug', SIA_CPT_DOMAIN),
+      'slug'                  => _x('service', 'post type slug', SIA_CPT_DOMAIN),
       'with_front'            => true,
     ),
     'show_in_admin_bar'     => true,

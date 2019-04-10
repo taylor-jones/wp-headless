@@ -27,3 +27,17 @@ export const getServicesByCategory = (services, category) => {
     });
   });
 };
+
+
+/**
+ * Decodes html entities in a string by converting them into
+ * their original unescaped characters.
+ *
+ * @param {string} str - the string to decode
+ * @returns {string} the decoded string
+ */
+export const decode = str => {
+  return str.replace(/&#(\d+);/g, (match, dec) => {
+    return String.fromCharCode(dec);
+  });
+};

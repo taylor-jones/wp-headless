@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Layout from '../components/UI/Layout/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
+import { decode } from '../lib/clientUtils';
 
 class Story extends Component {
   static async getInitialProps(context) {
@@ -30,7 +31,7 @@ class Story extends Component {
         baseMenu={this.props.baseMenu}
         title={story.title}
       >
-        <h2>{story.title.rendered}</h2>
+        <h2>{decode(story.title.rendered)}</h2>
         <h3>This is story.js</h3>
       </Layout>
     );
