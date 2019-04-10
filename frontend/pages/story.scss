@@ -57,6 +57,7 @@
 
 .StoryExcerpt p {
   font-weight: 500;
+  line-height: 1.4;
 
   &:first-of-type {
     margin-top: 0;
@@ -65,4 +66,16 @@
 
 .StoryContent {
   margin-bottom: 32px;
+}
+
+.StoryLink {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
 }

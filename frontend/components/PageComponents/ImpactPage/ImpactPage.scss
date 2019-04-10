@@ -63,6 +63,10 @@
   @include break-only(sm) {
     font-size: 20px;
   }
+
+  @include break(xl) {
+    font-size: 20px;
+  }
 }
 
 .CardExcerptWrapper {
@@ -76,5 +80,6 @@
 }
 
 .CardLink {
+  font-weight: 500;
   font-size: 16px;
 }

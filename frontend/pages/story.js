@@ -4,6 +4,7 @@ import Error from 'next/error';
 import Link from 'next/link';
 import { Picture } from 'react-responsive-picture';
 import PropTypes from 'prop-types';
+import { FiChevronsLeft } from 'react-icons/fi';
 import Layout from '../components/UI/Layout/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
@@ -74,7 +75,7 @@ class Story extends Component {
             <div className={css.StoryContent} dangerouslySetInnerHTML={{ __html: story.content.rendered }} />
 
             <Link href="/post?slug=impact&apiRoute=page" as="/impact/">
-              <a>Back to All Stories</a>
+              <a className={css.StoryLink}><FiChevronsLeft /> Back to All Stories</a>
             </Link>
           </div>
         </div>
