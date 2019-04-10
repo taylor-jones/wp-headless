@@ -3,15 +3,23 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
 import { Picture } from 'react-responsive-picture';
-import { getSlug } from '../../../lib/commonUtils';
+import { decode } from '../../../lib/clientUtils';
 import css from './ImpactPage.scss';
 
 class ImpactPage extends PureComponent {
+  /**
+   * Determines the heading to display for the story by looking for
+   * a specified heading (and using that, if it exists). If a heading
+   * does not exist, this funtion returns the story title.
+   */
+  getStoryTitle = story => {
+    if (story.acf.heading) return decode(story.acf.heading);
+    return decode(story.title.rendered);
+  }
+
   render() {
     const { post } = this.props;
     const { stories } = post;
-
-    // console.log(stories);
 
     return (
       <div className={css.PageContainer}>
@@ -19,7 +27,7 @@ class ImpactPage extends PureComponent {
           <Row>
 
             {stories.map(story => {
-              console.log(story);
+              { /* console.log(story); */ }
               const href = `/${story.type}?slug=${story.slug}&apiRoute=${story.type}`;
               const as = `/${story.type}/${story.slug}/`;
 
@@ -46,19 +54,19 @@ class ImpactPage extends PureComponent {
                         <div className={css.CardHeadingWrapper}>
                           <Link href={href} as={as}>
                             <a>
-                              <div className={css.CardHeading}>{story.acf.heading}</div>
+                              <h3 className={css.CardHeading}>{this.getStoryTitle(story)}</h3>
                             </a>
                           </Link>
                         </div>
                         <div className={css.CardExcerptWrapper}>
-                          <div className={css.CardExcerpt}>
-                            <div dangerouslySetInnerHTML={{ __html: story.excerpt.rendered }} />
-                          </div>
+                          <div className={css.CardExcerpt} dangerouslySetInnerHTML={{ __html: story.excerpt.rendered }} />
                         </div>
 
-                        <Link href={href} as={as}>
-                          <a>Read More</a>
-                        </Link>
+                        <div className={css.CardLink}>
+                          <Link href={href} as={as}>
+                            <a>Read More</a>
+                          </Link>
+                        </div>
                       </div>
 
                     </div>

@@ -50,14 +50,14 @@ const getSlug = (url, offset = 2, includePath = false) => {
 /**
  * Converts a string to camelCase.
  * Removes any underscores, hyphens, or spaces.
- * @param str - a string to convert to camelCase.
+ * @param {string} str - a string to convert to camelCase.
  */
 const toCamelCase = str => str.replace(/(-|_|\s)\w/g, (m) => m[1].toUpperCase());
 
 
 /**
  * Returns a capitalized copy of a string.
- * @param str - a string to capitalize.
+ * @param {string} str - a string to capitalize.
  */
 const capitalized = str => str.charAt(0).toUpperCase() + str.slice(1);
 

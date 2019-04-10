@@ -10,7 +10,7 @@ class MissionPage extends PureComponent {
     const { post } = this.props;
     const { acf } = post;
 
-    console.log(post);
+    // console.log(post);
 
     return (
       <Fragment>
@@ -50,9 +50,8 @@ class MissionPage extends PureComponent {
         </div>
 
 
-        <div className={css.PageContainer}>
-
-          {/* Mission Statement & Vision Statement */}
+        {/* Mission Statement & Vision Statement */}
+        {/* <div className={css.PageContainer}>
           <Container className={css.StatementsWrapper}>
             <Row className={css.StatementRow}>
               <Col md={6} className={css.StatementCol}>
@@ -69,8 +68,8 @@ class MissionPage extends PureComponent {
               </Col>
             </Row>
           </Container>
+        </div> */}
 
-        </div>
       </Fragment>
     );
   }

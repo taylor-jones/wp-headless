@@ -45,23 +45,25 @@ class PageLead extends PureComponent {
     const alignment = this.getAlignment();
 
     return (
-      <Container>
-        <div className={alignment.wrapper}>
-          <div className={css.PageLead}>
-            <div className={alignment.headings}>
-              {heading && <h3 className={css.Heading}>{heading}</h3>}
-              {subheading && <div className={css.Subheading}>{subheading}</div>}
-            </div>
-
-            {children && (
-              <div className={alignment.content}>
-                <div className={css.LeadContent} dangerouslySetInnerHTML={{ __html: children }} />
+      <div className={css.PageLeadContainer}>
+        <Container>
+          <div className={alignment.wrapper}>
+            <div className={css.PageLead}>
+              <div className={alignment.headings}>
+                {heading && <h3 className={css.Heading}>{heading}</h3>}
+                {subheading && <div className={css.Subheading}>{subheading}</div>}
               </div>
-            )}
 
+              {children && (
+                <div className={alignment.content}>
+                  <div className={css.LeadContent} dangerouslySetInnerHTML={{ __html: children }} />
+                </div>
+              )}
+
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     );
   }
 }

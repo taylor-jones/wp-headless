@@ -2,6 +2,11 @@
 @import '../../styles/typography';
 
 
+.PageLeadContainer {
+  color: inherit;
+}
+
+
 .PageLeadWrapper {
   display: flex;
   flex-direction: column;
@@ -15,8 +20,8 @@
   @include break(sm) {
     margin: 16px auto;
   }
-
 }
+
 
 .Left {
   align-items: flex-start;
@@ -35,8 +40,12 @@
 
 
 .PageLead {
-  width: 80%;
+  width: 90%;
   margin: auto;
+
+  @include break(sm) {
+    width: 80%;
+  }
 
   @include break(md) {
     padding-left: 32px;
@@ -72,8 +81,12 @@
 
 
 .LeadContentWrapper {
-  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .Subheading,
 .Subheading p {
@@ -86,17 +99,24 @@
   }
 }
 
+
 .LeadContent {
   margin-bottom: 1.5em;
+  max-width: 750px;
 
   p {
     @extend .lead;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
   }
 
   p:not(:last-of-type) {
     margin-bottom: 1em;
   }
 }
+
 
 .LeadContent:last-child {
   margin-bottom: 0;

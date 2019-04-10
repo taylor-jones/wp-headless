@@ -19,6 +19,18 @@ class Story extends Component {
     return { story };
   }
 
+
+  /**
+   * Determines the heading to display for the story by looking for
+   * a specified heading (and using that, if it exists). If a heading
+   * does not exist, this funtion returns the story title.
+   */
+  getStoryTitle = story => {
+    if (story.acf.heading) return decode(story.acf.heading);
+    return decode(story.title.rendered);
+  }
+
+
   render() {
     const { story } = this.props;
     if (!story.title) { return <Error statusCode={404} />; }

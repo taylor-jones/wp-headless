@@ -3,6 +3,7 @@
 .PageContainer {
   margin: 0 auto;
   width: 90%;
+  max-width: 1200px;
 
   @include break(sm) {
     width: 80%;
@@ -15,7 +16,7 @@
 //
 
 .CardsContainer {
-  margin: 96px 8px;
+  margin: 64px 8px;
   
   @include break(md) {
     margin-left: auto;
@@ -64,3 +65,16 @@
   }
 }
 
+.CardExcerptWrapper {
+  color: inherit;
+}
+
+.CardExcerpt {  
+  p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.CardLink {
+  font-size: 16px;
+}

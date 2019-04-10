@@ -59,8 +59,14 @@ button {
 }
 
 a {
-  // color: $link-color;
+  color: $link-color;
   text-decoration: none;
+  transition: color 150ms ease;
+  
+  &:hover {
+    color: darken($link-color, 25%);
+    transition: color 150ms ease;
+  }
 }
 
 

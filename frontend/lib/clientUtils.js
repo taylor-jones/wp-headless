@@ -37,7 +37,7 @@ export const getServicesByCategory = (services, category) => {
  * @returns {string} the decoded string
  */
 export const decode = str => {
-  return str.replace(/&#(\d+);/g, (match, dec) => {
+  return str.replace(/&#(\d+);/g, ((match, dec) => {
     return String.fromCharCode(dec);
-  });
+  }));
 };
