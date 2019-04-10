@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
 import { Picture } from 'react-responsive-picture';
 import { decode } from '../../../lib/clientUtils';
+import { toBreakpoint } from '../../../lib/breakpoints';
 import css from './ImpactPage.scss';
 
 class ImpactPage extends PureComponent {
@@ -20,6 +21,8 @@ class ImpactPage extends PureComponent {
   render() {
     const { post } = this.props;
     const { stories } = post;
+
+    console.log(post);
 
     return (
       <div className={css.PageContainer}>
@@ -42,7 +45,10 @@ class ImpactPage extends PureComponent {
                               className={css.CardImage}
                               alt={story.acf.image.alt}
                               sources={[
-                                { srcSet: story.acf.image.sizes.large, media: '(max-width: 1127px)' },
+                                // { srcSet: story.acf.image.sizes.large, media: '(max-width: 1127px)' },
+                                // { srcSet: story.acf.image.sizes.medium },
+                                { srcSet: story.acf.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
+                                { srcSet: story.acf.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
                                 { srcSet: story.acf.image.sizes.medium },
                               ]}
                             />

@@ -1,0 +1,68 @@
+@import '../styles/breakpoints';
+
+.StoryContainer,
+.Story {
+  display: flex;
+  flex-direction: column;
+}
+
+.StoryContainer {
+  align-items: center;
+  justify-content: flex-start;
+  margin: 48px 8px 96px 8px;
+
+  @include break(sm) {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include break(md) {
+    margin-top: 128px;
+  }
+}
+
+.Story {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+.StoryMediaWrapper {
+  display: block;
+  width: 100%;
+  height: 400px;
+
+  @include break(md) {
+    height: 45vw;
+    max-height: 50vh;
+  }
+}
+
+.StoryMedia {
+  height: 100%;
+  width: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+
+  @include break(md) {
+    object-position: center top;
+  }
+}
+
+.StoryHeading {
+  margin-bottom: 24px;
+}
+
+.StoryExcerpt p {
+  font-weight: 500;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.StoryContent {
+  margin-bottom: 32px;
+}

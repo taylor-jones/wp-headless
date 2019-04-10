@@ -1,11 +1,16 @@
 import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
+import Link from 'next/link';
+import { Picture } from 'react-responsive-picture';
 import PropTypes from 'prop-types';
 import Layout from '../components/UI/Layout/Layout';
 import withPageWrapper from '../hoc/withPageWrapper';
 import { Config } from '../config';
 import { decode } from '../lib/clientUtils';
+import { toBreakpoint } from '../lib/breakpoints';
+import css from './story.scss';
+
 
 class Story extends Component {
   static async getInitialProps(context) {
@@ -35,6 +40,8 @@ class Story extends Component {
     const { story } = this.props;
     if (!story.title) { return <Error statusCode={404} />; }
 
+    console.log(story);
+
     return (
       <Layout
         headerMenu={this.props.headerMenu}
@@ -43,8 +50,34 @@ class Story extends Component {
         baseMenu={this.props.baseMenu}
         title={story.title}
       >
-        <h2>{decode(story.title.rendered)}</h2>
-        <h3>This is story.js</h3>
+
+        <div className={css.StoryContainer}>
+          <div className={css.Story}>
+            <div className={css.StoryMediaWrapper}>
+              <Picture
+                className={css.StoryMedia}
+                alt={story.acf.image.alt}
+                sources={[
+                  { srcSet: story.acf.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
+                  { srcSet: story.acf.image.sizes.medium_large },
+                ]}
+              />
+            </div>
+
+            <div className="separator" />
+
+            <div className={css.StoryBody}>
+              <h2 className={css.StoryHeading}>{this.getStoryTitle(story)}</h2>
+            </div>
+
+            <div className={css.StoryExcerpt} dangerouslySetInnerHTML={{ __html: story.excerpt.rendered }} />
+            <div className={css.StoryContent} dangerouslySetInnerHTML={{ __html: story.content.rendered }} />
+
+            <Link href="/post?slug=impact&apiRoute=page" as="/impact/">
+              <a>Back to All Stories</a>
+            </Link>
+          </div>
+        </div>
       </Layout>
     );
   }
