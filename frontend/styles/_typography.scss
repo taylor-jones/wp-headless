@@ -31,6 +31,7 @@ $responsive-font-styles: (
   margin-bottom: 8px;
   font-family: $font-stack-rounded;
   letter-spacing: normal;
+  word-wrap: break-word;
 
   // @include break(md) {
   //   font-weight: 400;
@@ -169,6 +170,14 @@ h6 {
 }
 
 
+// 
+// anchors
+// 
+
+a {
+  font-size: 16px;
+}
+
 
 // 
 // paragrahps
@@ -190,10 +199,10 @@ p {
   @include break(sm) {
     line-height: 1.6em;
   }
-
 }
 
-p.lead {
+p.lead,
+p.lead a {
   @include responsive-font(lead);
 
   line-height: 1.4;
@@ -205,9 +214,7 @@ p.lead {
   }
 }
 
-a {
-  font-size: 16px;
-}
+
 
 .colored-heading {
   color: $heading-colored;

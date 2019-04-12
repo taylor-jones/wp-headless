@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import PageLead from './PageLead/PageLead';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
+import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
 import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
@@ -28,6 +29,9 @@ const PageLoader = props => {
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,
     impact: <ImpactPage post={post} />,
+    'what-we-do': <OverviewPage post={post} />,
+    'get-involved': <OverviewPage post={post} />,
+    resources: <OverviewPage post={post} />,
   };
 
   /**

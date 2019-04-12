@@ -1,6 +1,7 @@
 @import '../../../styles/breakpoints';
 @import '../../../styles/typography';
 
+
 .PageContainer {
   display: flex;
   flex-direction: column;
@@ -59,7 +60,7 @@
     max-width: 80%;
   }
 
-  @include break(md) {
+  @include break(md) { 
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

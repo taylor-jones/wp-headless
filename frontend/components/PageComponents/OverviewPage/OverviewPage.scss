@@ -1,0 +1,109 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/typography';
+
+// 
+// Page
+// 
+
+.PageWrapper {
+  margin: 96px auto 32px auto;
+}
+
+
+// 
+// Overview
+// 
+
+.OverviewWrapper {
+  margin: 0 auto;
+
+  @include break(md) {
+    width: 80%;
+  }
+}
+
+.OverviewItemWrapper {
+  margin-bottom: 48px;
+
+  @include break-only(sm) {
+    margin-bottom: 8vw;
+  }
+}
+
+.OverviewImageWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.OverviewImage {
+  width: 100%;
+  object-fit: cover;
+  height: 35vw;
+  min-height: 200px;
+  max-height: 500px;
+}
+
+.OverviewLabelWrapper {
+  margin-bottom: 32px;
+
+  @include break(md) {
+    margin-bottom: 0;
+  }
+}
+
+.OverviewLabel {
+  font-weight: 400;
+  margin-bottom: 8px;
+
+  @include break(md) {
+    text-align: center;
+    @include responsive-font(h5);
+  }
+
+  @include break(lg) {
+    @include responsive-font(h4);
+  }
+}
+
+
+.OverviewExcerpt {
+  margin-top: 0;
+
+  @include break(md) {
+    text-align: center;
+  }
+}
+
+
+
+// 
+// overrides for odd-count overview items
+// 
+.OverviewWrapper:not(.ItemCountEven) {
+  max-width: 960px;
+
+  .OverviewImage {
+    max-height: 400px;
+  }
+}
+
+
+// 
+// overrides for odd-count overview items
+// 
+.OverviewWrapper.ItemCountEven {
+  .OverviewLabel {
+    @include break(xl) {
+      font-size: 22px;
+    }
+  }
+
+  @include break-below(xl) {
+    max-width: 900px;
+
+    .OverviewImage {
+      max-height: 400px;
+    }
+  }
+}

@@ -25,6 +25,18 @@ const customPostTypeRequestMap = {
     fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/stories`,
     postProperty: 'stories',
   },
+  'what-we-do': {
+    fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/what-we-do`,
+    postProperty: 'subnav',
+  },
+  'get-involved': {
+    fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/get-involved`,
+    postProperty: 'subnav',
+  },
+  resources: {
+    fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/resources`,
+    postProperty: 'subnav',
+  },
 };
 
 
@@ -54,6 +66,7 @@ class Post extends PureComponent {
      * data, and append it to the post object that is being returned.
      */
     const customPostRequest = getMappedCustomPostTypeRequest(slug);
+
     if (customPostRequest) {
       const customPostRes = await fetch(customPostRequest.fetchUrl);
       const customPost = await customPostRes.json();
@@ -67,7 +80,6 @@ class Post extends PureComponent {
     // console.log(this.props);
     const { post } = this.props;
     if (!post.title) return <Error statusCode={404} />;
-    // Use post.slug to dynamically render different components where necessary.
 
     return (
       <Layout

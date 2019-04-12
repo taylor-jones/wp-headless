@@ -1,4 +1,5 @@
 import { PureComponent, Fragment } from 'react';
+import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import { Picture } from 'react-responsive-picture';
@@ -44,29 +45,17 @@ class MissionPage extends PureComponent {
               );
             })}
 
+            <div className={css.Block}>
+              <p className="lead">
+                Learn more about
+                <Link href="/post?slug=$services&apiRoute=page" as="/services">
+                  <a role="link"> the types of services </a>
+                </Link>
+                that Synergy In Action offers.
+              </p>
+            </div>
           </Container>
         </div>
-
-
-        {/* Mission Statement & Vision Statement */}
-        {/* <div className={css.PageContainer}>
-          <Container className={css.StatementsWrapper}>
-            <Row className={css.StatementRow}>
-              <Col md={6} className={css.StatementCol}>
-                <div className={css.StatementWrapper}>
-                  <h3>Our Mission</h3>
-                  <div dangerouslySetInnerHTML={{ __html: acf.mission_statement }} />
-                </div>
-              </Col>
-              <Col md={6} className={css.StatementCol}>
-                <div className={css.StatementWrapper}>
-                  <h3>Our Vision</h3>
-                  <div dangerouslySetInnerHTML={{ __html: acf.vision_statement }} />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div> */}
 
       </Fragment>
     );
