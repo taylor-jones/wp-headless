@@ -19,6 +19,10 @@ class ServicesPage extends PureComponent {
   state = {
     showModal: false,
     modalServiceId: null,
+    // serviceCategories: [],
+    // serviceCoverageTypes: [],
+    // serviceDiagnosisTypes: [],
+    // serviceRegions: [],
   };
 
   /**
