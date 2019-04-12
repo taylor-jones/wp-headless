@@ -28,9 +28,10 @@ class MissionPage extends PureComponent {
                       className={css.BlockImage}
                       alt={principle.image.alt}
                       sources={[
-                        { srcSet: principle.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
-                        { srcSet: principle.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
-                        { srcSet: principle.image.sizes.medium },
+                        // { srcSet: principle.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
+                        // { srcSet: principle.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
+                        // { srcSet: principle.image.sizes.medium },
+                        { srcSet: principle.image.sizes['hero-sm-portrait'] },
                       ]}
                     />
                   </div>

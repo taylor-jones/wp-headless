@@ -5,7 +5,6 @@ import { Container, Row, Col } from 'react-grid-system';
 import PageLead from './PageLead/PageLead';
 import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
 import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
-import ResidentialPage from './PageComponents/ResidentialPage/ResidentialPage';
 import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
 import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
@@ -25,7 +24,6 @@ const PageLoader = props => {
    */
   const componentSlugMap = {
     services: <ServicesPage post={post} />,
-    residential: <ResidentialPage post={post} />,
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,
     impact: <ImpactPage post={post} />,

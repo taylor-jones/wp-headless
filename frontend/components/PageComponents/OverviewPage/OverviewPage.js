@@ -30,15 +30,14 @@ class OverviewPage extends PureComponent {
       xl: isEvenItemCount ? 3 : 4,
     };
 
-    console.log(post);
+    // console.log(post);
 
     return (
       <div className={css.PageWrapper}>
-        {/* <div className="separator" /> */}
-
         <Container>
           <div className={[css.OverviewWrapper, itemCountClass].join(' ').trim('')}>
             <Row>
+
               {subnav.items.map(item => {
                 return (
                   <Col md={columnCounts.md} xl={columnCounts.xl} key={item.ID}>

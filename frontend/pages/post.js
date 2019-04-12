@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import withPageWrapper from '../hoc/withPageWrapper';
 import Layout from '../components/UI/Layout/Layout';
 import HeroImage from '../components/UI/HeroImage/HeroImage';
-import { Config } from '../config';
 import PageLoader from '../components/PageLoader';
+import { Config } from '../config';
 
 
 /**

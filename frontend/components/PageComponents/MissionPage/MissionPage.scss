@@ -81,6 +81,7 @@
 
 .BlockImageWrapper {
   padding: 0 4vw;
+  height: 100%;
   
   @include break(md) {
     padding: 0;
@@ -106,11 +107,16 @@
 
 .BlockImage {
   width: 100%;
-  height: 300px;
+  height: inherit;
+  max-height: 300px;
   object-fit: cover;
 
   @include break(md) {
-    height: auto;
+    max-height: 250px;
+  }
+
+  @include break(lg) {
+    max-height: 225px;
   }
 }
 
