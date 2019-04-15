@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
 import { PureComponent, Fragment } from 'react';
+import Select from 'react-select';
 import { Container, Row, Col } from 'react-grid-system';
 import { FiX } from 'react-icons/fi';
 import { MdPlace } from 'react-icons/md';
-import { GoLightBulb, GoCheck, GoCircleSlash, GoPrimitiveDot } from 'react-icons/go';
+import { GoCheck, GoCircleSlash, GoPrimitiveDot } from 'react-icons/go';
 import Modal from 'react-modal';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
@@ -11,7 +12,18 @@ import sanitizeHtml from 'sanitize-html';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import TextSection from '../../TextSection/TextSection';
 import css from './ServicesPage.scss';
-// import { getServicesByCategory } from '../../../lib/clientUtils';
+
+
+/**
+ * Gets all the taxonomy term ids for a given
+ * array representing a service taxonomy type.
+ * @param {array} array - an array of object, where each object has a term_id
+ * @returns {array} an array of only term_ids
+ */
+const getTaxonomyTermIds = array => {
+  return array.map(item => item.term_id);
+};
+
 
 const modalHtmlId = 'modal';
 
@@ -225,76 +237,151 @@ class ServicesPage extends PureComponent {
 
   render() {
     const { post } = this.props;
-    // post.services = getServicesByCategory(post.services, post.slug);
     console.log(post);
 
+    const serviceOptions = {
+      categories: post.service_categories ? post.service_categories.map(category => {
+        return { value: category.id, label: category.name };
+      }) : [],
+
+      coverageTypes: post.service_coverage_types ? post.service_coverage_types.map(type => {
+        return { value: type.id, label: type.name };
+      }) : [],
+
+      diagnosisTypes: post.service_diagnosis_types ? post.service_diagnosis_types.map(type => {
+        return { value: type.id, label: type.name };
+      }) : [],
+
+      regions: post.service_regions ? post.service_regions.map(region => {
+        return { value: region.id, label: region.name };
+      }) : [],
+    };
+
+
     return (
-      <div>Foo</div>
-      // <div className={css.PageWrapper}>
+      <div className={css.PageWrapper}>
 
-      //   {/* Top Section -- Lead Content */}
-      //   <Container>
-      //     <Row>
-      //       <Col sm={12}>
-      //         <div className={css.LeadWrapper}>
-      //           <TextSection>
-      //             <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-      //           </TextSection>
-      //         </div>
-      //       </Col>
-      //     </Row>
-      //   </Container>
+        {/* Top Section -- Lead Content */}
+        <Container>
+          <Row>
+            <Col sm={12}>
+              <div className={css.LeadWrapper}>
+                <TextSection>
+                  <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+                </TextSection>
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
 
-      //   {/* Services List */}
-      //   {/* Remove wrapping <p> tags from the excerpt */}
-      //   {post.services.map(service => {
-      //     const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
+        {/* Service Select Filters */}
+        <div className={css.ServiceFiltersWrapper}>
+          <div className={css.ServiceFilters}>
+            {/* Service Categories */}
+            {serviceOptions.categories.length && (
+              <div className={css.ServiceFilter}>
+                <div className={css.ServiceFilterHeading}>Categories</div>
+                <Select
+                  options={serviceOptions.categories}
+                  isMulti
+                />
+              </div>
+            )}
 
-      //     { /* Set the services object value for this service */ }
-      //     this.services[service.id] = service;
+            {/* Service Coverage Types */}
+            {serviceOptions.coverageTypes.length && (
+              <div className={css.ServiceFilter}>
+                <div className={css.ServiceFilterHeading}>Coverage Types</div>
+                <Select
+                  options={serviceOptions.coverageTypes}
+                  isMulti
+                />
+              </div>
+            )}
 
-      //     return (
-      //       <div className={css.BlockWrapper} key={service.id}>
-      //         <div className={css.BlockWrapperInner}>
-      //           <div className={css.BlockImageWrapper}>
-      //             {this.getServiceImage(service)}
-      //           </div>
+            {/* Service Diagnosis Types */}
+            {serviceOptions.diagnosisTypes.length && (
+              <div className={css.ServiceFilter}>
+                <div className={css.ServiceFilterHeading}>Diagnosis Types</div>
+                <Select
+                  options={serviceOptions.diagnosisTypes}
+                  isMulti
+                />
+              </div>
+            )}
 
-      //           <div className={css.BlockTextWrapper}>
-      //             <div className={css.BlockTextWrapperInner}>
-      //               <div className={css.BlockHeadingWrapper}>
-      //                 <div className={css.BlockHeading}>{service.title.rendered}</div>
-      //               </div>
-      //               <p className={css.BlockText}>{excerpt}</p>
+            {/* Service Regions */}
+            {serviceOptions.regions.length && (
+              <div className={css.ServiceFilter}>
+                <div className={css.ServiceFilterHeading}>Regions</div>
+                <Select
+                  options={serviceOptions.regions}
+                  isMulti
+                />
+              </div>
+            )}
+          </div>
+        </div>
 
-      //             </div>
-      //             <button
-      //               className={css.BlockButton}
-      //               type="button"
-      //               serviceid={service.id}
-      //               onClick={service ? this.openServiceModal.bind(this) : null}
-      //             >Show Details
-      //             </button>
-      //           </div>
-      //         </div>
-      //       </div>
 
-      //     );
-      //   })}
+        {/* Services List */}
+        {/* Remove wrapping <p> tags from the excerpt */}
+        {post.services.map(service => {
+          const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
-      //   {/* Modal */}
-      //   <div className={css.ModalWrapper} id={modalHtmlId}>
-      //     <Modal
-      //       className={css.Modal}
-      //       overlayClassName={css.ModalOverlay}
-      //       isOpen={this.state.showModal}
-      //       onRequestClose={this.closeServiceModal}
-      //     >
-      //       {this.renderServiceModal()}
-      //     </Modal>
-      //   </div>
-      // </div>
+          { /* Set the services object value for this service */ }
+          this.services[service.id] = service;
+          const { acf } = service;
+
+          return (
+            <div
+              className={css.BlockWrapper}
+              key={service.id}
+              coverage-types={getTaxonomyTermIds(acf.coverage_types)}
+              diagnosis-types={getTaxonomyTermIds(acf.diagnosis_types)}
+              regions={getTaxonomyTermIds(acf.service_regions)}
+              categories={getTaxonomyTermIds(acf.service_categories)}
+            >
+              <div className={css.BlockWrapperInner}>
+                <div className={css.BlockImageWrapper}>
+                  {this.getServiceImage(service)}
+                </div>
+
+                <div className={css.BlockTextWrapper}>
+                  <div className={css.BlockTextWrapperInner}>
+                    <div className={css.BlockHeadingWrapper}>
+                      <div className={css.BlockHeading}>{service.title.rendered}</div>
+                    </div>
+                    <p className={css.BlockText}>{excerpt}</p>
+
+                  </div>
+                  <button
+                    className={css.BlockButton}
+                    type="button"
+                    serviceid={service.id}
+                    onClick={service ? this.openServiceModal.bind(this) : null}
+                  >Show Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          );
+        })}
+
+        {/* Modal */}
+        <div className={css.ModalWrapper} id={modalHtmlId}>
+          <Modal
+            className={css.Modal}
+            overlayClassName={css.ModalOverlay}
+            isOpen={this.state.showModal}
+            onRequestClose={this.closeServiceModal}
+          >
+            {this.renderServiceModal()}
+          </Modal>
+        </div>
+      </div>
     );
   }
 }
