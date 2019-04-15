@@ -229,71 +229,72 @@ class ServicesPage extends PureComponent {
     console.log(post);
 
     return (
-      <div className={css.PageWrapper}>
+      <div>Foo</div>
+      // <div className={css.PageWrapper}>
 
-        {/* Top Section -- Lead Content */}
-        <Container>
-          <Row>
-            <Col sm={12}>
-              <div className={css.LeadWrapper}>
-                <TextSection>
-                  <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-                </TextSection>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+      //   {/* Top Section -- Lead Content */}
+      //   <Container>
+      //     <Row>
+      //       <Col sm={12}>
+      //         <div className={css.LeadWrapper}>
+      //           <TextSection>
+      //             <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+      //           </TextSection>
+      //         </div>
+      //       </Col>
+      //     </Row>
+      //   </Container>
 
 
-        {/* Services List */}
-        {/* Remove wrapping <p> tags from the excerpt */}
-        {post.services.map(service => {
-          const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
+      //   {/* Services List */}
+      //   {/* Remove wrapping <p> tags from the excerpt */}
+      //   {post.services.map(service => {
+      //     const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
-          { /* Set the services object value for this service */ }
-          this.services[service.id] = service;
+      //     { /* Set the services object value for this service */ }
+      //     this.services[service.id] = service;
 
-          return (
-            <div className={css.BlockWrapper} key={service.id}>
-              <div className={css.BlockWrapperInner}>
-                <div className={css.BlockImageWrapper}>
-                  {this.getServiceImage(service)}
-                </div>
+      //     return (
+      //       <div className={css.BlockWrapper} key={service.id}>
+      //         <div className={css.BlockWrapperInner}>
+      //           <div className={css.BlockImageWrapper}>
+      //             {this.getServiceImage(service)}
+      //           </div>
 
-                <div className={css.BlockTextWrapper}>
-                  <div className={css.BlockTextWrapperInner}>
-                    <div className={css.BlockHeadingWrapper}>
-                      <div className={css.BlockHeading}>{service.title.rendered}</div>
-                    </div>
-                    <p className={css.BlockText}>{excerpt}</p>
+      //           <div className={css.BlockTextWrapper}>
+      //             <div className={css.BlockTextWrapperInner}>
+      //               <div className={css.BlockHeadingWrapper}>
+      //                 <div className={css.BlockHeading}>{service.title.rendered}</div>
+      //               </div>
+      //               <p className={css.BlockText}>{excerpt}</p>
 
-                  </div>
-                  <button
-                    className={css.BlockButton}
-                    type="button"
-                    serviceid={service.id}
-                    onClick={service ? this.openServiceModal.bind(this) : null}
-                  >Show Details
-                  </button>
-                </div>
-              </div>
-            </div>
+      //             </div>
+      //             <button
+      //               className={css.BlockButton}
+      //               type="button"
+      //               serviceid={service.id}
+      //               onClick={service ? this.openServiceModal.bind(this) : null}
+      //             >Show Details
+      //             </button>
+      //           </div>
+      //         </div>
+      //       </div>
 
-          );
-        })}
+      //     );
+      //   })}
 
-        {/* Modal */}
-        <div className={css.ModalWrapper} id={modalHtmlId}>
-          <Modal
-            className={css.Modal}
-            overlayClassName={css.ModalOverlay}
-            isOpen={this.state.showModal}
-            onRequestClose={this.closeServiceModal}
-          >
-            {this.renderServiceModal()}
-          </Modal>
-        </div>
-      </div>
+      //   {/* Modal */}
+      //   <div className={css.ModalWrapper} id={modalHtmlId}>
+      //     <Modal
+      //       className={css.Modal}
+      //       overlayClassName={css.ModalOverlay}
+      //       isOpen={this.state.showModal}
+      //       onRequestClose={this.closeServiceModal}
+      //     >
+      //       {this.renderServiceModal()}
+      //     </Modal>
+      //   </div>
+      // </div>
     );
   }
 }
