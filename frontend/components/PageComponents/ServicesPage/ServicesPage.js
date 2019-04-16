@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { PureComponent, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Select from 'react-select';
 import { Container, Row, Col } from 'react-grid-system';
 import { FiX } from 'react-icons/fi';
@@ -31,10 +31,13 @@ class ServicesPage extends PureComponent {
   state = {
     showModal: false,
     modalServiceId: null,
-    // serviceCategories: [],
-    // serviceCoverageTypes: [],
-    // serviceDiagnosisTypes: [],
-    // serviceRegions: [],
+    serviceFilters: {
+      categories: [],
+      coverageTypes: [],
+      diagnosisTypes: [],
+      regions: [],
+    },
+    filteredServices: [],
   };
 
   /**
@@ -48,6 +51,8 @@ class ServicesPage extends PureComponent {
    * clicked service details, and that content is displayed in the modal.
    */
   services = {};
+  servicesArr = [];
+  serviceOptions = null;
   modalElement = null;
 
 
@@ -78,6 +83,68 @@ class ServicesPage extends PureComponent {
 
 
   /**
+   * Service Filter Handlers
+   */
+
+  handleCategoryFilterChange = selection => {
+    console.log('handleCategoryFilterChange', selection);
+
+    this.setState(prev => ({
+      serviceFilters: { ...prev.serviceFilters, categories: selection },
+    }), () => {
+      // do stuff with updated state
+      console.log(this.state);
+    });
+  }
+
+  handleCoverageFilterChange = selection => {
+    // console.log('handleCoverageFilterChange', selection);
+
+    this.setState(prev => ({
+      serviceFilters: { ...prev.serviceFilters, coverageTypes: selection },
+    }), () => {
+      // do stuff with updated state
+      console.log(this.state);
+    });
+  }
+
+  handleDiagnosisFilterChange = selection => {
+    // console.log('handleDiagnosisFilterChange', selection);
+
+    this.setState(prev => ({
+      serviceFilters: { ...prev.serviceFilters, diagnosisTypes: selection },
+    }), () => {
+      // do stuff with updated state
+      console.log(this.state);
+    });
+  }
+
+  handleRegionFilterChange = selection => {
+    // console.log('handleRegionFilterChange', selection);
+
+    this.setState(prev => ({
+      serviceFilters: { ...prev.serviceFilters, regions: selection },
+    }), () => {
+      // do stuff with updated state
+      console.log(this.state);
+    });
+  }
+
+  /**
+   * Use the contents of the service filters to determine which of the
+   * services should be actively displayed on the page.
+   */
+  updateDisplayedServicesFromFilters = () => {
+    // TODO:
+  }
+
+
+
+  /**
+   * Modal Handlers
+   */
+
+  /**
    * Updates the modalServiceId state using the serviceid of
    * whichever button was clicked to display service details.
    * Then, sets the showModal state to true, which allows the
@@ -88,7 +155,6 @@ class ServicesPage extends PureComponent {
     this.setState({ modalServiceId: serviceId || 0, showModal: true });
     disableBodyScroll(this.modalElement);
   }
-
 
 
   /**
@@ -120,7 +186,7 @@ class ServicesPage extends PureComponent {
 
     return (
       <Fragment>
-        <div className={css.ModalHeading}>{service.title.rendered}
+        <div className={css.ModalTitle}>{service.title.rendered}
           <div className={css.ModalClose}>
             <button onClick={this.closeServiceModal} type="button"><FiX /></button>
           </div>
@@ -146,12 +212,12 @@ class ServicesPage extends PureComponent {
 
             {/* Description */}
             <div className={css.ModalSection}>
-              <h3>Description</h3>
+              <div className={css.ModalHeading}>Description</div>
               <div dangerouslySetInnerHTML={{ __html: description }} />
 
               {/* URL */}
               {url && (
-                <p>For more details, see
+                <p className={css.ModalUrl}>For more details, see
                   <Link href={url}>
                     <a target="_blank" rel="noopener noreferrer"> the service description from the North Carolina Department of Health and Human Services.</a>
                   </Link>
@@ -162,8 +228,8 @@ class ServicesPage extends PureComponent {
             {/* Key Facts */}
             {key_facts && (
               <div className={css.ModalSection}>
-                <h3>What To Know</h3>
-                <ul>
+                <div className={css.ModalHeading}>What To Know</div>
+                <ul className={css.ModalList}>
                   {key_facts.map((item, index) => {
                     return (
                       <li key={index}>
@@ -179,8 +245,8 @@ class ServicesPage extends PureComponent {
             {/* Inclusions */}
             {inclusions && (
               <div className={css.ModalSection}>
-                <h3>What This Service Includes</h3>
-                <ul>
+                <div className={css.ModalHeading}>What This Service Includes</div>
+                <ul className={css.ModalList}>
                   {inclusions.map((item, index) => {
                     return (
                       <li key={index}>
@@ -196,8 +262,8 @@ class ServicesPage extends PureComponent {
             {/* Exclusions */}
             {exclusions && (
               <div className={css.ModalSection}>
-                <h3>What This Service Does Not Include</h3>
-                <ul>
+                <div className={css.ModalHeading}>What This Service Does Not Include</div>
+                <ul className={css.ModalList}>
                   {exclusions.map((item, index) => {
                     return (
                       <li key={index}>
@@ -236,10 +302,7 @@ class ServicesPage extends PureComponent {
   }
 
 
-  render() {
-    const { post } = this.props;
-    console.log(post);
-
+  getServiceFilterOptions = post => {
     const serviceOptions = {
       categories: post.service_categories ? post.service_categories.map(category => {
         return { value: category.id, label: category.name };
@@ -257,6 +320,35 @@ class ServicesPage extends PureComponent {
         return { value: region.id, label: region.name };
       }) : [],
     };
+
+    return serviceOptions;
+  }
+
+
+  render() {
+    const { post } = this.props;
+    console.log('ServicesPage RENDER');
+    // console.log(post);
+
+    // Cache the services object and array,
+    // if they aren't already setup. These are unfiltered
+    if (!this.services || !this.servicesArr.length) {
+      console.log('setting up initial services object and array');
+      post.services.forEach(service => {
+        this.services[service.id] = service;
+        this.servicesArr.push(service);
+      });
+    }
+
+    // Cache the service filtering options if they aren't already setup.
+    if (!this.serviceOptions) {
+      console.log('setting up service filter options');
+      this.serviceOptions = this.getServiceFilterOptions(post);
+    }
+
+    console.log(this.services);
+    console.log(this.servicesArr);
+    console.log(this.serviceOptions);
 
 
     return (
@@ -280,44 +372,52 @@ class ServicesPage extends PureComponent {
         <div className={css.ServiceFiltersWrapper}>
           <div className={css.ServiceFilters}>
             {/* Service Categories */}
-            {serviceOptions.categories.length && (
+            {this.serviceOptions.categories.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Categories</div>
                 <Select
-                  options={serviceOptions.categories}
+                  options={this.serviceOptions.categories}
+                  closeMenuOnScroll={() => true}
+                  onChange={this.handleCategoryFilterChange}
                   isMulti
                 />
               </div>
             )}
 
             {/* Service Coverage Types */}
-            {serviceOptions.coverageTypes.length && (
+            {this.serviceOptions.coverageTypes.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Coverage Types</div>
                 <Select
-                  options={serviceOptions.coverageTypes}
+                  options={this.serviceOptions.coverageTypes}
+                  closeMenuOnScroll={() => true}
+                  onChange={this.handleCoverageFilterChange}
                   isMulti
                 />
               </div>
             )}
 
             {/* Service Diagnosis Types */}
-            {serviceOptions.diagnosisTypes.length && (
+            {this.serviceOptions.diagnosisTypes.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Diagnosis Types</div>
                 <Select
-                  options={serviceOptions.diagnosisTypes}
+                  options={this.serviceOptions.diagnosisTypes}
+                  closeMenuOnScroll={() => true}
+                  onChange={this.handleDiagnosisFilterChange}
                   isMulti
                 />
               </div>
             )}
 
             {/* Service Regions */}
-            {serviceOptions.regions.length && (
+            {this.serviceOptions.regions.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Regions</div>
                 <Select
-                  options={serviceOptions.regions}
+                  options={this.serviceOptions.regions}
+                  closeMenuOnScroll={() => true}
+                  onChange={this.handleRegionFilterChange}
                   isMulti
                 />
               </div>
@@ -335,7 +435,7 @@ class ServicesPage extends PureComponent {
                 const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
                 { /* Set the services object value for this service */ }
-                this.services[service.id] = service;
+                { /* this.services[service.id] = service; */ }
                 const { acf } = service;
 
                 return (
