@@ -90,6 +90,7 @@ class ServicesPage extends PureComponent {
   }
 
 
+
   /**
    * Retrieves the modal content for the current modalServiceId
    * and then returns the content of the modal to be rendered.
@@ -227,7 +228,7 @@ class ServicesPage extends PureComponent {
 
     return (
       <img
-        className={css.BlockImage}
+        className={css.ServiceImage}
         src={imgSrc}
         alt="Placeholder"
       />
@@ -325,50 +326,60 @@ class ServicesPage extends PureComponent {
         </div>
 
 
-        {/* Services List */}
-        {/* Remove wrapping <p> tags from the excerpt */}
-        {post.services.map(service => {
-          const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
+        {/* Service Cards */}
+        <div className={css.ServiceCardsContainer}>
+          <div className={css.ServiceCardsWrapper}>
+            <div className={css.ServiceCards}>
 
-          { /* Set the services object value for this service */ }
-          this.services[service.id] = service;
-          const { acf } = service;
+              {post.services.map(service => {
+                const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
-          return (
-            <div
-              className={css.BlockWrapper}
-              key={service.id}
-              coverage-types={getTaxonomyTermIds(acf.coverage_types)}
-              diagnosis-types={getTaxonomyTermIds(acf.diagnosis_types)}
-              regions={getTaxonomyTermIds(acf.service_regions)}
-              categories={getTaxonomyTermIds(acf.service_categories)}
-            >
-              <div className={css.BlockWrapperInner}>
-                <div className={css.BlockImageWrapper}>
-                  {this.getServiceImage(service)}
-                </div>
+                { /* Set the services object value for this service */ }
+                this.services[service.id] = service;
+                const { acf } = service;
 
-                <div className={css.BlockTextWrapper}>
-                  <div className={css.BlockTextWrapperInner}>
-                    <div className={css.BlockHeadingWrapper}>
-                      <div className={css.BlockHeading}>{service.title.rendered}</div>
+                return (
+                  <div
+                    key={service.id}
+                    className={css.ServiceCardWrapper}
+                    coverage-types={getTaxonomyTermIds(acf.coverage_types)}
+                    diagnosis-types={getTaxonomyTermIds(acf.diagnosis_types)}
+                    regions={getTaxonomyTermIds(acf.service_regions)}
+                    categories={getTaxonomyTermIds(acf.service_categories)}
+                  >
+                    <div className={css.ServiceCard}>
+                      <div className={css.ServiceCardHead}>
+                        <div className={css.ServiceCardImage}>
+                          {this.getServiceImage(service)}
+                        </div>
+                      </div>
+
+                      <div className={css.ServiceCardBody}>
+                        <div className={css.ServiceBodyContent}>
+                          <div className={css.ServiceCardHeading}>
+                            {service.title.rendered}
+                          </div>
+
+                          <div className={css.ServiceCardExcerpt}>{excerpt}</div>
+                        </div>
+
+                        <button
+                          type="button"
+                          className={css.ServiceCardButton}
+                          serviceid={service.id}
+                          onClick={service ? this.openServiceModal.bind(this) : null}
+                        >Show Details
+                        </button>
+                      </div>
                     </div>
-                    <p className={css.BlockText}>{excerpt}</p>
-
                   </div>
-                  <button
-                    className={css.BlockButton}
-                    type="button"
-                    serviceid={service.id}
-                    onClick={service ? this.openServiceModal.bind(this) : null}
-                  >Show Details
-                  </button>
-                </div>
-              </div>
-            </div>
+                );
+              })}
 
-          );
-        })}
+            </div>
+          </div>
+        </div>
+
 
         {/* Modal */}
         <div className={css.ModalWrapper} id={modalHtmlId}>

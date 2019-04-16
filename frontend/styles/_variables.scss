@@ -52,7 +52,7 @@ $border-color:                    #ededed;
 // 
 // box-shadow
 // 
-$box-shadow:                        0 2px 0 rgba(0, 0, 0, 0.1);
+$box-shadow:                        0 2px 1px rgba(0, 0, 0, 0.1);
 $box-shadow__hover:                 0 3px 5px rgba(0, 0, 0, 0.12);
 $box-shadow--high__hover:           0 6px 8px rgba(0, 0, 0, 0.12);
 
@@ -63,6 +63,13 @@ $box-shadow-button--hover:          0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px r
 // links
 // 
 $link-color:                        $bermuda;
+
+
+// 
+// buttons
+// 
+$button-bg__hover:                  $link-color;
+$button-bg:                         lighten($button-bg__hover, 10%);
 
 
 // 
