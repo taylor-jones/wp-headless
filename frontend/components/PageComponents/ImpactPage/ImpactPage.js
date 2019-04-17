@@ -30,7 +30,6 @@ class ImpactPage extends PureComponent {
           <Row>
 
             {stories.map(story => {
-              { /* console.log(story); */ }
               const href = `/${story.type}?slug=${story.slug}&apiRoute=${story.type}`;
               const as = `/${story.type}/${story.slug}/`;
 
@@ -45,9 +44,8 @@ class ImpactPage extends PureComponent {
                               className={css.CardImage}
                               alt={story.acf.image.alt}
                               sources={[
-                                { srcSet: story.acf.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
-                                { srcSet: story.acf.image.sizes.medium_large, media: `(${toBreakpoint('lg')})` },
-                                { srcSet: story.acf.image.sizes.medium },
+                                { srcSet: story.acf.image.sizes.large, media: `(${toBreakpoint('md')})` },
+                                { srcSet: story.acf.image.sizes.medium_large },
                               ]}
                             />
                           </div>
@@ -86,8 +84,10 @@ class ImpactPage extends PureComponent {
   }
 }
 
+
 ImpactPage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
 
 export default ImpactPage;
