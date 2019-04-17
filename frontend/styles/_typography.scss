@@ -1,5 +1,6 @@
 @import 'mixins/typography';
 @import './breakpoints';
+@import './colors';
 @import './variables';
 
 $responsive-font-styles: (
@@ -10,7 +11,7 @@ $responsive-font-styles: (
   (h5, 16px, 16px, 20px),
   (h6, 14px, 14px, 18px),
   (p, 14px, 14px, 16px, xs, sm),
-  (lead, 16px, 16px, 20px, xs, lg),
+  (lead, 16px, 16px, 19px, xs, lg),
 );
 
 
@@ -170,6 +171,22 @@ h6 {
 }
 
 
+.heading,
+.subheading {
+  font-family: $font-stack-rounded;
+}
+
+.heading {
+  color: $greyblue8;
+}
+
+.subheading {
+  color: $greyblue5;
+  font-weight: 400;
+}
+
+
+
 // 
 // anchors
 // 
@@ -182,6 +199,19 @@ a {
 // 
 // paragrahps
 // 
+
+p,
+.lead,
+p.lead,
+p.lead a,
+p a {
+  font-family: $font-stack-sans-serif;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
 
 p {
   @include responsive-font(p);
@@ -201,19 +231,24 @@ p {
   }
 }
 
+.lead,
 p.lead,
 p.lead a {
-  @include responsive-font(lead);
-
-  line-height: 1.4;
+  line-height: 1.45;
   word-wrap: break-word;
   padding: 4px 0;
 
+  @include responsive-font(lead);
+
   @include break(md) {
-    line-height: 1.444;
+    line-height: 1.5;
   }
 }
 
+.lead,
+p.lead {
+  color: lighten($charcoal, 15%);
+}
 
 
 .colored-heading {

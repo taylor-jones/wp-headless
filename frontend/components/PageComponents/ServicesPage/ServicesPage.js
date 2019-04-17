@@ -70,7 +70,8 @@ const getFilteredServices = (filters, services) => {
     services = services.filter(service => hasServiceProperty(filters, service.acf, key));
   });
 
-  return services;
+  // sort the filtered services alphabetically before returning
+  return services.sort((a, b) => (a.title.rendered > b.title.rendered ? 1 : -1));
 };
 
 
@@ -98,7 +99,6 @@ class ServicesPage extends PureComponent {
    * clicked service details, and that content is displayed in the modal.
    */
   services = {};
-  serviceOptions = null;
   modalElement = null;
   modalHtmlId = 'modal';
 
@@ -174,7 +174,7 @@ class ServicesPage extends PureComponent {
     if (!service) return null;
 
     const { acf } = service;
-    console.log(service);
+    // console.log(service);
 
     const {
       service_regions,
@@ -293,22 +293,30 @@ class ServicesPage extends PureComponent {
    * @param {object} service
    */
   getServiceImage = service => {
-    // TODO: involve react-responsive-picture to load different images at different sizes.
-    // for now, just load the default placeholder image.
-    const imgSrc = '../static/images/placeholder-graphic.svg';
+    const { acf } = service;
+    const img = {
+      src: acf.image ? acf.image.url : '../static/images/placeholder-graphic.svg',
+      alt: acf.image ? acf.image.alt : 'Placholder',
+    };
 
     return (
       <img
         className={css.ServiceImage}
-        src={imgSrc}
-        alt="Placeholder"
+        src={img.src}
+        alt={img.alt}
       />
     );
   }
 
 
+  /**
+   * Creates and returns an object containing all the options to
+   * display inside of each of the service filters.
+   * @param {object} post - the post object passed to this component
+   * @returns {object}
+   */
   getServiceFilterOptions = post => {
-    const serviceOptions = {
+    return {
       categories: post.service_categories ? post.service_categories.map(category => {
         return { value: category.id, label: category.name };
       }) : [],
@@ -325,50 +333,30 @@ class ServicesPage extends PureComponent {
         return { value: region.id, label: region.name };
       }) : [],
     };
-
-    return serviceOptions;
   }
+
 
 
   render() {
     const { post } = this.props;
-
-    // Determine the services that should be rendered based on
-    // the state of the service filters.
     const filteredServices = getFilteredServices(this.state.serviceFilters, post.services);
-
-    // Setup the service filtering options
-    this.serviceOptions = this.getServiceFilterOptions(post);
+    const serviceOptions = this.getServiceFilterOptions(post);
 
 
     return (
       <div className={css.PageWrapper}>
 
-        {/* Top Section -- Lead Content */}
-        <Container>
-          <Row>
-            <Col sm={12}>
-              <div className={css.LeadWrapper}>
-                <TextSection>
-                  <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-                </TextSection>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-
-
         {/* Service Select Filters */}
         <div className={css.ServiceFiltersWrapper}>
           <div className={css.ServiceFilters}>
             {/* Service Categories */}
-            {this.serviceOptions.categories.length && (
+            {serviceOptions.categories.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Categories</div>
                 <Select
                   instanceId="categories"
                   name="service_categories"
-                  options={this.serviceOptions.categories}
+                  options={serviceOptions.categories}
                   closeMenuOnScroll={() => true}
                   onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
@@ -377,13 +365,13 @@ class ServicesPage extends PureComponent {
             )}
 
             {/* Service Coverage Types */}
-            {this.serviceOptions.coverageTypes.length && (
+            {serviceOptions.coverageTypes.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Coverage Types</div>
                 <Select
                   instanceId="coverage-types"
                   name="coverage_types"
-                  options={this.serviceOptions.coverageTypes}
+                  options={serviceOptions.coverageTypes}
                   closeMenuOnScroll={() => true}
                   onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
@@ -392,13 +380,13 @@ class ServicesPage extends PureComponent {
             )}
 
             {/* Service Diagnosis Types */}
-            {this.serviceOptions.diagnosisTypes.length && (
+            {serviceOptions.diagnosisTypes.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Diagnosis Types</div>
                 <Select
                   instanceId="diagnosis-types"
                   name="diagnosis_types"
-                  options={this.serviceOptions.diagnosisTypes}
+                  options={serviceOptions.diagnosisTypes}
                   closeMenuOnScroll={() => true}
                   onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
@@ -407,13 +395,13 @@ class ServicesPage extends PureComponent {
             )}
 
             {/* Service Regions */}
-            {this.serviceOptions.regions.length && (
+            {serviceOptions.regions.length && (
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Regions</div>
                 <Select
                   instanceId="regions"
                   name="service_regions"
-                  options={this.serviceOptions.regions}
+                  options={serviceOptions.regions}
                   closeMenuOnScroll={() => true}
                   onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti

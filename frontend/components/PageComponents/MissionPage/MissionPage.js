@@ -43,7 +43,7 @@ class MissionPage extends PureComponent {
             <div className={css.Block}>
               <p className="lead">
                 Learn more about
-                <Link href="/post?slug=$services&apiRoute=page" as="/services">
+                <Link href="/post?slug=services&apiRoute=page" as="/services">
                   <a role="link"> the types of services </a>
                 </Link>
                 that Synergy In Action offers.

@@ -3,7 +3,7 @@
 
 
 .PageLeadContainer {
-  color: inherit;
+  // color: inherit;
 }
 
 
@@ -65,18 +65,13 @@
 
 
 .HeadingWrapper {
-  margin-bottom: 24px;
-}
-
-
-.Heading,
-.Subheading {
-  font-family: $font-stack-rounded;
+  margin-bottom: 28px;
 }
 
 
 .Heading {
   font-weight: 400;
+  @extend .heading;
 }
 
 
@@ -90,11 +85,12 @@
 
 .Subheading,
 .Subheading p {
-  font-size: 16px;
+  // font-size: 16px;
   line-height: 24px;
+  @extend .subheading;
 
   @include break(lg) {
-    font-size: 18px;
+    // font-size: 18px;
     line-height: 26px;
   }
 }

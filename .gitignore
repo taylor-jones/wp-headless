@@ -12,3 +12,4 @@ wp-admin/
 plugins/
 !plugins/synergy*
 
+fonts/

@@ -64,7 +64,7 @@ const PageLoader = props => {
         <PageLead
           align="center"
           heading={post.acf.page_lead.heading}
-          subheading={post.acf.page_lead.subheading}
+          subheading={post.acf.page_lead.sub_heading}
         >
           {post.acf.page_lead.lead_content}
         </PageLead>

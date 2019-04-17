@@ -124,7 +124,7 @@ class Index extends PureComponent {
                     </div>
                     <div className={css.TriadImageLabelWrapper}>
                       <div className={css.TriadImageLabel}>
-                      Lorem ipsum, dolor sit amet consectetur.
+                        Lorem ipsum, dolor sit amet consectetur.
                       </div>
                     </div>
                   </div>

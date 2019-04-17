@@ -50,8 +50,8 @@ class PageLead extends PureComponent {
           <div className={alignment.wrapper}>
             <div className={css.PageLead}>
               <div className={alignment.headings}>
-                {heading && <h3 className={css.Heading}>{heading}</h3>}
-                {subheading && <div className={css.Subheading}>{subheading}</div>}
+                {heading && <h2 className={css.Heading}>{heading}</h2>}
+                {subheading && <h5 className={css.Subheading}>{subheading}</h5>}
               </div>
 
               {children && (
