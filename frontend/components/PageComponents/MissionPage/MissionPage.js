@@ -1,9 +1,8 @@
 import { PureComponent, Fragment } from 'react';
 import Link from 'next/link';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container } from 'react-grid-system';
 import PropTypes from 'prop-types';
 import { Picture } from 'react-responsive-picture';
-import { toBreakpoint } from '../../../lib/breakpoints';
 import css from './MissionPage.scss';
 
 
@@ -11,8 +10,6 @@ class MissionPage extends PureComponent {
   render() {
     const { post } = this.props;
     const { acf } = post;
-
-    // console.log(post);
 
     return (
       <Fragment>
