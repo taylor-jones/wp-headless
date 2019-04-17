@@ -14,30 +14,77 @@ import TextSection from '../../TextSection/TextSection';
 import css from './ServicesPage.scss';
 
 
+
 /**
- * Gets all the taxonomy term ids for a given
- * array representing a service taxonomy type.
- * @param {array} array - an array of object, where each object has a term_id
- * @returns {array} an array of only term_ids
+ * Checks if an object has a property with a specified name that satisfied all of:
+ * - the property exists on the object
+ * - the object property is an array
+ * - the array is not empty
+ *
+ * @param {object} obj - the object to inspect within
+ * @param {string} prop - the name of the object property that should be
+ *    a non-empty array property on the object
+ * @returns {boolean} true if all requirements above are met, false if not.
  */
-const getTaxonomyTermIds = array => {
-  return array.map(item => item.term_id);
+const hasArrayProperty = (obj, prop) => typeof obj === 'object' && Array.isArray(obj[prop]) && obj[prop].length;
+
+
+/**
+ * Checks for an intersection of a property value between the object that contains
+ * all the current service filters and a given service object.
+ *
+ * @note The function assumes that filters[property] and service[property] are both arrays.
+ * @param {object} filters - an object that contains properties representing the
+ *    different service filters that may be applied to the services.
+ * @param {object} service - an object containing (at least) properties that are
+ *    equivalent to the properties on the filters object.
+ * @param {string} property - the name of a property to check for an intersection in.
+ * @returns {boolean} true if the service[property] array has one of the values from the
+ *    filters[property] array (or if the filters[property] array is empty, which means there
+ *    is no active filter). False if not.
+ */
+const hasServiceProperty = (filters, service, property) => {
+  return hasArrayProperty(filters, property)
+    ? filters[property].some(id => service[property].some(prop => prop.term_id === id.value))
+    : true;
 };
 
 
-const modalHtmlId = 'modal';
+/**
+ * Filters an array of services to only those that have a matching property
+ * value for all precified filters that are present in a filters object.
+ * The function iterates over each key in the filters object, since each key
+ * represents the name of a filter.
+ *
+ * @note each property of the filters object is an array
+ * @note any empty array in the filters object represents a filter that is not set,
+ *    so that particular property will not filter any services.
+ *
+ * @param {object} filters - the object that contains all the filtering properties
+ * @param {array} services - an array of service objects to filter
+ * @returns {array} an array of filtered service objects based on the contents
+ *    of the filters object
+ */
+const getFilteredServices = (filters, services) => {
+  Object.keys(filters).forEach(key => {
+    services = services.filter(service => hasServiceProperty(filters, service.acf, key));
+  });
+
+  return services;
+};
+
+
 
 class ServicesPage extends PureComponent {
   state = {
     showModal: false,
     modalServiceId: null,
     serviceFilters: {
-      categories: [],
-      coverageTypes: [],
-      diagnosisTypes: [],
-      regions: [],
+      service_categories: [],
+      coverage_types: [],
+      diagnosis_types: [],
+      service_regions: [],
     },
-    filteredServices: [],
   };
 
   /**
@@ -51,9 +98,9 @@ class ServicesPage extends PureComponent {
    * clicked service details, and that content is displayed in the modal.
    */
   services = {};
-  servicesArr = [];
   serviceOptions = null;
   modalElement = null;
+  modalHtmlId = 'modal';
 
 
   /**
@@ -64,17 +111,25 @@ class ServicesPage extends PureComponent {
     Modal.setAppElement('body');
   }
 
+  /**
+   * Sets the modal element so the modal
+   * knows which elemet to use for rendering.
+   */
   componentDidMount() {
     this.modalElement = document.querySelector('modal');
   }
 
+  /**
+   * Releases any scroll locks placed on the body
+   */
   componentWillUnmount() {
     clearAllBodyScrollLocks();
   }
 
 
   /**
-   * Sets the showModal state to false, which hides the modal.
+   * Sets the showModal state to false, which hides the modal
+   * and releases any body scroll locks.
    */
   closeServiceModal = () => {
     this.setState({ showModal: false });
@@ -83,66 +138,16 @@ class ServicesPage extends PureComponent {
 
 
   /**
-   * Service Filter Handlers
+   * Handles a service filter change by updating the property of the
+   * state.serviceFilter that is associated with the name of the element
+   * that the change occurred on.
    */
-
-  handleCategoryFilterChange = selection => {
-    console.log('handleCategoryFilterChange', selection);
-
+  handleServiceFilterChange = (selection, meta) => {
     this.setState(prev => ({
-      serviceFilters: { ...prev.serviceFilters, categories: selection },
-    }), () => {
-      // do stuff with updated state
-      console.log(this.state);
-    });
+      serviceFilters: { ...prev.serviceFilters, [meta.name]: selection },
+    }));
   }
 
-  handleCoverageFilterChange = selection => {
-    // console.log('handleCoverageFilterChange', selection);
-
-    this.setState(prev => ({
-      serviceFilters: { ...prev.serviceFilters, coverageTypes: selection },
-    }), () => {
-      // do stuff with updated state
-      console.log(this.state);
-    });
-  }
-
-  handleDiagnosisFilterChange = selection => {
-    // console.log('handleDiagnosisFilterChange', selection);
-
-    this.setState(prev => ({
-      serviceFilters: { ...prev.serviceFilters, diagnosisTypes: selection },
-    }), () => {
-      // do stuff with updated state
-      console.log(this.state);
-    });
-  }
-
-  handleRegionFilterChange = selection => {
-    // console.log('handleRegionFilterChange', selection);
-
-    this.setState(prev => ({
-      serviceFilters: { ...prev.serviceFilters, regions: selection },
-    }), () => {
-      // do stuff with updated state
-      console.log(this.state);
-    });
-  }
-
-  /**
-   * Use the contents of the service filters to determine which of the
-   * services should be actively displayed on the page.
-   */
-  updateDisplayedServicesFromFilters = () => {
-    // TODO:
-  }
-
-
-
-  /**
-   * Modal Handlers
-   */
 
   /**
    * Updates the modalServiceId state using the serviceid of
@@ -327,28 +332,13 @@ class ServicesPage extends PureComponent {
 
   render() {
     const { post } = this.props;
-    console.log('ServicesPage RENDER');
-    // console.log(post);
 
-    // Cache the services object and array,
-    // if they aren't already setup. These are unfiltered
-    if (!this.services || !this.servicesArr.length) {
-      console.log('setting up initial services object and array');
-      post.services.forEach(service => {
-        this.services[service.id] = service;
-        this.servicesArr.push(service);
-      });
-    }
+    // Determine the services that should be rendered based on
+    // the state of the service filters.
+    const filteredServices = getFilteredServices(this.state.serviceFilters, post.services);
 
-    // Cache the service filtering options if they aren't already setup.
-    if (!this.serviceOptions) {
-      console.log('setting up service filter options');
-      this.serviceOptions = this.getServiceFilterOptions(post);
-    }
-
-    console.log(this.services);
-    console.log(this.servicesArr);
-    console.log(this.serviceOptions);
+    // Setup the service filtering options
+    this.serviceOptions = this.getServiceFilterOptions(post);
 
 
     return (
@@ -376,9 +366,11 @@ class ServicesPage extends PureComponent {
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Categories</div>
                 <Select
+                  instanceId="categories"
+                  name="service_categories"
                   options={this.serviceOptions.categories}
                   closeMenuOnScroll={() => true}
-                  onChange={this.handleCategoryFilterChange}
+                  onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
                 />
               </div>
@@ -389,9 +381,11 @@ class ServicesPage extends PureComponent {
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Coverage Types</div>
                 <Select
+                  instanceId="coverage-types"
+                  name="coverage_types"
                   options={this.serviceOptions.coverageTypes}
                   closeMenuOnScroll={() => true}
-                  onChange={this.handleCoverageFilterChange}
+                  onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
                 />
               </div>
@@ -402,9 +396,11 @@ class ServicesPage extends PureComponent {
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Diagnosis Types</div>
                 <Select
+                  instanceId="diagnosis-types"
+                  name="diagnosis_types"
                   options={this.serviceOptions.diagnosisTypes}
                   closeMenuOnScroll={() => true}
-                  onChange={this.handleDiagnosisFilterChange}
+                  onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
                 />
               </div>
@@ -415,9 +411,11 @@ class ServicesPage extends PureComponent {
               <div className={css.ServiceFilter}>
                 <div className={css.ServiceFilterHeading}>Regions</div>
                 <Select
+                  instanceId="regions"
+                  name="service_regions"
                   options={this.serviceOptions.regions}
                   closeMenuOnScroll={() => true}
-                  onChange={this.handleRegionFilterChange}
+                  onChange={(option, meta) => this.handleServiceFilterChange(option, meta)}
                   isMulti
                 />
               </div>
@@ -431,22 +429,15 @@ class ServicesPage extends PureComponent {
           <div className={css.ServiceCardsWrapper}>
             <div className={css.ServiceCards}>
 
-              {post.services.map(service => {
+              {/* Render the filtered services */}
+              {filteredServices.map(service => {
                 const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
                 { /* Set the services object value for this service */ }
-                { /* this.services[service.id] = service; */ }
-                const { acf } = service;
+                this.services[service.id] = service;
 
                 return (
-                  <div
-                    key={service.id}
-                    className={css.ServiceCardWrapper}
-                    coverage-types={getTaxonomyTermIds(acf.coverage_types)}
-                    diagnosis-types={getTaxonomyTermIds(acf.diagnosis_types)}
-                    regions={getTaxonomyTermIds(acf.service_regions)}
-                    categories={getTaxonomyTermIds(acf.service_categories)}
-                  >
+                  <div key={service.id} className={css.ServiceCardWrapper}>
                     <div className={css.ServiceCard}>
                       <div className={css.ServiceCardHead}>
                         <div className={css.ServiceCardImage}>
@@ -482,7 +473,7 @@ class ServicesPage extends PureComponent {
 
 
         {/* Modal */}
-        <div className={css.ModalWrapper} id={modalHtmlId}>
+        <div className={css.ModalWrapper} id={this.modalHtmlId}>
           <Modal
             className={css.Modal}
             overlayClassName={css.ModalOverlay}

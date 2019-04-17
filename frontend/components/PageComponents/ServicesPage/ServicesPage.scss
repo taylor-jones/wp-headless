@@ -256,7 +256,7 @@
   }
   
   @include break(lg) {
-    max-width: 1180px;
+    max-width: 1200px;
   }
 }
 
@@ -307,6 +307,7 @@
 .ServiceCards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 
