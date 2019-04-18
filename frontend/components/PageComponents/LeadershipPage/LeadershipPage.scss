@@ -1,0 +1,50 @@
+@import '../../../styles/helpers';
+@import '../../../styles/breakpoints';
+@import '../../../styles/colors';
+
+.TeamContainer,
+.TeamWrapper {
+  display: flex;
+}
+
+.TeamContainer,
+.TeamWrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.TeamContainer {
+  background-color: $greyblue2;
+  margin: 32px auto 96px auto;
+  padding: 72px 32px;
+  
+}
+
+.TeamWrapper {
+  max-width: 800px;
+  // @extend .visualizer;
+  width: 100%;
+
+  @include break(lg) {
+    max-width: 1100px;
+  }
+}
+
+
+.Team {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem 1.5rem;
+  width: 100%;
+
+  @include break(md) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @include break(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
