@@ -41,7 +41,7 @@ class MissionPage extends PureComponent {
             })}
 
             <div className={css.Block}>
-              <p className="lead">
+              <p className="lead strong">
                 Learn more about
                 <Link href="/post?slug=services&apiRoute=page" as="/services">
                   <a role="link"> the types of services </a>

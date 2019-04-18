@@ -52,7 +52,6 @@
                     "other_options": [
                         "disableReturn",
                         "disableDoubleReturn",
-                        "disableExtraSpaces",
                         "spellcheck",
                         "targetBlank"
                     ],
@@ -96,7 +95,6 @@
                     "other_options": [
                         "disableReturn",
                         "disableDoubleReturn",
-                        "disableExtraSpaces",
                         "spellcheck",
                         "targetBlank"
                     ],
@@ -140,7 +138,6 @@
                     ],
                     "custom_buttons": "",
                     "other_options": [
-                        "disableExtraSpaces",
                         "spellcheck",
                         "targetBlank"
                     ],
@@ -166,5 +163,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554737325
+    "modified": 1555598578
 }

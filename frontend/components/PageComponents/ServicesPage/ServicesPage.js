@@ -417,8 +417,16 @@ class ServicesPage extends PureComponent {
           <div className={css.ServiceCardsWrapper}>
             <div className={css.ServiceCards}>
 
+              {/* Show a message when there are no matching services */}
+              {filteredServices.length === 0 && (
+                <div className={css.NoServicesMessage}>
+                  <h2>No Matches</h2>
+                  <p>It looks like we don&apos;t have any services that match all of those filters. Try removing any of the current filters to keep exploring our services.</p>
+                </div>
+              )}
+
               {/* Render the filtered services */}
-              {filteredServices.map(service => {
+              {filteredServices.length > 0 && filteredServices.map(service => {
                 const excerpt = sanitizeHtml(service.excerpt.rendered, { allowedTags: [] });
 
                 { /* Set the services object value for this service */ }
@@ -456,6 +464,17 @@ class ServicesPage extends PureComponent {
               })}
 
             </div>
+          </div>
+        </div>
+
+        <div className={css.ContactStripeWrapper}>
+          <div className={css.ContactStripe}>
+            <p>
+              If you have any questions or comments about our services or you would like to get in touch with us, you can
+              <Link href="/post?slug=contact&apiRoute=page" as="/contact">
+                <a role="link"> visit this link to contact us or leave us a message.</a>
+              </Link>
+            </p>
           </div>
         </div>
 
