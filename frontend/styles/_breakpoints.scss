@@ -6,7 +6,9 @@
 
 $breakpoint-xs: 0px;
 $breakpoint-sm: 480px;
+$breakpoint-ms: 612px;
 $breakpoint-md: 744px;
+$breakpoint-ml: 936px;
 $breakpoint-lg: 1128px;
 $breakpoint-xl: 1440px;
 
@@ -14,7 +16,9 @@ $breakpoint-xl: 1440px;
 $grid-breakpoints: (
   xs: $breakpoint-xs,
   sm: $breakpoint-sm,
+  ms: $breakpoint-ms,
   md: $breakpoint-md,
+  ml: $breakpoint-ml,
   lg: $breakpoint-lg,
   xl: $breakpoint-xl
  );
@@ -24,7 +28,9 @@ $grid-breakpoints: (
 :export {
   xs: $breakpoint-xs;
   sm: $breakpoint-sm;
+  ms: $breakpoint-ms;
   md: $breakpoint-md;
+  ml: $breakpoint-ml;
   lg: $breakpoint-lg;
   xl: $breakpoint-xl;
 }
