@@ -39,7 +39,7 @@
   grid-gap: 3rem 1.5rem;
   width: 100%;
 
-  @include break(md) {
+  @include break(ms) {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }

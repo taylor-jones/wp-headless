@@ -10,7 +10,7 @@ class AdvisorsPage extends PureComponent {
 
     return (
       <div>
-        Advisors
+        NOTE: Right now, the Advisors page is using the LeadershipPage component.
       </div>
     );
   }

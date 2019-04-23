@@ -1,21 +1,30 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Picture } from 'react-responsive-picture';
+import { FiMail, FiExternalLink } from 'react-icons/fi';
+import { FaLinkedinIn, FaPen, FaUser, FaTwitter } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 import css from './PersonCard.scss';
 
 class PersonCard extends PureComponent {
   /**
-   * Uses the data associated with a person to generate
-   * the markup for the card base, including determining the
-   * correct icons to display.
+   * Inspects a url to try to determine the most
+   * appropriate icon to display for the url.
+   * This function can be extended with additional
+   * inspections as needed.
    *
-   * @param {object} person - the person object to build the base markup from
-   * @returns {jsx} the markup to render
+   * @param {string} url - the url of the link
+   * @returns {jsx} the markup for the icon to render
    */
-  getCardBase = person => {
-    return (
-      <div>TODO!</div>
-    );
+  getLinkIcon = url => {
+    if (url.includes('linkedin')) {
+      return <FaLinkedinIn />;
+    } else if (url.includes('twitter')) {
+      return <FaTwitter />;
+    }
+
+    // default external link icon
+    return <FiExternalLink />;
   }
 
 
@@ -41,9 +50,21 @@ class PersonCard extends PureComponent {
             <div className={css.PersonTitle}>{person.title}</div>
           </div>
 
-          <div className={css.PersonCardBase}>
-            Base
-          </div>
+          <ul className={css.PersonCardBase}>
+            {/* Link to email address, if available */}
+            {person.email_address && (
+              <li><a href={`mailto:${person.email_address}`}><FiMail /></a></li>
+            )}
+
+            {/* Link to external links, if available */}
+            {person.external_links && person.external_links.map((link, index) => {
+              return (
+                <li key={index}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">{this.getLinkIcon(link.url)}</a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     );

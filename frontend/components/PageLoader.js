@@ -25,8 +25,9 @@ const PageLoader = props => {
    * component will be listed in the componentSlugMap.
    */
   const componentSlugMap = {
-    board: <AdvisorsPage post={post} />,
+    // board: <AdvisorsPage post={post} />,
     leadership: <LeadershipPage post={post} />,
+    board: <LeadershipPage post={post} />,
     services: <ServicesPage post={post} />,
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,
