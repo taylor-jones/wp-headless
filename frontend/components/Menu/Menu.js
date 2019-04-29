@@ -182,7 +182,7 @@ class Menu extends PureComponent {
         {/* If the item is a link, give it an achor */}
         {item.is_link && (
           <Fragment>
-            <Link href={attr.href} as={attr.as}>
+            <Link prefetch href={attr.href} as={attr.as}>
               <a onClick={this.props.clicked} role="link">
                 {this.getMenuItemTitle(item)}
               </a>

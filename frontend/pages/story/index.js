@@ -41,7 +41,7 @@ class Story extends Component {
     const { story } = this.props;
     if (!story.title) { return <Error statusCode={404} />; }
 
-    console.log(story);
+    // console.log(story);
 
     return (
       <Layout
@@ -74,7 +74,7 @@ class Story extends Component {
             <div className={css.StoryExcerpt} dangerouslySetInnerHTML={{ __html: story.excerpt.rendered }} />
             <div className={css.StoryContent} dangerouslySetInnerHTML={{ __html: story.content.rendered }} />
 
-            <Link href="/post?slug=impact&apiRoute=page" as="/impact/">
+            <Link prefetch href="/post?slug=impact&apiRoute=page" as="/impact/">
               <a className={css.StoryLink}><FiChevronsLeft /> Back to All Stories</a>
             </Link>
           </div>

@@ -37,7 +37,7 @@ class ImpactPage extends PureComponent {
                 <Col sm={12} md={6} lg={4} key={story.id}>
                   <div className={css.CardWrapper}>
                     <div className={css.CardImageContainer}>
-                      <Link href={href} as={as}>
+                      <Link prefetch href={href} as={as}>
                         <a>
                           <div className={css.CardImageWrapper}>
                             <Picture
@@ -54,7 +54,7 @@ class ImpactPage extends PureComponent {
 
                       <div className={css.CardBodyWrapper}>
                         <div className={css.CardHeadingWrapper}>
-                          <Link href={href} as={as}>
+                          <Link prefetch href={href} as={as}>
                             <a>
                               <h3 className={css.CardHeading}>{this.getStoryTitle(story)}</h3>
                             </a>
@@ -65,7 +65,7 @@ class ImpactPage extends PureComponent {
                         </div>
 
                         <div className={css.CardLink}>
-                          <Link href={href} as={as}>
+                          <Link prefetch href={href} as={as}>
                             <a>Read More</a>
                           </Link>
                         </div>

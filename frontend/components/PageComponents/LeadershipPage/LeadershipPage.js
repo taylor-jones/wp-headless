@@ -10,7 +10,7 @@ class LeadershipPage extends PureComponent {
     const { acf } = post;
     const { people } = acf;
 
-    console.log(people);
+    // console.log(people);
 
     return (
       <div className={css.TeamContainer}>
