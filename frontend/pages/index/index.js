@@ -3,11 +3,11 @@ import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-grid-system';
 import PropTypes from 'prop-types';
-import withPageWrapper from '../hoc/withPageWrapper';
-import Layout from '../components/UI/Layout/Layout';
-import HeroImage from '../components/UI/HeroImage/HeroImage';
-import TextSection from '../components/TextSection/TextSection';
-import { Config } from '../config';
+import withPageWrapper from '../../hoc/withPageWrapper';
+import Layout from '../../components/UI/Layout/Layout';
+import HeroImage from '../../components/UI/HeroImage/HeroImage';
+import TextSection from '../../components/TextSection/TextSection';
+import { Config } from '../../config';
 import css from './index.scss';
 
 

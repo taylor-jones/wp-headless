@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { Picture } from 'react-responsive-picture';
 import PropTypes from 'prop-types';
 import { FiChevronsLeft } from 'react-icons/fi';
-import Layout from '../components/UI/Layout/Layout';
-import withPageWrapper from '../hoc/withPageWrapper';
-import { Config } from '../config';
-import { decode } from '../lib/clientUtils';
-import { toBreakpoint } from '../lib/breakpoints';
-import css from './story.scss';
+import Layout from '../../components/UI/Layout/Layout';
+import withPageWrapper from '../../hoc/withPageWrapper';
+import { Config } from '../../config';
+import { decode } from '../../lib/clientUtils';
+import { toBreakpoint } from '../../lib/breakpoints';
+import css from './index.scss';
 
 
 class Story extends Component {

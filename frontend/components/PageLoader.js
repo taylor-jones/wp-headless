@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
@@ -8,7 +9,7 @@ import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
 import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
 import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
-import AdvisorsPage from './PageComponents/AdvisorsPage/AdvisorsPage';
+// import AdvisorsPage from './PageComponents/AdvisorsPage/AdvisorsPage';
 import LeadershipPage from './PageComponents/LeadershipPage/LeadershipPage';
 
 
@@ -26,8 +27,8 @@ const PageLoader = props => {
    */
   const componentSlugMap = {
     // board: <AdvisorsPage post={post} />,
-    leadership: <LeadershipPage post={post} />,
     board: <LeadershipPage post={post} />,
+    leadership: <LeadershipPage post={post} />,
     services: <ServicesPage post={post} />,
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,
