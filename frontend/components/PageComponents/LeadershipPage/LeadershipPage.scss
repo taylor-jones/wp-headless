@@ -18,8 +18,11 @@
 .TeamContainer {
   background-color: $greyblue2;
   margin: 32px auto 96px auto;
-  padding: 72px 32px;
+  padding: 72px 5vw;
   
+  @include break(ms) {
+    padding: 72px 32px;
+  }
 }
 
 .TeamWrapper {

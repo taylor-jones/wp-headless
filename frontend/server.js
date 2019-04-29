@@ -106,6 +106,12 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    server.get('/leadership/:slug', (req, res) => {
+      const queryParams = { slug: req.params.slug, apiRoute: 'leadership' };
+      const actualPage = '/leadership';
+      renderAndCache(req, res, actualPage, queryParams);
+    });
+
     server.get('/_preview/:id/:wpnonce', (req, res) => {
       const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
       const actualPage = '/preview';

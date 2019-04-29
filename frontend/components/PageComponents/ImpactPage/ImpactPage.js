@@ -22,6 +22,7 @@ class ImpactPage extends PureComponent {
     const { post } = this.props;
     const { stories } = post;
 
+    console.log('impact page component loaded');
     console.log(post);
 
     return (

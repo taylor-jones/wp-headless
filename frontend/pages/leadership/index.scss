@@ -1,0 +1,140 @@
+@import '../../styles/breakpoints';
+@import '../../styles/typography';
+@import '../../styles/variables';
+@import '../../styles/helpers';
+
+.PersonContainer,
+.Person {
+  display: flex;
+  flex-direction: column;
+}
+
+.PersonContainer {
+  align-items: center;
+  justify-content: flex-start;
+  margin: 48px auto;
+  width: 90%;
+  // @extend .visualizer;
+  
+  @include break(md) {
+    margin-top: 128px;
+  }
+}
+
+.Person {
+  // @extend .visualizer;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+  
+  @include break(ml) {
+    max-width: 960px;
+    flex-direction: row;
+  }
+}
+
+.PersonImageWrapper,
+.PersonContentWrapper {
+  flex: 1;
+}
+
+.PersonImageWrapper {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  flex: 1;
+}
+
+.PersonImage {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+  background-size: cover;
+
+  @include break(ml) {
+    background-position: center center;
+  }
+}
+
+.PersonContentWrapper {
+  order: 2;
+  padding: 0 8px;
+
+  @include break(ml) {
+    order: -1;
+    padding: 0 32px;
+  }
+}
+
+.PersonHeadings {
+  text-align: center;
+  margin-top: 5vw;
+
+  @include break(ml) {
+    margin-top: 0;
+  }
+}
+
+.PersonName {
+  @include responsive-font(h1);
+}
+
+.PersonRole {
+  @include responsive-font(h5);
+}
+
+.PersonContent,
+.PersonContent p {
+  @include responsive-font(p);
+  text-align: justify;
+}
+
+.PersonContent {
+  margin-top: 32px;
+}
+
+
+.PersonLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 48px;
+
+  li,
+  li a {
+    color: $greyblue5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-rendering: geometricPrecision;
+    transition: background-color 75ms ease;
+    padding: 3px 0;
+    line-height: 1;
+    
+    &:hover {
+      color: $greyblue7;
+    }
+    
+    span {
+      line-height: 1;
+      flex: 1;
+      margin-left: 12px;
+
+      &:first-of-type {
+        margin-left: 0;
+        font-size: 95%;
+      }
+    }
+  }
+
+}

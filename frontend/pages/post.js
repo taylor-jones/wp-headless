@@ -44,6 +44,12 @@ const customPostTypeRequestsMap = {
       postProperty: 'stories',
     },
   ],
+  leadership: [
+    {
+      fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/leadership`,
+      postProperty: 'people',
+    },
+  ],
   'what-we-do': [
     {
       fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/what-we-do`,

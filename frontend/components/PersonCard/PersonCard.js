@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { Picture } from 'react-responsive-picture';
 import { FiMail, FiExternalLink } from 'react-icons/fi';
 import { FaLinkedinIn, FaPen, FaUser, FaTwitter } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
 import css from './PersonCard.scss';
 
 class PersonCard extends PureComponent {
@@ -30,34 +30,39 @@ class PersonCard extends PureComponent {
 
   render() {
     const { person } = this.props;
+    const { acf } = person;
+
+    const href = `/${person.type}?slug=${person.slug}&apiRoute=${person.type}`;
+    const as = `/${person.type}/${person.slug}/`;
 
     return (
       <div className={css.PersonCardWrapper}>
         <div className={css.PersonCard}>
-          <div className={css.PersonCardHead}>
-            <Picture
-              className={css.PersonCardImage}
-              alt={person.image.alt}
-              sources={[{ srcSet: person.image.sizes['hero-sm-portrait'] }]}
-            />
-          </div>
+          <Link prefetch href={href} as={as}>
+            <a>
+              <div className={css.PersonCardHead}>
+                <Picture
+                  className={css.PersonCardImage}
+                  alt={person.featured_image.alt}
+                  sources={[{ srcSet: person.featured_image.sizes['hero-sm-portrait'].source_url }]}
+                />
+              </div>
 
-          <div className={css.PersonCardBody}>
-            <div className={css.PersonName}>
-              <div className={css.PersonFirstName}>{person.first_name}</div>
-              <div className={css.PersonLastName}>{person.last_name}</div>
-            </div>
-            <div className={css.PersonTitle}>{person.title}</div>
-          </div>
+              <div className={css.PersonCardBody}>
+                <div className={css.PersonName}>{person.title.rendered}</div>
+                <div className={css.PersonTitle}>{acf.role}</div>
+              </div>
+            </a>
+          </Link>
 
           <ul className={css.PersonCardBase}>
             {/* Link to email address, if available */}
-            {person.email_address && (
-              <li><a href={`mailto:${person.email_address}`}><FiMail /></a></li>
+            {acf.email_address && (
+              <li><a href={`mailto:${acf.email_address}`}><FiMail /></a></li>
             )}
 
             {/* Link to external links, if available */}
-            {person.external_links && person.external_links.map((link, index) => {
+            {acf.external_links && acf.external_links.map((link, index) => {
               return (
                 <li key={index}>
                   <a href={link.url} target="_blank" rel="noopener noreferrer">{this.getLinkIcon(link.url)}</a>

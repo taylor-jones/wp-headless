@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { PureComponent, Fragment } from 'react';
 import Select from 'react-select';
-import { Container, Row, Col } from 'react-grid-system';
 import { FiX } from 'react-icons/fi';
 import { MdPlace } from 'react-icons/md';
 import { GoCheck, GoCircleSlash, GoPrimitiveDot } from 'react-icons/go';
@@ -10,7 +9,6 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-import TextSection from '../../TextSection/TextSection';
 import css from './ServicesPage.scss';
 
 

@@ -30,6 +30,14 @@
   justify-content: space-evenly;
   width: 100%;
   flex: 1;
+
+  & > a {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+  }
 }
 
 .PersonCardHead {
@@ -61,26 +69,16 @@
     margin-bottom: 12px;
     color: $greyblue8;
     line-height: 1.35;
-    
-    .PersonFirstName {
-      margin: 0;
-      @include responsive-font(h0);
-    }
-    
-    .PersonLastName {
-      @include responsive-font(h4);
-      margin: 0;
-    }
-    
-    .PersonFirstName,
-    .PersonLastName {
-      @include break(ms) {
-        @include responsive-font(h4);
-        flex: 1;
-        margin: 0 2px;
-      }
-    }
 
+    @include responsive-font(h4);
+
+    @include break-between(sm, ms) {
+      @include responsive-font(h2);
+    }
+    
+    @include break(ml) {
+      @include responsive-font(h3);
+    }
 
     @include break(ms) {
       flex-direction: row;
@@ -122,37 +120,3 @@
     }
   }
 }
-
-
-// @include break-only(sm) {
-//   .PersonCardWrapper {
-//     // max-width: 600px;
-//   }
-
-//   .PersonCard {
-//     flex-direction: row;
-//     flex-wrap: wrap;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-//   }
-  
-//   .PersonCardHead {
-//     flex: 1.5;
-//   }
-  
-//   .PersonCardBody {
-//     margin-top: 0;
-//     flex: 2;
-//     max-width: 400px;
-//     padding-top: 5%;
-
-//     .PersonName {
-//       margin-bottom: 4vw;
-//     }
-//   }
-  
-//   .PersonCardBase {
-//     // flex: 1;
-//     margin-top: -8px;
-//   }
-// }

@@ -8,9 +8,11 @@ class LeadershipPage extends PureComponent {
   render() {
     const { post } = this.props;
     const { acf } = post;
-    const { people } = acf;
+    // const { people } = acf;
+    const { people } = post;
 
     // console.log(people);
+    console.log(post);
 
     return (
       <div className={css.TeamContainer}>
