@@ -1,0 +1,38 @@
+@import '../../../styles/breakpoints';
+@import '../../../styles/typography';
+
+
+.PageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 48px auto 96px auto;
+  max-width: 960px;
+}
+
+
+.PageWrapper {
+  width: 90%;
+
+  @include break(sm) {
+    width: 80%;
+  }
+}
+
+.WpEditor {
+  a {
+    @include responsive-font(lead);
+    font-weight: 500;
+  }
+
+  p {
+    margin-block-start: 2rem;
+    margin-block-end: 2rem;
+  }
+
+  h4 {
+    @extend .lead;
+    // font-weight: 400;
+  }
+}
+

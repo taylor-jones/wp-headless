@@ -10,6 +10,7 @@ import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
 import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
 import PeoplePage from './PageComponents/PeoplePage/PeoplePage';
+import WhoWeServePage from './PageComponents/WhoWeServePage/WhoWeServePage';
 
 
 const PageLoader = props => {
@@ -34,6 +35,7 @@ const PageLoader = props => {
     'what-we-do': <OverviewPage post={post} />,
     'get-involved': <OverviewPage post={post} />,
     resources: <OverviewPage post={post} />,
+    'who-we-serve': <WhoWeServePage post={post} />,
   };
 
   /**
