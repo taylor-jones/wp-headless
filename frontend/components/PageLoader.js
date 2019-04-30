@@ -9,8 +9,7 @@ import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
 import PurposePage from './PageComponents/PurposePage/PurposePage';
 import MissionPage from './PageComponents/MissionPage/MissionPage';
 import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
-// import AdvisorsPage from './PageComponents/AdvisorsPage/AdvisorsPage';
-import LeadershipPage from './PageComponents/LeadershipPage/LeadershipPage';
+import PeoplePage from './PageComponents/PeoplePage/PeoplePage';
 
 
 const PageLoader = props => {
@@ -26,9 +25,8 @@ const PageLoader = props => {
    * component will be listed in the componentSlugMap.
    */
   const componentSlugMap = {
-    // board: <AdvisorsPage post={post} />,
-    advisors: <LeadershipPage post={post} />,
-    leadership: <LeadershipPage post={post} />,
+    advisors: <PeoplePage post={post} />,
+    leadership: <PeoplePage post={post} />,
     services: <ServicesPage post={post} />,
     purpose: <PurposePage post={post} />,
     mission: <MissionPage post={post} />,

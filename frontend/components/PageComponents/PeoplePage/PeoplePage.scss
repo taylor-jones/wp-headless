@@ -1,33 +1,31 @@
-@import '../../../styles/helpers';
 @import '../../../styles/breakpoints';
 @import '../../../styles/colors';
 
-.TeamContainer,
-.TeamWrapper {
+.PeopleContainer,
+.PeopleWrapper {
   display: flex;
 }
 
-.TeamContainer,
-.TeamWrapper {
+.PeopleContainer,
+.PeopleWrapper {
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 
-.TeamContainer {
+.PeopleContainer {
   background-color: $greyblue2;
-  margin: 32px auto 96px auto;
+  margin: 48px auto 96px auto;
   padding: 72px 5vw;
   
   @include break(ms) {
-    padding: 72px 32px;
+    padding: 96px 32px;
   }
 }
 
-.TeamWrapper {
+.PeopleWrapper {
   max-width: 800px;
-  // @extend .visualizer;
   width: 100%;
 
   @include break(lg) {
@@ -36,7 +34,7 @@
 }
 
 
-.Team {
+.People {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 3rem 1.5rem;

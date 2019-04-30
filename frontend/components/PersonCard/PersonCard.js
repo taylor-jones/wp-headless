@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Picture } from 'react-responsive-picture';
 import { FiMail, FiExternalLink } from 'react-icons/fi';
-import { FaLinkedinIn, FaPen, FaUser, FaTwitter } from 'react-icons/fa';
+import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { countTruthyFromProperties } from '../../lib/commonUtils';
 import css from './PersonCard.scss';
 

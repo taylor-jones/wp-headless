@@ -1,23 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import PersonCard from '../../PersonCard/PersonCard';
-import css from './LeadershipPage.scss';
+import css from './PeoplePage.scss';
 
 
-class LeadershipPage extends PureComponent {
+class PeoplePage extends PureComponent {
   render() {
     const { post } = this.props;
-    const { acf } = post;
-    // const { people } = acf;
     const { people } = post;
 
-    // console.log(people);
-    console.log(post);
-
     return (
-      <div className={css.TeamContainer}>
-        <div className={css.TeamWrapper}>
-          <div className={css.Team}>
+      <div className={css.PeopleContainer}>
+        <div className={css.PeopleWrapper}>
+          <div className={css.People}>
             {people.map((person, index) => {
               return <PersonCard key={index} person={person} />;
             })}
@@ -29,8 +24,8 @@ class LeadershipPage extends PureComponent {
 }
 
 
-LeadershipPage.propTypes = {
+PeoplePage.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default LeadershipPage;
+export default PeoplePage;
