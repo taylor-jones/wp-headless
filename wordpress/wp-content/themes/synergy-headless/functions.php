@@ -29,3 +29,6 @@ require_once 'inc/acf-options.php';
 
 // Add custom API endpoints
 require_once 'inc/api-routes.php';
+
+// Gutenberg Editor config
+require_once 'inc/editor.php';

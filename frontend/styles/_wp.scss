@@ -1,17 +1,14 @@
 @import './helpers';
+@import './typography';
+
 
 /**
  * Styling WordPress-added classes
  */
 
- .wp-block-separator {
-   @extend .separator;
- }
-
  .wp-block-separator.is-style-wide {
    @extend .separator-wide;
  }
-
 
  .wp-block-columns {
     display: flex;
@@ -26,3 +23,44 @@
     }
  }
 
+
+// 
+//  Extend existing non-WP classes w/ the WP equivalent
+// 
+
+/**
+ * Wherever WordPress blocks are used, the Gutenberg editor adds the
+ * 'is-style-' prefix to whatever the custom block class is. The fn
+ * below automatically generates classes using this prefix that will
+ * extend their non-prefixed, non-gutenberg equivalents from elsewhere
+ * in the stylesheets.
+ */
+
+// block elements
+$block-classes: (
+  'separator',
+);
+
+// typography
+$typography-classes: (
+  'heading',
+  'lead',
+  'light',
+  'normal',
+  'strong',
+  'strong-lead',
+  'stronger',
+  'subheading',
+);
+
+@each $class in $block-classes {
+  .wp-block-#{$class} {
+    @extend .#{$class};
+  }
+}
+
+@each $class in $typography-classes {
+  .is-style-#{$class} {
+    @extend .#{$class};
+  }
+}

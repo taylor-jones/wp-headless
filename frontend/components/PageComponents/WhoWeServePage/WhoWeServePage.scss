@@ -12,7 +12,7 @@
 
 
 .PageWrapper {
-  width: 90%;
+  width: 85%;
 
   @include break(sm) {
     width: 80%;
@@ -26,8 +26,8 @@
   }
 
   p {
-    margin-block-start: 2rem;
-    margin-block-end: 2rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 1.5rem;
   }
 
   h4 {

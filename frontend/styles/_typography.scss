@@ -12,7 +12,9 @@ $responsive-font-styles: (
   (h5, 16px, 16px, 20px),
   (h6, 14px, 14px, 18px),
   (p, 14px, 14px, 16px, xs, sm),
-  (lead, 16px, 16px, 19px, xs, lg),
+  // (lead, 16px, 16px, 19px, xs, lg),
+  (lead, 18px, 18px, 22px, xs, lg),
+  // (page-lead, 18px, 18px, 22px, xs, lg),
 );
 
 
@@ -204,6 +206,7 @@ h6 {
 .heading,
 .subheading {
   font-family: $font-stack-rounded;
+  font-weight: 400;
 }
 
 .heading {
@@ -212,7 +215,6 @@ h6 {
 
 .subheading {
   color: $greyblue5;
-  font-weight: 400;
 }
 
 
@@ -275,11 +277,19 @@ p.lead a {
   }
 }
 
+
 .lead,
 p.lead {
   color: lighten($charcoal, 15%);
 }
 
+.strong-lead,
+p.strong-lead,
+p.strong-lead a {
+  @extend .lead;
+  @extend .strong;
+  color: $charcoal;
+}
 
 .colored-heading {
   color: $heading-colored;
