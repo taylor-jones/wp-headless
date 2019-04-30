@@ -50,6 +50,12 @@ const customPostTypeRequestsMap = {
       postProperty: 'people',
     },
   ],
+  advisors: [
+    {
+      fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/advisors`,
+      postProperty: 'people',
+    },
+  ],
   'what-we-do': [
     {
       fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/what-we-do`,

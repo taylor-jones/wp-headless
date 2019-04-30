@@ -14,7 +14,6 @@
   justify-content: flex-start;
   margin: 48px auto;
   width: 90%;
-  // @extend .visualizer;
   
   @include break(md) {
     margin-top: 128px;
@@ -22,7 +21,6 @@
 }
 
 .Person {
-  // @extend .visualizer;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -83,10 +81,18 @@
 
 .PersonName {
   @include responsive-font(h1);
+  
+  @include break-between(sm, ml) {
+    @include responsive-font(h0);
+  }
 }
 
 .PersonRole {
   @include responsive-font(h5);
+  
+  @include break-between(sm, ml) {
+    @include responsive-font(h4);
+  }
 }
 
 .PersonContent,
@@ -96,17 +102,27 @@
 }
 
 .PersonContent {
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
+
+.PersonLinksWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  
+  @include break(sm) {
+    margin-top: 20px;
+  }
+}
 
 .PersonLinks {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  margin-top: 48px;
+  max-width: 95%;
 
   li,
   li a {
@@ -115,11 +131,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     text-rendering: geometricPrecision;
     transition: background-color 75ms ease;
-    padding: 3px 0;
-    line-height: 1;
+    padding: 2px 0;
+    // line-height: 1;
+    
+    @include break(sm) {
+      // font-size: 16px;
+    }
     
     &:hover {
       color: $greyblue7;
@@ -134,7 +154,36 @@
         margin-left: 0;
         font-size: 95%;
       }
+
+      &:not(:first-of-type) {
+        @include break-below(sm) {
+          visibility: hidden;
+          display: none;
+        }
+      }
     }
   }
 
+
+  @include break-below(sm) {
+    flex-direction: row;
+
+    li a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 12px;
+      font-size: 20px;
+      border: 2px solid $greyblue2;
+      border-radius: 50%;
+      height: 44px;
+      width: 44px;
+      transition: border 150ms ease;
+      
+      &:hover {
+        border: 2px solid $greyblue5;
+      }
+    }
+  }
 }

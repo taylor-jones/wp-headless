@@ -27,15 +27,11 @@ const mappedSlug = slug => {
  * Returns the parsed slug from a given url.
  * NOTE: This function does not check for any slug mapping.
  * @param {string} url
+ * @param {number} offset
+ * @param {boolean} includePath
+ * @returns {string}
  */
-// const getSlug = (url, offset = 2) => {
-//   const parts = url.split('/');
-//   const slug = parts.length > offset ? parts[parts.length - offset] : url;
-//   return slug;
-// };
-
 const getSlug = (url, offset = 2, includePath = false) => {
-  // const parts = url.split('/').filter(part => part !== '');
   const parts = url.split('/');
 
   if (parts.length >= offset) {
@@ -62,9 +58,49 @@ const toCamelCase = str => str.replace(/(-|_|\s)\w/g, (m) => m[1].toUpperCase())
 const capitalized = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 
+/**
+ * Given an object and N property names, return the total
+ * number of truthy object values represented by the argued
+ * property names. A property is falsy if:
+ *  - it doesn't exist on the object
+ *  - it exists on the object, but it's value is falsy.
+ *  - it exists on the object as an empty array.
+ * If a property exists as a non-empty array on the object,
+ *  then include (in the result) the total length of the array.
+ *
+ * EXAMPLE:
+
+    const foo = {
+      bar: false,
+      baz: 1,
+      biz: [1, 2, 3],
+    };
+
+  countTruthyFromProperties(foo, 'bar');                  // 0
+  countTruthyFromProperties(foo, 'bar', 'baz');           // 1
+  countTruthyFromProperties(foo, 'bar', 'baz', 'biz');    // 4
+ */
+const countTruthyFromProperties = (obj, ...props) => {
+  let totalTruthy = 0;
+
+  [...props].forEach(prop => {
+    if (obj[prop]) {
+      if (Array.isArray(obj[prop])) {
+        totalTruthy += obj[prop].length;
+      } else {
+        totalTruthy += 1;
+      }
+    }
+  });
+
+  return totalTruthy;
+};
+
+
 module.exports = {
   mappedSlug,
   getSlug,
   toCamelCase,
   capitalized,
+  countTruthyFromProperties,
 };

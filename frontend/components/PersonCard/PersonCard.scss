@@ -1,4 +1,3 @@
-@import '../../styles/helpers';
 @import '../../styles/colors';
 @import '../../styles/breakpoints';
 @import '../../styles/typography';
@@ -20,7 +19,7 @@
   padding: 0;
   align-self: stretch;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: $box-shadow;
 }
@@ -47,7 +46,6 @@
 .PersonCardImage {
   max-width: 100%;
   object-fit: cover;
-  // height: 100%;
 }
 
 .PersonCardBody {
@@ -61,12 +59,16 @@
   justify-content: baseline;
   align-self: stretch;
 
+  @include break-only(ms) {
+    padding: 20px;
+  }
+
   .PersonName {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     color: $greyblue8;
     line-height: 1.35;
 
@@ -85,16 +87,15 @@
       align-items: baseline;
     }
   }
-  
+
+  .PersonRole,
   .PersonTitle {
     color: $greyblue5;
     font-size: 14px;
-    // @include responsive-font(p);
   }
 }
 
 .PersonCardBase {
-  // flex: 1 100%;
   height: 40px;
   display: flex;
   justify-content: center;

@@ -1,26 +1,25 @@
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
-import Link from 'next/link';
-import { Picture } from 'react-responsive-picture';
 import PropTypes from 'prop-types';
 import { FiMail, FiExternalLink } from 'react-icons/fi';
-import { FaLinkedinIn, FaPen, FaUser, FaTwitter } from 'react-icons/fa';
+import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import Layout from '../../components/UI/Layout/Layout';
 import withPageWrapper from '../../hoc/withPageWrapper';
 import { Config } from '../../config';
+import { countTruthyFromProperties } from '../../lib/commonUtils';
 import css from './index.scss';
 
 
-class Leadership extends PureComponent {
+class Person extends PureComponent {
   static async getInitialProps(context) {
-    const { slug } = context.query;
-    const leadershipRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/leadership?slug=${slug}`);
-    const leadership = await leadershipRes.json();
+    const { slug, apiRoute } = context.query;
+    const peopleRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/${apiRoute}?slug=${slug}`);
+    const people = await peopleRes.json();
 
-    if (leadership.length === 0) return {};
+    if (people.length === 0) return {};
 
-    const person = leadership[0];
+    const person = people[0];
     return { person };
   }
 
@@ -59,6 +58,7 @@ class Leadership extends PureComponent {
   render() {
     const { person } = this.props;
     const { acf } = person;
+    const totalLinks = countTruthyFromProperties(acf, 'email_address', 'phone_number', 'external_links');
 
     if (!person.title) { return <Error statusCode={404} />; }
 
@@ -79,37 +79,40 @@ class Leadership extends PureComponent {
               <div className={css.PersonHeadings}>
                 <div className={css.PersonName}>{person.title.rendered}</div>
                 <div className={css.PersonRole}>{acf.role}</div>
+
+                {totalLinks && (
+                  <div className={css.PersonLinksWrapper}>
+                    <ul className={css.PersonLinks}>
+                      {/* Link to email address, if available */}
+                      {acf.email_address && (
+                        <li>
+                          <a href={`mailto:${acf.email_address}`}>
+                            <span><FiMail /></span>
+                            <span>{acf.email_address}</span>
+                          </a>
+                        </li>
+                      )}
+
+                      {/* Link to external links, if available */}
+                      {acf.external_links && acf.external_links.map((link, index) => {
+                        return (
+                          <li key={index}>
+                            <a href={link.url} target="_blank" rel="noopener noreferrer">
+                              <span>{this.getLinkIcon(link.url)}</span>
+                              <span>{this.getPrettyeUrl(link.url)}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+
               </div>
 
               <div className={css.PersonContent} dangerouslySetInnerHTML={{ __html: person.content.rendered }} />
-
-              <div className={css.PersonLinksWrapper}>
-                <ul className={css.PersonLinks}>
-                  {/* Link to email address, if available */}
-                  {acf.email_address && (
-                    <li>
-                      <a href={`mailto:${acf.email_address}`}>
-                        <span><FiMail /></span>
-                        <span>{acf.email_address}</span>
-                      </a>
-                    </li>
-                  )}
-
-                  {/* Link to external links, if available */}
-                  {acf.external_links && acf.external_links.map((link, index) => {
-                    return (
-                      <li key={index}>
-                        <a href={link.url} target="_blank" rel="noopener noreferrer">
-                          <span>{this.getLinkIcon(link.url)}</span>
-                          <span>{this.getPrettyeUrl(link.url)}</span>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-
             </div>
+
             <div className={css.PersonImageWrapper}>
               <div
                 className={css.PersonImage}
@@ -124,7 +127,7 @@ class Leadership extends PureComponent {
 }
 
 
-Leadership.propTypes = {
+Person.propTypes = {
   headerMenu: PropTypes.instanceOf(Object).isRequired,
   drawerMenu: PropTypes.instanceOf(Object).isRequired,
   footerMenu: PropTypes.instanceOf(Object).isRequired,
@@ -133,4 +136,4 @@ Leadership.propTypes = {
 };
 
 
-export default withPageWrapper(Leadership);
+export default withPageWrapper(Person);

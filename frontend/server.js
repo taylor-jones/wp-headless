@@ -69,10 +69,12 @@ app
     const server = express();
 
     server.get('/post/:slug', (req, res) => {
-      /* NOTE: We aren't using any getActualPageFile or mappedSlug functionality, bc we're assuming:
-       * - all posts (not pages) will use the same general layout, which means they
-       *   would have no need to have their own specific types of pages in the pages/ directory.
-       * - All posts should direct to a slug that accurately reflects the post's slug. */
+      /*
+        NOTE: We aren't using any getActualPageFile or mappedSlug functionality, bc we're assuming:
+          - All posts (not pages) will use the same general layout, which means they would
+            have no need to have their own specific types of pages in the pages/ directory.
+          - All posts should direct to a slug that accurately reflects the post's slug.
+       */
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug, apiRoute: 'post' };
       renderAndCache(req, res, actualPage, queryParams);
@@ -94,12 +96,14 @@ app
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    // handle category pages
     server.get('/category/:slug', (req, res) => {
       const queryParams = { slug: req.params.slug };
       const actualPage = '/category';
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    // handle individualized page types
     server.get('/story/:slug', (req, res) => {
       const queryParams = { slug: req.params.slug, apiRoute: 'story' };
       const actualPage = '/story';
@@ -108,16 +112,24 @@ app
 
     server.get('/leadership/:slug', (req, res) => {
       const queryParams = { slug: req.params.slug, apiRoute: 'leadership' };
-      const actualPage = '/leadership';
+      const actualPage = '/person';
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    server.get('/advisor/:slug', (req, res) => {
+      const queryParams = { slug: req.params.slug, apiRoute: 'advisors' };
+      const actualPage = '/person';
+      renderAndCache(req, res, actualPage, queryParams);
+    });
+
+    // handle preview pages
     server.get('/_preview/:id/:wpnonce', (req, res) => {
       const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
       const actualPage = '/preview';
       renderAndCache(req, res, actualPage, queryParams);
     });
 
+    // handle anything else
     server.get('*', (req, res) => {
       return handle(req, res);
     });

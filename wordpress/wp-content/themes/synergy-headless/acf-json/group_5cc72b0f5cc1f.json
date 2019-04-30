@@ -166,6 +166,13 @@
                 "operator": "==",
                 "value": "leadership"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "advisor"
+            }
         ]
     ],
     "menu_order": 0,
@@ -176,5 +183,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1556559562
+    "modified": 1556633332
 }

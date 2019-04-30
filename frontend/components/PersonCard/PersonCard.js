@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Picture } from 'react-responsive-picture';
 import { FiMail, FiExternalLink } from 'react-icons/fi';
 import { FaLinkedinIn, FaPen, FaUser, FaTwitter } from 'react-icons/fa';
+import { countTruthyFromProperties } from '../../lib/commonUtils';
 import css from './PersonCard.scss';
 
 class PersonCard extends PureComponent {
@@ -32,8 +33,14 @@ class PersonCard extends PureComponent {
     const { person } = this.props;
     const { acf } = person;
 
-    const href = `/${person.type}?slug=${person.slug}&apiRoute=${person.type}`;
+    // specify the page and api route to use
+    const page = 'person';
+    const route = person.type === 'advisor' ? 'advisors' : person.type;
+    const href = `/${page}?slug=${person.slug}&apiRoute=${route}`;
     const as = `/${person.type}/${person.slug}/`;
+
+    // determine the total # of person links
+    const totalLinks = countTruthyFromProperties(acf, 'email_address', 'phone_number', 'external_links');
 
     return (
       <div className={css.PersonCardWrapper}>
@@ -50,26 +57,31 @@ class PersonCard extends PureComponent {
 
               <div className={css.PersonCardBody}>
                 <div className={css.PersonName}>{person.title.rendered}</div>
-                <div className={css.PersonTitle}>{acf.role}</div>
+                <div className={css.PersonRole}>{acf.role}</div>
+                <div className={css.PersonTitle}>{acf.professional_title}</div>
               </div>
             </a>
           </Link>
 
-          <ul className={css.PersonCardBase}>
-            {/* Link to email address, if available */}
-            {acf.email_address && (
-              <li><a href={`mailto:${acf.email_address}`}><FiMail /></a></li>
-            )}
+          {/* Only show the card base if there are any links */}
+          {totalLinks > 0 && (
+            <ul className={css.PersonCardBase}>
+              {/* Link to email address, if available */}
+              {acf.email_address && (
+                <li><a href={`mailto:${acf.email_address}`}><FiMail /></a></li>
+              )}
 
-            {/* Link to external links, if available */}
-            {acf.external_links && acf.external_links.map((link, index) => {
-              return (
-                <li key={index}>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">{this.getLinkIcon(link.url)}</a>
-                </li>
-              );
-            })}
-          </ul>
+              {/* Link to external links, if available */}
+              {acf.external_links && acf.external_links.map((link, index) => {
+                return (
+                  <li key={index}>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">{this.getLinkIcon(link.url)}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
         </div>
       </div>
     );
