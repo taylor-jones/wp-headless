@@ -4,12 +4,16 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import PageLead from './PageLead/PageLead';
-import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
-import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
-import PurposePage from './PageComponents/PurposePage/PurposePage';
-import MissionPage from './PageComponents/MissionPage/MissionPage';
+import AdvocatePage from './PageComponents/AdvocatePage/AdvocatePage';
+import CareersPage from './PageComponents/CareersPage/CareersPage';
+import DonatePage from './PageComponents/DonatePage/DonatePage';
 import ImpactPage from './PageComponents/ImpactPage/ImpactPage';
+import MissionPage from './PageComponents/MissionPage/MissionPage';
+import OverviewPage from './PageComponents/OverviewPage/OverviewPage';
 import PeoplePage from './PageComponents/PeoplePage/PeoplePage';
+import PurposePage from './PageComponents/PurposePage/PurposePage';
+import ServicesPage from './PageComponents/ServicesPage/ServicesPage';
+import VolunteerPage from './PageComponents/VolunteerPage/VolunteerPage';
 import WhoWeServePage from './PageComponents/WhoWeServePage/WhoWeServePage';
 
 
@@ -27,14 +31,18 @@ const PageLoader = props => {
    */
   const componentSlugMap = {
     advisors: <PeoplePage post={post} />,
-    leadership: <PeoplePage post={post} />,
-    services: <ServicesPage post={post} />,
-    purpose: <PurposePage post={post} />,
-    mission: <MissionPage post={post} />,
-    impact: <ImpactPage post={post} />,
-    'what-we-do': <OverviewPage post={post} />,
+    advocate: <AdvocatePage post={post} />,
+    careers: <CareersPage post={post} />,
+    donate: <DonatePage post={post} />,
     'get-involved': <OverviewPage post={post} />,
+    impact: <ImpactPage post={post} />,
+    leadership: <PeoplePage post={post} />,
+    mission: <MissionPage post={post} />,
+    purpose: <PurposePage post={post} />,
     resources: <OverviewPage post={post} />,
+    services: <ServicesPage post={post} />,
+    volunteer: <VolunteerPage post={post} />,
+    'what-we-do': <OverviewPage post={post} />,
     'who-we-serve': <WhoWeServePage post={post} />,
   };
 
