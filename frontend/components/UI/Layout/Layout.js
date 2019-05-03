@@ -9,22 +9,38 @@ import Footer from '../../Footer/Footer';
 import css from './Layout.scss';
 
 
+/**
+ * Breakpoint Sizes (for convenience)
+ * xs: 0,
+ * sm: 480px,
+ * ms: 612 px,
+ * md: 744px,
+ * ml: 936px,
+ * lg: 1128px,
+ * xl: 1440px
+ */
+
 // Grid breakpoint configurations
 setConfiguration({
   breakpoints: [
     480,
+    612,
     744,
+    936,
     1128,
     1440,
   ],
   containerWidths: [
     696,
+    696,
     960,
+    1280,
     1280,
     1600,
   ],
   gutterWidth: 16,
 });
+
 
 const drawerHtmlId = 'drawer';
 
@@ -44,14 +60,6 @@ class Layout extends PureComponent {
   componentDidMount() {
     this.drawerElement = document.querySelector(`#${drawerHtmlId}`);
   }
-
-  /**
-   * Close the side drawer whenever the Leyout component will
-   * receive props, which indicates a page change.
-   */
-  // componentWillReceiveProps() {
-  //   this.closeSideDrawer();
-  // }
 
   /**
    * Remove and scroll locks that exist
@@ -96,7 +104,7 @@ class Layout extends PureComponent {
 
     return (
       <div className={css.Wrapper}>
-        {/* DEVELOPMENT ONLY */}
+        {/* FOR DEVELOPMENT PURPOSES ONLY */}
         <div className="visualizer-stripe" />
 
         <PageHead title={title.rendered} />
