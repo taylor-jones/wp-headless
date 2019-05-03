@@ -4,13 +4,13 @@
 // breakpoint visualizer
 // 
 .visualizer {
-  @include break(xs) { background: rgba(red, 0.35) !important }
-  @include break(sm) { background: rgba(orange, 0.35) !important }
-  @include break(ms) { background: rgba(yellow, 0.45) !important }
-  @include break(md) { background: rgba(green, 0.35) !important }
-  @include break(ml) { background: rgba(dodgerblue, 0.35) !important }
-  @include break(lg) { background: rgba(indigo, 0.35) !important }
-  @include break(xl) { background: rgba(deeppink, 0.35) !important }
+  @include break(xs) { background: rgba(red, 0.15) !important }
+  @include break(sm) { background: rgba(orange, 0.15) !important }
+  @include break(ms) { background: rgba(yellow, 0.35) !important }
+  @include break(md) { background: rgba(green, 0.15) !important }
+  @include break(ml) { background: rgba(dodgerblue, 0.15) !important }
+  @include break(lg) { background: rgba(indigo, 0.15) !important }
+  @include break(xl) { background: rgba(deeppink, 0.15) !important }
 }
 
 .visualizer::after {
@@ -31,13 +31,13 @@
 
 
 .visualizer-bordered {
-  @include break(xs) { box-shadow: inset 0 0 0 3px rgba(red, 0.35) !important }
-  @include break(sm) { box-shadow: inset 0 0 0 3px rgba(orange, 0.35) !important }
-  @include break(ms) { box-shadow: inset 0 0 0 3px rgba(yellow, 0.45) !important }
-  @include break(md) { box-shadow: inset 0 0 0 3px rgba(green, 0.35) !important }
-  @include break(ml) { box-shadow: inset 0 0 0 3px rgba(dodgerblue, 0.35) !important }
-  @include break(lg) { box-shadow: inset 0 0 0 3px rgba(indigo, 0.35) !important }
-  @include break(xl) { box-shadow: inset 0 0 0 3px rgba(deeppink, 0.35) !important }
+  @include break(xs) { box-shadow: inset 0 0 0 3px rgba(red, 0.5) !important }
+  @include break(sm) { box-shadow: inset 0 0 0 3px rgba(orange, 0.5) !important }
+  @include break(ms) { box-shadow: inset 0 0 0 3px rgba(yellow, 0.75) !important }
+  @include break(md) { box-shadow: inset 0 0 0 3px rgba(green, 0.5) !important }
+  @include break(ml) { box-shadow: inset 0 0 0 3px rgba(dodgerblue, 0.5) !important }
+  @include break(lg) { box-shadow: inset 0 0 0 3px rgba(indigo, 0.5) !important }
+  @include break(xl) { box-shadow: inset 0 0 0 3px rgba(deeppink, 0.5) !important }
 }
 
 
