@@ -60,7 +60,7 @@ class Story extends Component {
                 alt={story.acf.image.alt}
                 sources={[
                   { srcSet: story.acf.image.sizes['hero-sm-portrait'], media: `(${toBreakpoint('sm')})` },
-                  { srcSet: story.acf.image.sizes.medium_large },
+                  { srcSet: story.acf.image.sizes.large },
                 ]}
               />
             </div>

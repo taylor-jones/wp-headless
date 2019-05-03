@@ -43,12 +43,12 @@
 .StoryMedia {
   height: 100%;
   width: 100%;
-  object-position: 50% 50%;
+  object-position: center center;
   object-fit: cover;
 
-  @include break(md) {
-    object-position: center top;
-  }
+  // @include break(md) {
+  //   object-position: center top;
+  // }
 }
 
 .StoryHeading {

@@ -42,11 +42,9 @@ class MissionPage extends PureComponent {
 
             <div className={css.Block}>
               <p className="lead strong">
-                Learn more about
                 <Link prefetch href="/post?slug=services&apiRoute=page" as="/services">
-                  <a role="link"> the types of services </a>
+                  <a role="link">Learn more about the types of services that Synergy In Action offers.</a>
                 </Link>
-                that Synergy In Action offers.
               </p>
             </div>
           </Container>
