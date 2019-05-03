@@ -1,0 +1,506 @@
+{
+    "key": "group_5ccc8359679b1",
+    "title": "Opportunity Details",
+    "fields": [
+        {
+            "key": "field_5ccc8657014b7",
+            "label": "Category",
+            "name": "category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "opportunity-category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "show_column": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_5ccc835f014b2",
+            "label": "Status",
+            "name": "status",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full-time": "Full-Time",
+                "part-time": "Part-Time",
+                "on-call": "On Call",
+                "temporary": "Temporary",
+                "seasonal": "Seasonal"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 1,
+            "return_format": "value",
+            "show_column": 1,
+            "show_column_sortable": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ccc86fb014b8",
+            "label": "Hours",
+            "name": "hours",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": 1,
+            "show_column": 1,
+            "show_column_sortable": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 1,
+            "allow_bulkedit": 1
+        },
+        {
+            "key": "field_5ccc8543014b4",
+            "label": "Rate",
+            "name": "rate",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ccc8657014b7",
+                        "operator": "<",
+                        "value": "18"
+                    },
+                    {
+                        "field": "field_5ccc8657014b7",
+                        "operator": ">",
+                        "value": "16"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "show_column": 1,
+            "show_column_sortable": 1,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0
+        },
+        {
+            "key": "field_5ccc894342e4b",
+            "label": "Responsibilities",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ccc87d1b6f2b",
+            "label": "Responsibilities",
+            "name": "responsibilities",
+            "type": "repeater",
+            "instructions": "List the responsibilities of this opportunity\/position.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ccc87e4b6f2c",
+                    "label": "Responsibility",
+                    "name": "responsibility",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000
+                }
+            ]
+        },
+        {
+            "key": "field_5ccc896042e4c",
+            "label": "Experience",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ccc8839b6f2d",
+            "label": "Experience",
+            "name": "experience",
+            "type": "group",
+            "instructions": "List any experience requirements and\/or preferences.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ccc8847b6f2e",
+                    "label": "Required",
+                    "name": "required",
+                    "type": "repeater",
+                    "instructions": "List any experience requirements.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ccc8862b6f2f",
+                            "label": "requirement",
+                            "name": "requirement",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5ccc8870b6f30",
+                    "label": "Preferred",
+                    "name": "preferred",
+                    "type": "repeater",
+                    "instructions": "List any experience preferences.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ccc887eb6f31",
+                            "label": "Preference",
+                            "name": "preference",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_5ccc897442e4d",
+            "label": "Education",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ccc88a1b6f32",
+            "label": "Education",
+            "name": "education",
+            "type": "group",
+            "instructions": "List any educational requirements and\/or preferences.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ccc88a1b6f33",
+                    "label": "Required",
+                    "name": "required",
+                    "type": "repeater",
+                    "instructions": "List any experience requirements.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ccc88a1b6f34",
+                            "label": "requirement",
+                            "name": "requirement",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5ccc88a1b6f35",
+                    "label": "Preferred",
+                    "name": "preferred",
+                    "type": "repeater",
+                    "instructions": "List any experience preferences.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ccc88a1b6f36",
+                            "label": "Preference",
+                            "name": "preference",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "show_column": 0,
+                            "show_column_sortable": 0,
+                            "show_column_weight": 1000
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_5ccc898142e4e",
+            "label": "Other Expectations",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ccc88b3b6f37",
+            "label": "Other Expectations",
+            "name": "other",
+            "type": "repeater",
+            "instructions": "List any other requirements and\/or preferences.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ccc88e5b6f3c",
+                    "label": "Expectation",
+                    "name": "expectation",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "opportunity"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1556911371
+}
