@@ -1,0 +1,49 @@
+@import '../../../styles/breakpoints';
+
+
+.WrapperOuter {
+  width: 100%;
+}
+
+.Wrapper,
+.Fluid,
+.Wide,
+.Narrow,
+.WrapperOuter {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 0 auto;
+}
+
+.Wrapper {
+  width: 90%;
+
+  @include break(sm) {
+    width: 85%;
+  }
+  
+  @include break(lg) {
+    max-width: 1280px;
+  }
+}
+
+.Wrapper.Fluid {
+  width: 100%;
+  max-width: none;
+}
+
+
+.Wrapper.Narrow {
+  @include break(md) {
+    max-width: 900px;
+  }
+}
+
+
+.Wrapper.Wide {
+  @include break(lg) {
+    max-width: 1400px;
+  }
+}
+
