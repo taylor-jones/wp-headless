@@ -56,6 +56,18 @@ const customPostTypeRequestsMap = {
       postProperty: 'people',
     },
   ],
+  careers: [
+    {
+      fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/opportunities`,
+      postProperty: 'opportunities',
+    },
+  ],
+  volunteer: [
+    {
+      fetchUrl: `${Config.apiUrl}/wp-json/wp/v2/opportunities`,
+      postProperty: 'opportunities',
+    },
+  ],
   'what-we-do': [
     {
       fetchUrl: `${Config.apiUrl}/wp-json/menus/v1/subnav/what-we-do`,
@@ -128,9 +140,10 @@ class Post extends PureComponent {
   }
 
   render() {
-    // console.log(this.props);
     const { post } = this.props;
     if (!post.title) return <Error statusCode={404} />;
+
+    // console.log(post);
 
     return (
       <Layout
