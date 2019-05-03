@@ -13,6 +13,22 @@
   @include break(xl) { background: rgba(deeppink, 0.35) !important }
 }
 
+.visualizer::after {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: rgba(#000, 0.5);
+  font-size: 16px;
+
+  @include break(xs) { content: 'xs:  #{$breakpoint-xs}' }
+  @include break(sm) { content: 'sm:  #{$breakpoint-sm}' }
+  @include break(ms) { content: 'ms:  #{$breakpoint-ms}' }
+  @include break(md) { content: 'md:  #{$breakpoint-md}' }
+  @include break(ml) { content: 'ml:  #{$breakpoint-ml}' }
+  @include break(lg) { content: 'lg:  #{$breakpoint-lg}' }
+  @include break(xl) { content: 'xl:  #{$breakpoint-xl}' }
+}
+
 
 .visualizer-bordered {
   @include break(xs) { box-shadow: inset 0 0 0 3px rgba(red, 0.35) !important }
