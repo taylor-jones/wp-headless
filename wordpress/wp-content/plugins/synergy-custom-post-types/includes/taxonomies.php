@@ -14,6 +14,48 @@ add_action( 'init', 'register_custom_taxonomies' );
 function register_custom_taxonomies() {
 
   /**
+   * Opportunity Category
+   * 
+   * The category types of opportunities to get involved
+   * (e.g. employment, volunteer, internship, etc...)
+   */
+
+  register_taxonomy('opportunity-category', array('opportunity'), array(
+    'graphql_single_name'   => 'opportunityCategory',
+    'graphql_plural_name'   => 'opportunityCategories',
+    'hierarchical'          => false,
+    'labels'                => array(
+        'name'              => _x( 'Opportunity Categories', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Opportunity Category', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Opportunity Categories' ),
+        'all_items'         => __( 'All Opportunity Categories' ),
+        'parent_item'       => __( 'Parent Opportunity Category' ),
+        'parent_item_colon' => __( 'Parent Opportunity Category:' ),
+        'edit_item'         => __( 'Edit Opportunity Category' ),
+        'update_item'       => __( 'Update Opportunity Category' ),
+        'add_new_item'      => __( 'Add New Opportunity Category' ),
+        'new_item_name'     => __( 'New Opportunity Category Name' ),
+        'menu_name'         => __( 'Opportunity Categories' ),
+    ),
+    'public'                => false,
+    'rest_base'             => 'opportunity-category',
+    'rewrite'               => array(
+        'slug'                  => _x('opportunity-categories', 'taxonomy slug', SIA_CPT_DOMAIN),
+        'with_front'            => false,
+    ),
+    'show_admin_column'     => false,
+    'show_in_graphql'       => true,
+    'show_in_menu'          => true,
+    'show_in_nav_menus'     => false,
+    'show_in_rest'          => true,
+    'show_in_quick_edit'    => false,
+    'show_ui'               => true,
+    )
+  );
+
+
+
+  /**
    * Service Category
    * 
    * The broad category types for a given service
