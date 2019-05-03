@@ -16,6 +16,7 @@
 
 .OverviewWrapper {
   margin: 0 auto;
+  width: 95%;
 
   @include break(md) {
     width: 80%;
