@@ -1,7 +1,7 @@
 <?php
 
 /**********************************************
- *    Register the custom tabonomies
+ *    Register the custom taxonomies
  **********************************************/
 add_action( 'init', 'register_custom_taxonomies' );
 

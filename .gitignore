@@ -12,7 +12,8 @@ wp-admin/
 plugins/
 !plugins/synergy*
 
-frontend/staticfonts/**/**
+# frontend/static/fonts/**/**
+fonts
 *.woff
 *.woff2
 *.ttf

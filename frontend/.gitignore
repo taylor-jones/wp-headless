@@ -1,7 +1,6 @@
 .next
 node_modules
 .idea
-static/fonts/**
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
